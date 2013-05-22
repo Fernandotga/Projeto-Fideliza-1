@@ -33,15 +33,9 @@ public class EmpresaController {
     }
 
     @Public
-    //@Get("/empresa/criarEmpresa")
-    public void novo(Empresa entity) {
+    @Get("/empresa/criar")
+    public void criar(Empresa entity) {
         result.include("entity", entity);
-    }
-    
-    @Public
-    @Get("/empresa/criarEmpresa")
-    public void form(){
-        
     }
 
     @Put("/empresa/{entity.id}")
@@ -87,12 +81,12 @@ public class EmpresaController {
     @Post("/empresa")
     public void salvar(Empresa entity) {
         validator.validate(entity);
-        validator.onErrorRedirectTo(this).novo(entity);
+        validator.onErrorRedirectTo(this).criar(entity);
         try {
             entity = repository.save(entity);
             result.include("notice", Utils.i18n("empresa.salvo.sucesso")).redirectTo(this).listagem();
         } catch (CommonException e) {
-            result.include("error", Utils.i18n(e.getMessage())).redirectTo(this).novo(entity);
+            result.include("error", Utils.i18n(e.getMessage())).redirectTo(this).criar(entity);
         }
     }
 
