@@ -6,6 +6,7 @@
                 <small> <fmt:message key="app.novo"/> </small>
             </legend>  
         </div> 
+        <c:set var="path" value="${pageContext.request.contextPath}" />
 
         <c:choose>
             <c:when test="${entity.id == null}">
@@ -16,7 +17,7 @@
             </c:otherwise>
         </c:choose>
 
-        <form action="${pageContext.request.contextPath}${uri}" method="POST">
+        <form action="${patch}${uri}" method="POST">
             <c:if test="${entity.id != null}">
                 <input type="hidden" name="_method" value="put"/>
             </c:if>
@@ -45,7 +46,7 @@
                             <fmt:message key="empresa.nome.fantasia"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="fantasia" name="fantasia" class="input-xxlarge">
+                            <input type="text" id="fantasia" name="entity.nomeFantasia" value="${entity.nomeFantasia}" class="input-xxlarge">
                         </div>
                     </div>
 
@@ -54,7 +55,7 @@
                             <fmt:message key="empresa.razao.social"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="razao" name="razao" class="input-xxlarge">
+                            <input type="text" id="razao" name="entity.razaoSocial" value="${entity.razaoSocial}" class="input-xxlarge">
                         </div>
                     </div>
 
@@ -63,7 +64,7 @@
                             <fmt:message key="empresa.cnpj"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="cnpj" name="cnpj" class="input-xlarge">
+                            <input type="text" id="cnpj" name="entity.cnpj" value="${entity.cnpj}" class="input-xlarge">
                         </div>
                     </div>
 
@@ -72,7 +73,7 @@
                             <fmt:message key="empresa.responsavel"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="responsavel" name="responsavel" class="input-xxlarge">
+                            <input type="text" id="responsavel" name="entity.responsavel" value="${entity.responsavel}" class="input-xxlarge">
                         </div>
                     </div>
 
@@ -86,7 +87,7 @@
                         <fmt:message key="empresa.cep"/>
                     </label>
                     <div class="controls">
-                        <input type="text" id="cep" name="cep" class="input-xlarge">
+                        <input type="text" id="cep" name="entity.cep" value="${entity.cep}" class="input-xlarge">
                     </div>
                 </div>
 
@@ -95,7 +96,7 @@
                         <fmt:message key="empresa.uf"/>
                     </label>
                     <div class="controls">
-                        <input type="text" id="uf" name="uf" class="input-small">
+                        <input type="text" id="uf" name="entity.uf" value="${entity.uf}" class="input-small">
                     </div>
                 </div>
 
@@ -104,7 +105,7 @@
                         <fmt:message key="empresa.cidade"/>
                     </label>
                     <div class="controls">
-                        <input type="text" id="cidade" name="cidade" class="input-small">
+                        <input type="text" id="cidade" name="entity.cidade" value="${entity.cidade}" class="input-small">
                     </div>
                 </div>
 
@@ -113,7 +114,7 @@
                         <fmt:message key="empresa.bairro"/>
                     </label>
                     <div class="controls">
-                        <input type="text" id="bairro" name="bairro" class="input-xxlarge">
+                        <input type="text" id="bairro" name="entity.bairro" value="${entity.bairro}" class="input-xxlarge">
                     </div>
                 </div>
 
@@ -122,7 +123,7 @@
                         <fmt:message key="empresa.endereco"/>
                     </label>
                     <div class="controls">
-                        <input type="text" id="endereco" name="endereco" class="input-xxlarge">
+                        <input type="text" id="endereco" name="entity.endereco" value="${entity.endereco}" class="input-xxlarge">
                     </div>
                 </div>
 
@@ -131,7 +132,7 @@
                         <fmt:message key="empresa.latitude"/>
                     </label>
                     <div class="controls">
-                        <input type="text" id="latitude" name="latitude" class="input-xxlarge">
+                        <input type="text" id="latitude" name="entity.latitude" value="${entity.latitude}" class="input-xxlarge">
                     </div>
                 </div>
 
@@ -141,7 +142,7 @@
                         <fmt:message key="empresa.longitude"/>
                     </label>
                     <div class="controls">
-                        <input type="text" id="longitude" name="longitude" class="input-xxlarge">
+                        <input type="text" id="longitude" name="entity.longitude" value="${entity.longitude}" class="input-xxlarge">
                     </div>
                 </div>
             </div>
@@ -152,7 +153,7 @@
                         <fmt:message key="empresa.url.logo"/>
                     </label>
                     <div class="controls">
-                        <input type="text" id="logo" name="logo" class="input-xxlarge">
+                        <input type="text" id="logo" name="entity.urlLogo" value="${entity.urlLogo}" class="input-xxlarge">
                     </div>
                 </div>
             </div>
@@ -164,7 +165,7 @@
                             <fmt:message key="empresa.email"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="email" name="email" placeholder="empresa@dominio.com.br" class="input-xlarge">
+                            <input type="text" id="email" name="entity.email" value="${entity.email}" placeholder="empresa@dominio.com.br" class="input-xlarge">
                         </div>
                     </div>
 
@@ -182,7 +183,7 @@
                             <fmt:message key="empresa.password.repetir"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="senhaRepetir" name="senhaRepetir" class="input-xlarge">
+                            <input type="text" id="senhaRepetir" name="entity.senha" value="${entity.senha}" class="input-xlarge">
                         </div>
                     </div>
                 </div>

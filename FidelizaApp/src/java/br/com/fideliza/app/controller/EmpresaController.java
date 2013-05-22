@@ -7,7 +7,6 @@ import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
-import br.com.fideliza.app.annotation.Permission;
 import br.com.fideliza.app.annotation.Public;
 import br.com.fideliza.app.component.EmpresaSession;
 import br.com.fideliza.app.exception.CommonException;
@@ -19,7 +18,6 @@ import java.util.Locale;
 import static br.com.caelum.vraptor.view.Results.referer;
 
 @Resource
-@Permission({PerfilType.MEMBRO, PerfilType.MODERADOR, PerfilType.ADMINISTRADOR})
 public class EmpresaController {
 
     private final Result result;
@@ -34,11 +32,16 @@ public class EmpresaController {
         this.validator = validator;
     }
 
-    @Get("/empresa/criarEmpresa")
+    @Public
+    //@Get("/empresa/criarEmpresa")
     public void novo(Empresa entity) {
-        result
-                .include("perfilList", PerfilType.values())
-                .include("entity", entity);
+        result.include("entity", entity);
+    }
+    
+    @Public
+    @Get("/empresa/criarEmpresa")
+    public void form(){
+        
     }
 
     @Put("/empresa/{entity.id}")
@@ -54,6 +57,7 @@ public class EmpresaController {
         }
     }
 
+    @Public
     @Get("/empresa/{entity.id}/editarEmpresa")
     public void editar(Empresa entity) {
         result.include("perfilList", PerfilType.values());
@@ -79,6 +83,7 @@ public class EmpresaController {
                 .redirectTo(this).listagem();
     }
 
+    @Public
     @Post("/empresa")
     public void salvar(Empresa entity) {
         validator.validate(entity);

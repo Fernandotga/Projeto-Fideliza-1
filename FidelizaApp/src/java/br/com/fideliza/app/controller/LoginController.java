@@ -47,4 +47,5 @@ public class LoginController {
         empresaSession.logout();
         result.redirectTo(IndexController.class).index();
     }
+    
 }
