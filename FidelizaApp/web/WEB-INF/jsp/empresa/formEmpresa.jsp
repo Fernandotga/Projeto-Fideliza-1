@@ -17,7 +17,7 @@
             </c:otherwise>
         </c:choose>
 
-        <form action="${patch}${uri}" method="POST">
+        <form id="cadastroEmpresa" action="${patch}${uri}" method="POST">
             <c:if test="${entity.id != null}">
                 <input type="hidden" name="_method" value="put"/>
             </c:if>

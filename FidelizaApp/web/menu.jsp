@@ -1,4 +1,4 @@
-<ul class="nav">
+<ul class="nav" id="navSup">
     <c:if test="${empresaSession.empresa == null}">
         <li class="active"><a href="<c:url value="/"/>">Identificação</a></li> 
         <li><a href="<c:url value="/empresa/criar"/>">Cadastre-se</a></li> 
@@ -13,5 +13,5 @@
         <li><a href="#">Empresa</a></li> 
         </c:if>
     <li class="divider-vertical"></li>    
-    <li><a href="#">Sobre</a></li>
+    <li><a href="<c:url value="/projeto/sobre"/>">Sobre</a></li>
 </ul>

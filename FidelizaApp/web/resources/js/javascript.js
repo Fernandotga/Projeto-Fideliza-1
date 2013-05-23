@@ -1,3 +1,19 @@
+$(document).ready(function() {
+    $("#cadastroEmpresa").submit(function() {
+        //alert("teste");
+        if ($("#senha").val() !== $("#senhaRepetir").val()) {
+            $("#mensagem").text("Senhas diferentes. Favor conferir!");
+            $("#mensagem").addClass("alert alert-error");
+            return false;
+        } else {
+            return true;
+        }
+    });
+
+
+});
+
+
 function confirmar(title, sim, nao, msg, funcao, largura, altura) {
     $('div#mensagem').dialog({
         title: title,
@@ -48,3 +64,4 @@ function mensagem(title, msg, largura, altura) {
             .dialog('open');
 }
 ;
+
