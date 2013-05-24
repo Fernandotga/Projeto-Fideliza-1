@@ -1,8 +1,12 @@
-body, label, input[type="submit"], input[type="button"], input[type="text"], select, textarea {
+body, label, input[type="submit"], input[type="button"], input[type="text"], input[type="email"], select, textarea {
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bold;
 }
+
+/*input[type="text"], textarea {
+    text-transform: uppercase;
+}*/
 
 .header {
     margin-top: 5px;

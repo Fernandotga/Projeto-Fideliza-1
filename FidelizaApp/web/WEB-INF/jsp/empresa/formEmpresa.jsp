@@ -6,7 +6,6 @@
                 <small> <fmt:message key="app.novo"/> </small>
             </legend>  
         </div> 
-        <c:set var="path" value="${pageContext.request.contextPath}" />
 
         <c:choose>
             <c:when test="${entity.id == null}">
@@ -17,7 +16,7 @@
             </c:otherwise>
         </c:choose>
 
-        <form id="cadastroEmpresa" action="${patch}${uri}" method="POST">
+        <form id="cadastroEmpresa" action="<c:url value="${uri}" />" method="POST">
             <c:if test="${entity.id != null}">
                 <input type="hidden" name="_method" value="put"/>
             </c:if>
@@ -55,7 +54,7 @@
                             <fmt:message key="empresa.nome.fantasia"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="fantasia" name="entity.nomeFantasia" value="${entity.nomeFantasia}" class="input-xxlarge">
+                            <input type="text" required="true" id="fantasia" name="entity.nomeFantasia" value="${entity.nomeFantasia}" class="input-xxlarge">
                         </div>
                     </div>
 
@@ -64,7 +63,7 @@
                             <fmt:message key="empresa.razao.social"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="razao" name="entity.razaoSocial" value="${entity.razaoSocial}" class="input-xxlarge">
+                            <input type="text" required="true" id="razao" name="entity.razaoSocial" value="${entity.razaoSocial}" class="input-xxlarge">
                         </div>
                     </div>
 
@@ -73,7 +72,7 @@
                             <fmt:message key="empresa.cnpj"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="cnpj" name="entity.cnpj" value="${entity.cnpj}" class="input-xlarge">
+                            <input type="text" id="cnpj" data-mask="99.999.999/9999-99" name="entity.cnpj" value="${entity.cnpj}" class="input-xlarge">
                         </div>
                     </div>
 
@@ -82,7 +81,7 @@
                             <fmt:message key="empresa.responsavel"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="responsavel" name="entity.responsavel" value="${entity.responsavel}" class="input-xxlarge">
+                            <input type="text" required="true" id="responsavel" name="entity.responsavel" value="${entity.responsavel}" class="input-xxlarge">
                         </div>
                     </div>
                 </div>
@@ -93,7 +92,7 @@
                             <fmt:message key="empresa.cep"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="cep" name="entity.cep" value="${entity.cep}" class="input-xlarge">
+                            <input type="text" id="cep" data-mask="99999-999"  name="entity.cep" value="${entity.cep}" class="input-xlarge">
                         </div>
                     </div>
 
@@ -102,7 +101,7 @@
                             <fmt:message key="empresa.uf"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="uf" name="entity.uf" value="${entity.uf}" class="input-small">
+                            <input type="text" id="uf" data-mask="aa" name="entity.uf" value="${entity.uf}" class="input-small">
                         </div>
                     </div>
 
@@ -181,7 +180,7 @@
                                 <fmt:message key="empresa.email"/>
                             </label>
                             <div class="controls">
-                                <input type="text" id="email" name="entity.email" value="${entity.email}" placeholder="empresa@dominio.com.br" class="input-xlarge">
+                                <input type="email" required="true" id="email" style="text-transform: lowercase;" name="entity.email" value="${entity.email}" placeholder="empresa@dominio.com.br" class="input-xlarge">
                             </div>
                         </div>
 
@@ -190,7 +189,7 @@
                                 <fmt:message key="empresa.password"/>
                             </label>
                             <div class="controls">
-                                <input type="text" id="senha" name="senha" class="input-xlarge">
+                                <input type="password" required="true" id="senha" name="entity.password" value="${entity.password}" class="input-xlarge">
                             </div>
                         </div>
 
@@ -199,30 +198,19 @@
                                 <fmt:message key="empresa.password.repetir"/>
                             </label>
                             <div class="controls">
-                                <input type="text" id="senhaRepetir" name="entity.senha" value="${entity.senha}" class="input-xlarge">
+                                <input type="password" required="true" id="senhaRepetir" class="input-xlarge">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <!-- Button -->
+                            <div class="controls">
+                                <button type="submit" class="btn btn-success">
+                                    <fmt:message key="app.gravar" />
+                                </button>                         
                             </div>
                         </div>
                     </div>
-                            
-                    <div class="control-group">
-                        <!-- Button -->
-                        <div class="controls">
-                            <button class="btn btn-success">
-                                <fmt:message key="app.gravar" />
-                            </button>
-                            <button class="btn">
-                                <fmt:message key="app.cancelar" />
-                            </button>
-                            <c:choose>
-                                <c:when test="${entity.id != null}">
-                                    <button class="btn btn-danger">
-                                        <fmt:message key="app.excluir" />
-                                    </button> 
-                                </c:when>
-                            </c:choose>
-                        </div>
-                    </div>
-                            
                 </div>
             </div>
         </form>

@@ -19,7 +19,7 @@
                         <fmt:message key="login.email"/>
                     </label>
                     <div class="controls">
-                        <input type="text" id="email" name="email" placeholder="empresa@dominio.com.br" class="input-xlarge">
+                        <input type="email" required="true" id="email" name="email" style="text-transform: lowercase;" placeholder="empresa@dominio.com.br" class="input-xlarge">
                     </div>
                 </div>
 
@@ -29,7 +29,7 @@
                         <fmt:message key="login.senha" />
                     </label>
                     <div class="controls">
-                        <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                        <input type="password" required="true" id="password" name="password" placeholder="" class="input-xlarge">
                     </div>
                 </div>
 

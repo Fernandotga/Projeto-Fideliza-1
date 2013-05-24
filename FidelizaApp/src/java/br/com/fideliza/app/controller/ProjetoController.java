@@ -6,9 +6,10 @@ import br.com.fideliza.app.annotation.Public;
 
 @Public
 @Resource
-public class SobreController {
-
+public class ProjetoController {
+    
     @Get("/projeto/sobre")
-    public void sobre() {
+    public void sobre(){
+        
     }
 }

@@ -18,12 +18,14 @@
         <script type="text/javascript" charset="utf-8" src="/FidelizaApp/resources/js/jquery.colorbox-1.3.16.min.js"></script>
 
         <script type="text/javascript" charset="utf-8" src="/FidelizaApp/resources/js/javascript.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/FidelizaApp/resources/js/bootstrap-inputmask.min.js"></script>
+
 
         <title><decorator:title default="Main | Projeto Fideliza"/></title>
     </head>
 
     <body>
-        <div id="mensagem"></div>
+
         <div id="wrapper">
 
             <div class="header">
@@ -44,6 +46,7 @@
 
             <div id="content">
                 <div class="container">
+                    <decorator:body/>
                     <c:if test="${not empty errors}">
                         <div id="errors" class="error">
                             <c:forEach var="error" items="${errors}">
@@ -53,14 +56,14 @@
                     </c:if>
 
                     <c:if test="${not empty error}">
-                        <div id="error" class="error">${error}</div>
+                        <div id="error" class="alert alert-error">${error}</div>
                     </c:if>
 
                     <c:if test="${not empty message}">
-                        <div id="notice" class="notice">${message}</div>
+                        <div id="notice" class="alert">${message}</div>
                     </c:if>
 
-                    <decorator:body/>
+                    <div id="mensagem"></div>
                 </div>
             </div>
 

@@ -16,6 +16,7 @@ import br.com.fideliza.app.repository.EmpresaRepository;
 import br.com.fideliza.app.helper.Utils;
 import java.util.Locale;
 import static br.com.caelum.vraptor.view.Results.referer;
+import java.util.Date;
 
 @Resource
 public class EmpresaController {
@@ -80,11 +81,18 @@ public class EmpresaController {
     @Public
     @Post("/empresa")
     public void salvar(Empresa entity) {
+        // dados default
+        entity.setDataCadastro(new Date());
+        entity.setAtivo(Boolean.TRUE);
+        entity.setPerfil(PerfilType.MEMBRO);
+        entity.setEmail(entity.getEmail().toLowerCase());
+        
         validator.validate(entity);
         validator.onErrorRedirectTo(this).criar(entity);
         try {
             entity = repository.save(entity);
-            result.include("notice", Utils.i18n("empresa.salvo.sucesso")).redirectTo(this).listagem();
+            // retorna tela de login, pois so salvar é apenas deslogado !
+            result.include("notice", Utils.i18n("empresa.salvo.sucesso")).redirectTo(IndexController.class).index();
         } catch (CommonException e) {
             result.include("error", Utils.i18n(e.getMessage())).redirectTo(this).criar(entity);
         }

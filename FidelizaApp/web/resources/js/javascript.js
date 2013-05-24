@@ -9,10 +9,7 @@ $(document).ready(function() {
             return true;
         }
     });
-
-
 });
-
 
 function confirmar(title, sim, nao, msg, funcao, largura, altura) {
     $('div#mensagem').dialog({
