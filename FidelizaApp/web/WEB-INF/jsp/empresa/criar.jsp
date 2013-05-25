@@ -1,5 +1,5 @@
 <head>
-    <title><fmt:message key="app.title"/> <fmt:message key="app.novo" /> </title>
+    <title><fmt:message key="app.title"/> | <fmt:message key="app.novo" /> </title>
 </head>
 <body>
     <%@ include file="formEmpresa.jsp" %>

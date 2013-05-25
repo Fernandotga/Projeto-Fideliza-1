@@ -26,9 +26,6 @@
                     <a href="#dados" data-toggle="tab">Dados Cadastrais</a>
                 </li>
                 <li>
-                    <a href="#endereco" data-toggle="tab">Endereço</a>
-                </li>
-                <li>
                     <a href="#localizacao" data-toggle="tab">Localização</a>
                 </li>
                 <li>
@@ -72,7 +69,7 @@
                             <fmt:message key="empresa.cnpj"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="cnpj" data-mask="99.999.999/9999-99" name="entity.cnpj" value="${entity.cnpj}" class="input-xlarge">
+                            <input type="text" id="cnpj" data-mask="99.999.999/9999-99" name="entity.cnpj"  onkeydown="javascript:setacampo(document.form);" value="${entity.cnpj}" class="input-xlarge">
                         </div>
                     </div>
 
@@ -86,71 +83,18 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="endereco">
+                <div class="tab-pane fade" id="localizacao">
                     <div class="control-group">
-                        <label class="control-label" for="cep">
-                            <fmt:message key="empresa.cep"/>
-                        </label>
                         <div class="controls">
-                            <input type="text" id="cep" data-mask="99999-999"  name="entity.cep" value="${entity.cep}" class="input-xlarge">
+                            <div id="mapa"></div>
                         </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label" for="uf">
-                            <fmt:message key="empresa.uf"/>
-                        </label>
-                        <div class="controls">
-                            <input type="text" id="uf" data-mask="aa" name="entity.uf" value="${entity.uf}" class="input-small">
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label" for="cidade">
-                            <fmt:message key="empresa.cidade"/>
-                        </label>
-                        <div class="controls">
-                            <input type="text" id="cidade" name="entity.cidade" value="${entity.cidade}" class="input-xxlarge">
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label" for="bairro">
-                            <fmt:message key="empresa.bairro"/>
-                        </label>
-                        <div class="controls">
-                            <input type="text" id="bairro" name="entity.bairro" value="${entity.bairro}" class="input-xxlarge">
-                        </div>
-                    </div>
-
-                    <div class="control-group">
+                        <label class="alert">Arraste o marcador para obter a localização da empresa</label>
                         <label class="control-label" for="endereco">
                             <fmt:message key="empresa.endereco"/>
                         </label>
-                        <div class="controls">
-                            <input type="text" id="endereco" name="entity.endereco" value="${entity.endereco}" class="input-xxlarge">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-pane fade" id="localizacao">
-                    <div class="control-group">
-                        <label class="control-label" for="latitude">
-                            <fmt:message key="empresa.latitude"/>
-                        </label>
-                        <div class="controls">
-                            <input type="text" id="latitude" name="entity.latitude" value="${entity.latitude}" class="input-xxlarge">
-                        </div>
-                    </div>
-
-
-                    <div class="control-group">
-                        <label class="control-label" for="longitude">
-                            <fmt:message key="empresa.longitude"/>
-                        </label>
-                        <div class="controls">
-                            <input type="text" id="longitude" name="entity.longitude" value="${entity.longitude}" class="input-xxlarge">
-                        </div>
+                        <input type="text" id="txtEndereco" placeholder="Endereço do Google Maps" name="txtEndereco" value="${entity.endereco}" style="width: 930px"/>
+                        <input type="text" id="txtLatitude" placeholder="Latitude" name="txtLatitude" value="${entity.latitude}" class="input-xlarge">
+                        <input type="text" id="txtLongitude" placeholder="Longitude" name="txtLongitude" value="${entity.longitude}" class="input-xlarge">
                     </div>
                 </div>
 
@@ -213,6 +157,9 @@
                     </div>
                 </div>
             </div>
+
         </form>
+
     </fieldset>
+
 </body>

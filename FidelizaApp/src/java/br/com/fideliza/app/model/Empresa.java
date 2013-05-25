@@ -1,6 +1,5 @@
 package br.com.fideliza.app.model;
 
-
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -12,31 +11,34 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.validator.Email;
+import org.hibernate.validator.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "empresa")
 public class Empresa extends AbstractEntity {
 
+    @Email
+    @NotNull
+    @NotEmpty
     @Column(name = "email")
     private String email;
+    @NotNull
+    @NotEmpty
     @Column(name = "password")
     private String password;
+    @NotNull
     @Column(name = "nome_fantasia")
     private String nomeFantasia;
     @Column(name = "razao_social")
     private String razaoSocial;
     @Column(name = "cnpj")
     private String cnpj;
+    @NotNull
     @Column(name = "responsavel")
     private String responsavel;
-    @Column(name = "cep")
-    private String cep;
-    @Column(name = "uf")
-    private String uf;
-    @Column(name = "cidade")
-    private String cidade;
-    @Column(name = "bairro")
-    private String bairro;
+    
     @Column(name = "endereco")
     private String endereco;
     @Column(name = "latitude")
@@ -48,8 +50,10 @@ public class Empresa extends AbstractEntity {
     @Column(name = "data_cadastro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCadastro;
+    @NotNull
     @Column(name = "ativo")
     private Boolean ativo;
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "perfil")
     private PerfilType perfil;
@@ -113,38 +117,6 @@ public class Empresa extends AbstractEntity {
 
     public void setResponsavel(String responsavel) {
         this.responsavel = responsavel;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
     }
 
     public String getEndereco() {
