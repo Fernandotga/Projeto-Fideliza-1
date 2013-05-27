@@ -2,7 +2,6 @@
     <title><fmt:message key="app.title"/> <fmt:message key="app.sobre" /> </title>
 </head>
 <body>
-
     <div style="border-bottom: 1px solid #E5E5E5; margin-bottom: 10px">
         <h4> <fmt:message key="app.title"/> 
             <small> <fmt:message key="app.sobre"/> </small></h4>

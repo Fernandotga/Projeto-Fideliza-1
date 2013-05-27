@@ -5,11 +5,11 @@ var marker;
 function initialize() {
     var latlng = new google.maps.LatLng(-18.8800397, -47.05878999999999);
     var options = {
-        zoom: 15,
+        zoom: 6,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    map = new google.maps.Map(document.getElementById("mapa"), options);
+    map = new google.maps.Map(document.getElementById("gmap"), options);
 
     geocoder = new google.maps.Geocoder();
 

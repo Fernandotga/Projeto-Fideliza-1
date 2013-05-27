@@ -32,7 +32,7 @@
                     <a href="#telefone" data-toggle="tab">Telefones</a>
                 </li>
                 <li>
-                    <a href="#web" data-toggle="tab">Web</a>
+                    <a href="#web" data-toggle="tab">Contato Web</a>
                 </li>
                 <li>
                     <a href="#logo" data-toggle="tab">Logotipo</a>
@@ -86,7 +86,7 @@
                 <div class="tab-pane fade" id="localizacao">
                     <div class="control-group">
                         <div class="controls">
-                            <div id="mapa"></div>
+                            <div id="gmap"></div>
                         </div>
                         <label class="alert">Arraste o marcador para obter a localização da empresa</label>
                         <label class="control-label" for="endereco">

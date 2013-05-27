@@ -15,22 +15,19 @@
 
         <script type="text/javascript" charset="utf-8" src="/FidelizaApp/resources/js/jquery.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="/FidelizaApp/resources/js/bootstrap.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/FidelizaApp/resources/js/bootstrap-responsive.js"></script>
         <script type="text/javascript" charset="utf-8" src="/FidelizaApp/resources/js/jquery.colorbox-1.3.16.min.js"></script>
 
         <script type="text/javascript" charset="utf-8" src="/FidelizaApp/resources/js/javascript.js"></script>
         <script type="text/javascript" charset="utf-8" src="/FidelizaApp/resources/js/bootstrap-inputmask.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="/FidelizaApp/resources/js/mapa.js"></script>
         <script type="text/javascript" charset="utf-8" src="/FidelizaApp/resources/js/jquery-ui.custom.min.js"></script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
-        
-
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
 
         <title><decorator:title default="Main | Projeto Fideliza"/></title>
     </head>
 
     <body>
-
         <div id="wrapper">
 
             <div class="header">
