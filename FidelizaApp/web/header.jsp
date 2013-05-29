@@ -8,9 +8,9 @@
     <fmt:message key="bem.vindo" />:
 
     <c:choose>
-        <c:when test="${session.empresa == null}">Visitante</c:when>
+        <c:when test="${empresaSession.logged}">Visitante</c:when>
         <c:otherwise>
-            ${session.empresa.nomeFantasia} (<a href="<c:url value="/logout"/>">sair</a>)
+            ${empresaSession.empresa.nomeFantasia} (<a href="<c:url value="/logout"/>">sair</a>)
         </c:otherwise>
     </c:choose>
 </div>
