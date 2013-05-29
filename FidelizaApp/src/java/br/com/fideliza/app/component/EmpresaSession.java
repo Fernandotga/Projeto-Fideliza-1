@@ -8,7 +8,6 @@ import java.io.Serializable;
 @Component
 @SessionScoped
 public class EmpresaSession implements Serializable {
-
     private static final long serialVersionUID = 1L;
     private Empresa empresa;
     private String language;
@@ -16,23 +15,23 @@ public class EmpresaSession implements Serializable {
     public boolean isLogged() {
         return empresa != null;
     }
-
+    
     public void logout() {
         empresa = null;
     }
-
+    
     public Empresa getEmpresa() {
         return empresa;
     }
-
+    
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
-
+    
     public String getLanguage() {
         return language;
     }
-
+    
     public void setLanguage(String language) {
         this.language = language;
     }

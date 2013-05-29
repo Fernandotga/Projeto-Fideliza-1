@@ -1,5 +1,7 @@
 package br.com.fideliza.app.interceptor;
 
+import static br.com.caelum.vraptor.view.Results.http;
+
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -9,13 +11,13 @@ import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.resource.ResourceMethod;
 import br.com.fideliza.app.annotation.Permission;
+import br.com.fideliza.app.annotation.Public;
 import br.com.fideliza.app.component.EmpresaSession;
-import br.com.fideliza.app.controller.EmpresaController;
-import br.com.fideliza.app.controller.LoginController;
-import br.com.fideliza.app.model.Empresa;
+import br.com.fideliza.app.controller.IndexController;
+import br.com.fideliza.app.helper.Utils;
 import br.com.fideliza.app.model.common.PerfilType;
 
-@Intercepts(after = LoginInterceptor.class)
+@Intercepts
 public class PermissionInterceptor implements Interceptor {
 
     private final Result result;
@@ -26,33 +28,36 @@ public class PermissionInterceptor implements Interceptor {
         this.session = session;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public boolean accepts(ResourceMethod method) {
-        return !Arrays.asList(LoginController.class).contains(method.getMethod().getDeclaringClass());
+        // metodo anotado ou recurso anotado
+        // não intercepta metodos ou recursos @Public
+        return !(method.getMethod().isAnnotationPresent(Public.class) || method.getResource().getType().isAnnotationPresent(Public.class));
     }
 
     @Override
     public void intercept(InterceptorStack stack, ResourceMethod method, Object resource) {
-        Permission controllerList = method.getResource().getType().getAnnotation(Permission.class);
-        Permission metodoList = method.getMethod().getAnnotation(Permission.class);
+        if (session.isLogged()) {
+            Permission methodPermission = method.getMethod().getAnnotation(Permission.class);
+            Permission controllerPermission = method.getResource().getType().getAnnotation(Permission.class);
 
-        if (this.hasAccess(metodoList) && this.hasAccess(controllerList)) {
-            stack.next(method, resource);
+            if (this.hasAccess(methodPermission) && this.hasAccess(controllerPermission)) {
+                stack.next(method, resource);
+            } else {
+                result.use(http()).sendError(500, Utils.i18n("voce.nao.tem.permissao.para.tal.acao"));
+            }
         } else {
-            result.redirectTo(EmpresaController.class).negado();
+            result.redirectTo(IndexController.class).index();
         }
     }
 
-    private boolean hasAccess(Permission permissaoList) {
-        if (permissaoList == null) {
+    private boolean hasAccess(Permission permission) {
+        if (permission == null) {
             return true;
         }
 
-        Empresa user = session.getEmpresa();
+        Collection<PerfilType> perfilList = Arrays.asList(permission.value());
 
-        Collection<PerfilType> perfilList = Arrays.asList(permissaoList.value());
-
-        return perfilList.contains(user.getPerfil());
+        return perfilList.contains(session.getEmpresa().getPerfil());
     }
 }
