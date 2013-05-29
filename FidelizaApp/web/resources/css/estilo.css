@@ -1,8 +1,8 @@
 * { margin: 0; padding: 0; border: 0; }
 
 body, label, input[type="submit"], input[type="button"], input[type="text"], input[type="email"], select, textarea {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-family: "Open Sans", Helvetica, Verdana, Arial, sans-serif;
+    font-size: 13px;
     font-weight: bold;
 }
 
@@ -22,7 +22,6 @@ body, label, input[type="submit"], input[type="button"], input[type="text"], inp
     padding-right: 10px;
     padding-top: 50px;
     font-size: 22px;
-    font-family: Georgia, Arial, sans-serif;
     color: gray;
 }
 
@@ -65,7 +64,7 @@ div#wrapper {
 }
 
 a {
-    color: darkblue;
+    color: blue;
 }
 
 /* Google Maps */

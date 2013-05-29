@@ -5,12 +5,13 @@
 <label class="title">beta</label>
 
 <div id="identification">
-    <fmt:message key="bem.vindo" />:
+    <img src="/FidelizaApp/resources/img/building.png"/>
+    <fmt:message key="bem.vindo" />,
 
     <c:choose>
-        <c:when test="${empresaSession.logged}">Visitante</c:when>
+        <c:when test="${!empresaSession.logged}">Visitante</c:when>
         <c:otherwise>
-            ${empresaSession.empresa.nomeFantasia} (<a href="<c:url value="/logout"/>">sair</a>)
+            ${empresaSession.empresa.razaoSocial} <a style="margin-left: 15px;}" href="<c:url value="/logout"/>"> <img src="/FidelizaApp/resources/img/key.png"/></i> logout</a>
         </c:otherwise>
     </c:choose>
 </div>

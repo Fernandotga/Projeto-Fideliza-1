@@ -29,7 +29,7 @@
                         <fmt:message key="login.senha" />
                     </label>
                     <div class="controls">
-                        <input type="password" required="true" id="password" name="password" placeholder="" class="input-xlarge">
+                        <input type="password" required="true" id="password" name="password" placeholder="******" class="input-xlarge">
                     </div>
                 </div>
 

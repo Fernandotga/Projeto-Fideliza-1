@@ -12,6 +12,7 @@
         <meta name="keywords" content="vraptor,fideliza,projeto,fidelidade"/>
 
         <link type="text/css" rel="stylesheet" href="/FidelizaApp/resources/css/stylesheet.css"/>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:600" type="text/css" rel="stylesheet" />
 
         <script type="text/javascript" charset=ISO-8859-1" src="/FidelizaApp/resources/js/jquery.min.js"></script>
         <script type="text/javascript" charset=ISO-8859-1" src="/FidelizaApp/resources/js/bootstrap.js"></script>
