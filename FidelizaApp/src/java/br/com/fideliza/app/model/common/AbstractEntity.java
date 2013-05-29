@@ -1,4 +1,4 @@
-package br.com.fideliza.app.model;
+package br.com.fideliza.app.model.common;
 
 import java.io.Serializable;
 import javax.persistence.GeneratedValue;

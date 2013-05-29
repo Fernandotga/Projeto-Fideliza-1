@@ -1,7 +1,7 @@
 package br.com.fideliza.app.dao;
 
 import br.com.fideliza.app.exception.CommonException;
-import br.com.fideliza.app.model.AbstractEntity;
+import br.com.fideliza.app.model.common.AbstractEntity;
 import br.com.fideliza.app.repository.GenericRepository;
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;

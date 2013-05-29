@@ -1,5 +1,7 @@
 package br.com.fideliza.app.model;
 
+import br.com.fideliza.app.model.common.WebEnderecoType;
+import br.com.fideliza.app.model.common.AbstractEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

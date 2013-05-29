@@ -1,5 +1,6 @@
 package br.com.fideliza.app.model;
 
+import br.com.fideliza.app.model.common.AbstractEntity;
 import java.util.Date;
 import java.util.List;
 

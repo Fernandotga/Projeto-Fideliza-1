@@ -3,9 +3,8 @@ var map;
 var marker;
 
 function initialize() {
-    var latlng = new google.maps.LatLng(-18.8800397, -47.05878999999999);
     var options = {
-        zoom: 6,
+        zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
@@ -18,8 +17,19 @@ function initialize() {
         draggable: true
     });
 
-    map.setCenter(latlng);
-    marker.setPosition(latlng);
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            latlng = new google.maps.LatLng(position.coords.latitude,
+                    position.coords.longitude);
+
+            marker.setPosition(latlng);
+            map.setCenter(latlng);
+        });
+    } else {
+        var latlng = new google.maps.LatLng(-15.7801482, -47.92916980000001);
+        marker.setPosition(latlng);
+        map.setCenter(latlng);
+    }
 }
 
 $(document).ready(function() {

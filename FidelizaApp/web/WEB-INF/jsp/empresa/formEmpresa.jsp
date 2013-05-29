@@ -1,11 +1,11 @@
 <body>
     <fieldset>
         <div id="legend">
-            <legend class=""> 
-                <fmt:message key="empresa.empresa"/> 
+            <legend class="">
+                <fmt:message key="empresa.empresa"/>
                 <small> <fmt:message key="app.novo"/> </small>
-            </legend>  
-        </div> 
+            </legend>
+        </div>
 
         <c:choose>
             <c:when test="${entity.id == null}">
@@ -47,59 +47,85 @@
                 <div class="tab-pane active in" id="dados">
 
                     <div class="control-group">
-                        <label class="control-label" for="fantasia">
-                            <fmt:message key="empresa.nome.fantasia"/>
-                        </label>
                         <div class="controls">
-                            <input type="text" required="true" id="fantasia" name="entity.nomeFantasia" value="${entity.nomeFantasia}" class="input-xxlarge">
+                            <input type="text" required="true" placeholder="<fmt:message key="empresa.nome.fantasia"/>" id="fantasia" name="entity.nomeFantasia" value="${entity.nomeFantasia}" class="input-xxlarge">
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="razao">
-                            <fmt:message key="empresa.razao.social"/>
-                        </label>
                         <div class="controls">
-                            <input type="text" required="true" id="razao" name="entity.razaoSocial" value="${entity.razaoSocial}" class="input-xxlarge">
+                            <input type="text" required="true" placeholder="<fmt:message key="empresa.razao.social"/>" id="razao" name="entity.razaoSocial" value="${entity.razaoSocial}" class="input-xxlarge">
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="cnpj">
-                            <fmt:message key="empresa.cnpj"/>
-                        </label>
                         <div class="controls">
-                            <input type="text" id="cnpj" data-mask="99.999.999/9999-99" name="entity.cnpj"  onkeydown="javascript:setacampo(document.form);" value="${entity.cnpj}" class="input-xlarge">
+                            <input type="text" placeholder="<fmt:message key="empresa.cnpj"/>" id="cnpj" data-mask="99.999.999/9999-99" name="entity.cnpj" value="${entity.cnpj}" class="input-xlarge">
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="responsavel">
-                            <fmt:message key="empresa.responsavel"/>
-                        </label>
                         <div class="controls">
-                            <input type="text" required="true" id="responsavel" name="entity.responsavel" value="${entity.responsavel}" class="input-xxlarge">
+                            <input type="text" required="true" placeholder="<fmt:message key="empresa.responsavel"/>" id="responsavel" name="entity.responsavel" value="${entity.responsavel}" class="input-xxlarge">
                         </div>
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="localizacao">
                     <div class="control-group">
+                        <input type="text" id="txtEndereco" placeholder="<fmt:message key="empresa.endereco"/>" name="txtEndereco" value="${entity.endereco}" style="width: 925px"/>
                         <div class="controls">
                             <div id="gmap"></div>
                         </div>
-                        <label class="alert">Arraste o marcador para obter a localização da empresa</label>
-                        <label class="control-label" for="endereco">
-                            <fmt:message key="empresa.endereco"/>
-                        </label>
-                        <input type="text" id="txtEndereco" placeholder="Endereço do Google Maps" name="txtEndereco" value="${entity.endereco}" style="width: 930px"/>
-                        <input type="text" id="txtLatitude" placeholder="Latitude" name="txtLatitude" value="${entity.latitude}" class="input-xlarge">
-                        <input type="text" id="txtLongitude" placeholder="Longitude" name="txtLongitude" value="${entity.longitude}" class="input-xlarge">
+                        <label class="alert"><fmt:message key="empresa.marcador.gmap"/></label>
+                        <input type="text" id="txtLatitude" placeholder="<fmt:message key="empresa.latitude"/>" name="txtLatitude" value="${entity.latitude}" class="input-xlarge">
+                        <input type="text" id="txtLongitude" placeholder="<fmt:message key="empresa.longitude"/>" name="txtLongitude" value="${entity.longitude}" class="input-xlarge">
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="telefone">
 
+                    <div class="control-group">
+                        <div class="controls">
+
+                            <select name="telefone.telefoneTipo" id="tipo">
+                                <c:forEach items="${telefoneTypes}" var="tipo">
+                                    <c:set var="sel" value="${telefone.telefoneTipo eq tipo ? 'selected':''}"></c:set>
+                                    <option value="${tipo}"${sel}>${tipo.label}</option>
+                                </c:forEach>
+                            </select>
+
+                            <input type="text" placeholder="<fmt:message key="telefone.telefone"/>" id="telefone" data-mask="(99)9999-9999" name="telefone.telefone" value="${telefone.telefone}" class="input-large">
+                            <div class="control-group">
+                                <div class="controls"> 
+                                    <input type="submit" class="btn btn-success" value="<fmt:message key="app.gravar" />"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th><fmt:message key="telefone.tipo"/></th>
+                                <th><fmt:message key="telefone.telefone"/></th>
+                                <th><fmt:message key="app.excluir"/></th>
+                            </tr>
+                        </thead>
+                        <c:forEach items="${telefoneList}" var="listaTelefone">
+                            <tr>
+                                <td>${listaTelefone.telefoneTipo}</td>
+                                <td>${listaTelefone.telefone}</td>
+                                <td>
+                                    <form action="/telefone/${listaTelefone.id}" method="post">
+                                        <input type="hidden" name="_method" value="delete"/>
+                                        <i class="icon-remove"></i>
+                                        <input type="submit" class="btn btn-link" value="Remover"/>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
                 </div>
 
                 <div class="tab-pane fade" id="web">
@@ -151,7 +177,7 @@
                             <div class="controls">
                                 <button type="submit" class="btn btn-success">
                                     <fmt:message key="app.gravar" />
-                                </button>                         
+                                </button>
                             </div>
                         </div>
                     </div>

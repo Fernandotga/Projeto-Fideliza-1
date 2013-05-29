@@ -1,6 +1,6 @@
 package br.com.fideliza.app.annotation;
 
-import br.com.fideliza.app.model.PerfilType;
+import br.com.fideliza.app.model.common.PerfilType;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -1,7 +1,7 @@
 package br.com.fideliza.app.repository;
 
 import br.com.fideliza.app.exception.CommonException;
-import br.com.fideliza.app.model.AbstractEntity;
+import br.com.fideliza.app.model.common.AbstractEntity;
 import java.util.Collection;
 
 public interface GenericRepository<T extends AbstractEntity> {

@@ -16,12 +16,12 @@ public class LoginController {
 
     private final Result result;
     private final LoginRepository repository;
-    private final EmpresaSession empresaSession;
+    private final EmpresaSession session;
 
-    public LoginController(Result result, LoginRepository repository, EmpresaSession empresaSession) {
+    public LoginController(Result result, LoginRepository repository, EmpresaSession session) {
         this.result = result;
         this.repository = repository;
-        this.empresaSession = empresaSession;
+        this.session = session;
     }
 
     @Public
@@ -30,11 +30,12 @@ public class LoginController {
         Empresa empresa = repository.autenticar(entity.getEmail(), entity.getPassword());
 
         if (empresa != null) {
-            empresaSession.setEmpresa(empresa);
+            session.setEmpresa(empresa);
 
             try {
                 result.use(referer()).redirect();
-            } catch (IllegalStateException e) {
+            } catch (IllegalStateException ex) {
+
                 result.redirectTo(IndexController.class).index();
             }
         } else {
@@ -44,8 +45,7 @@ public class LoginController {
 
     @Get("/logout")
     public void logout() {
-        empresaSession.logout();
+        session.logout();
         result.redirectTo(IndexController.class).index();
     }
-    
 }

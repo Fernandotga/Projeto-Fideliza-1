@@ -22,5 +22,5 @@
     </head>
     <body>
         <h4><fmt:message key="erro.500"/><h4>
-    </body>
-</html>
+                </body>
+                </html>

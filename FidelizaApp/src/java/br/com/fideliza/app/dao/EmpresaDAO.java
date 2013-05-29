@@ -10,11 +10,11 @@ import javax.persistence.Query;
 
 @Component
 public class EmpresaDAO extends GenericDAO<Empresa> implements EmpresaRepository {
-    
+
     public EmpresaDAO(EntityManager manager) {
         super(manager);
     }
-    
+
     @Override
     public Boolean isMailExist(Empresa entity) {
         try {
@@ -26,13 +26,13 @@ public class EmpresaDAO extends GenericDAO<Empresa> implements EmpresaRepository
             return false;
         }
     }
-    
+
     @Override
     public Empresa save(Empresa entity) throws CommonException {
         if (this.isMailExist(entity)) {
             throw new CommonException("email.ja.cadastrado");
         }
-        
+
         return super.save(entity);
     }
 }

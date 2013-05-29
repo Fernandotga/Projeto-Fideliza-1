@@ -1,8 +1,9 @@
 package br.com.fideliza.app.model;
 
+import br.com.fideliza.app.model.common.AbstractEntity;
+import br.com.fideliza.app.model.common.PerfilType;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -38,7 +39,6 @@ public class Empresa extends AbstractEntity {
     @NotNull
     @Column(name = "responsavel")
     private String responsavel;
-    
     @Column(name = "endereco")
     private String endereco;
     @Column(name = "latitude")
@@ -57,15 +57,15 @@ public class Empresa extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "perfil")
     private PerfilType perfil;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
+    @OneToMany(mappedBy = "empresa")
     private List<Fidelidade> fidelidadeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
+    @OneToMany(mappedBy = "empresa")
     private List<Menssagem> menssagemList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
+    @OneToMany(mappedBy = "empresa")
     private List<Telefone> telefoneList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
+    @OneToMany(mappedBy = "empresa")
     private List<Oferta> ofertaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
+    @OneToMany(mappedBy = "empresa")
     private List<Web> webList;
 
     public Empresa() {

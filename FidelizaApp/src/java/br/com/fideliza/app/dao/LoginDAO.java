@@ -21,7 +21,7 @@ public class LoginDAO implements LoginRepository {
     @Override
     public Empresa autenticar(String email, String senha) {
         try {
-            Query query = manager.createQuery("from " + Empresa.class.getName() + " where email = :email and senha = :senha");
+            Query query = manager.createQuery("from " + Empresa.class.getName() + " where email = :email and password = :senha");
             query.setParameter("email", email);
             query.setParameter("senha", senha);
             return (Empresa) query.getSingleResult();

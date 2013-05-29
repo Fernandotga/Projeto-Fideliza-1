@@ -4,7 +4,7 @@
         <title><fmt:message key="app.title"/></title>
     </head>
     <body>
-        <form class="form-horizontal" action='' method="POST">
+        <form class="form-horizontal" action='<c:url value="/autenticar"/>' method="POST">
             <fieldset>
                 <div id="legend">
                     <legend class=""> 

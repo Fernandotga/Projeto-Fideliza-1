@@ -1,5 +1,6 @@
 package br.com.fideliza.app.model;
 
+import br.com.fideliza.app.model.common.AbstractEntity;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
