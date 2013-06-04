@@ -11,7 +11,7 @@
 
         <fmt:message key="sobre.title" /><br />
         <fmt:message key="sobre.tecnologia" /><br />
-        <fmt:message key="sobre.build" /><br />
+        <fmt:message key="sobre.build" /><br /><br /><br />
 
 
         <div style="border-bottom: 1px solid #E5E5E5; margin-bottom: 10px">

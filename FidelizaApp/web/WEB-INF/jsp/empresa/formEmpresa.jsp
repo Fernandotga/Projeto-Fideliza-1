@@ -47,24 +47,28 @@
                 <div class="tab-pane active in" id="dados">
 
                     <div class="control-group">
+                        <label class="control-label" for="fantasia"> <fmt:message key="empresa.nome.fantasia"/> </label>
                         <div class="controls">
                             <input type="text" required="true" placeholder="<fmt:message key="empresa.nome.fantasia"/>" id="fantasia" name="entity.nomeFantasia" value="${entity.nomeFantasia}" class="input-xxlarge">
                         </div>
                     </div>
 
                     <div class="control-group">
+                        <label class="control-label" for="razao"> <fmt:message key="empresa.razao.social"/> </label>
                         <div class="controls">
                             <input type="text" required="true" placeholder="<fmt:message key="empresa.razao.social"/>" id="razao" name="entity.razaoSocial" value="${entity.razaoSocial}" class="input-xxlarge">
                         </div>
                     </div>
 
                     <div class="control-group">
+                        <label class="control-label" for="cnpj"> <fmt:message key="empresa.cnpj"/> </label>
                         <div class="controls">
                             <input type="text" placeholder="<fmt:message key="empresa.cnpj"/>" id="cnpj" data-mask="99.999.999/9999-99" name="entity.cnpj" value="${entity.cnpj}" class="input-xlarge">
                         </div>
                     </div>
 
                     <div class="control-group">
+                        <label class="control-label" for="responsavel"> <fmt:message key="empresa.responsavel"/> </label>
                         <div class="controls">
                             <input type="text" required="true" placeholder="<fmt:message key="empresa.responsavel"/>" id="responsavel" name="entity.responsavel" value="${entity.responsavel}" class="input-xxlarge">
                         </div>
@@ -73,7 +77,8 @@
 
                 <div class="tab-pane fade" id="localizacao">
                     <div class="control-group">
-                        <input type="text" id="txtEndereco" placeholder="<fmt:message key="empresa.endereco"/>" name="txtEndereco" value="${entity.endereco}" style="width: 925px"/>
+                        <label class="control-label" for="txtEndereco"> <fmt:message key="empresa.endereco"/> </label>
+                        <input type="text" id="txtEndereco" placeholder="" name="txtEndereco" value="${entity.endereco}" style="width: 925px"/>
                         <div class="controls">
                             <div id="gmap"></div>
                         </div>
