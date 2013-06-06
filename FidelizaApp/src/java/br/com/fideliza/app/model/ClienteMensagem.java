@@ -7,32 +7,32 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cliente_mensagem")
+@Table(name = "fid_clientes_mensagens")
 public class ClienteMensagem extends AbstractEntity {
 
-    @JoinColumn(name = "mensagem", referencedColumnName = "id")
+    @JoinColumn(name = "id_mensagem", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Menssagem mensagem;
-    @JoinColumn(name = "cliente", referencedColumnName = "id")
+    private Menssagem idMensagem;
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Cliente cliente;
+    private Cliente idCliente;
 
     public ClienteMensagem() {
     }
 
-    public Menssagem getMensagem() {
-        return mensagem;
+    public Menssagem getIdMensagem() {
+        return idMensagem;
     }
 
-    public void setMensagem(Menssagem mensagem) {
-        this.mensagem = mensagem;
+    public void setIdMensagem(Menssagem idMensagem) {
+        this.idMensagem = idMensagem;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Cliente getIdCliente() {
+        return idCliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setIdCliente(Cliente idCliente) {
+        this.idCliente = idCliente;
     }
 }

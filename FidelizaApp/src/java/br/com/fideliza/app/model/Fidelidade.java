@@ -2,17 +2,15 @@ package br.com.fideliza.app.model;
 
 import br.com.fideliza.app.model.common.AbstractEntity;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "fidelidade")
+@Table(name = "fid_fidelidades")
 public class Fidelidade extends AbstractEntity {
 
     @Column(name = "maximo_pontos")
@@ -30,11 +28,9 @@ public class Fidelidade extends AbstractEntity {
     private Integer quantidadePermitida;
     @Column(name = "ativo")
     private Boolean ativo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fidelidade")
-    private List<ClienteFidelidade> clienteFidelidadeList;
-    @JoinColumn(name = "empresa", referencedColumnName = "id")
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Empresa empresa;
+    private Empresa idEmpresa;
 
     public Fidelidade() {
     }
@@ -95,19 +91,11 @@ public class Fidelidade extends AbstractEntity {
         this.ativo = ativo;
     }
 
-    public List<ClienteFidelidade> getClienteFidelidadeList() {
-        return clienteFidelidadeList;
+    public Empresa getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setClienteFidelidadeList(List<ClienteFidelidade> clienteFidelidadeList) {
-        this.clienteFidelidadeList = clienteFidelidadeList;
-    }
-
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setIdEmpresa(Empresa idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }

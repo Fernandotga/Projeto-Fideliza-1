@@ -11,17 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "telefone")
+@Table(name = "fid_telefones")
 public class Telefone extends AbstractEntity {
 
     @Column(name = "telefone")
     private String telefone;
     @Enumerated(EnumType.STRING)
-    @Column(name = "telefone_tipo")
-    private TelefoneType telefoneTipo;
-    @JoinColumn(name = "empresa", referencedColumnName = "id")
+    @Column(name = "tipo")
+    private TelefoneType tipo;
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Empresa empresa;
+    private Empresa idEmpresa;
 
     public Telefone() {
     }
@@ -34,19 +34,19 @@ public class Telefone extends AbstractEntity {
         this.telefone = telefone;
     }
 
-    public TelefoneType getTelefoneTipo() {
-        return telefoneTipo;
+    public TelefoneType getTipo() {
+        return tipo;
     }
 
-    public void setTelefoneTipo(TelefoneType telefoneTipo) {
-        this.telefoneTipo = telefoneTipo;
+    public void setTipo(TelefoneType tipo) {
+        this.tipo = tipo;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
+    public Empresa getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setIdEmpresa(Empresa idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }

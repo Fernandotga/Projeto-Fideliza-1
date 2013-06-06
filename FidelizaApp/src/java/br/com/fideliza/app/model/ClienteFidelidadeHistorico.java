@@ -11,7 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "cliente_fidelidade_historico")
+@Table(name = "fid_clientes_fidelidades_historicos")
 public class ClienteFidelidadeHistorico extends AbstractEntity {
 
     @Column(name = "data_inicio_checkin")
@@ -24,9 +24,9 @@ public class ClienteFidelidadeHistorico extends AbstractEntity {
     private Date dataTroca;
     @Column(name = "pontos_acumulados")
     private int pontosAcumulados;
-    @JoinColumn(name = "cliente_fidelidade", referencedColumnName = "id")
+    @JoinColumn(name = "id_cliente_fidelidade", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private ClienteFidelidade clienteFidelidade;
+    private ClienteFidelidade idClienteFidelidade;
 
     public ClienteFidelidadeHistorico() {
     }
@@ -63,11 +63,11 @@ public class ClienteFidelidadeHistorico extends AbstractEntity {
         this.pontosAcumulados = pontosAcumulados;
     }
 
-    public ClienteFidelidade getClienteFidelidade() {
-        return clienteFidelidade;
+    public ClienteFidelidade getIdClienteFidelidade() {
+        return idClienteFidelidade;
     }
 
-    public void setClienteFidelidade(ClienteFidelidade clienteFidelidade) {
-        this.clienteFidelidade = clienteFidelidade;
+    public void setIdClienteFidelidade(ClienteFidelidade idClienteFidelidade) {
+        this.idClienteFidelidade = idClienteFidelidade;
     }
 }

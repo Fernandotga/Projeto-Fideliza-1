@@ -2,19 +2,16 @@ package br.com.fideliza.app.model;
 
 import br.com.fideliza.app.model.common.AbstractEntity;
 import java.util.Date;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "cliente_fidelidade")
+@Table(name = "fid_clientes_fidelidades")
 public class ClienteFidelidade extends AbstractEntity {
 
     @Column(name = "pontos")
@@ -22,14 +19,12 @@ public class ClienteFidelidade extends AbstractEntity {
     @Column(name = "data_fidelidade")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataFidelidade;
-    @JoinColumn(name = "fidelidade", referencedColumnName = "id")
+    @JoinColumn(name = "id_fidelidade", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Fidelidade fidelidade;
-    @JoinColumn(name = "cliente", referencedColumnName = "id")
+    private Fidelidade idFidelidade;
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Cliente cliente;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteFidelidade")
-    private List<ClienteFidelidadeHistorico> clienteFidelidadeHistoricoList;
+    private Cliente idCliente;
 
     public ClienteFidelidade() {
     }
@@ -50,27 +45,19 @@ public class ClienteFidelidade extends AbstractEntity {
         this.dataFidelidade = dataFidelidade;
     }
 
-    public Fidelidade getFidelidade() {
-        return fidelidade;
+    public Fidelidade getIdFidelidade() {
+        return idFidelidade;
     }
 
-    public void setFidelidade(Fidelidade fidelidade) {
-        this.fidelidade = fidelidade;
+    public void setIdFidelidade(Fidelidade idFidelidade) {
+        this.idFidelidade = idFidelidade;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Cliente getIdCliente() {
+        return idCliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public List<ClienteFidelidadeHistorico> getClienteFidelidadeHistoricoList() {
-        return clienteFidelidadeHistoricoList;
-    }
-
-    public void setClienteFidelidadeHistoricoList(List<ClienteFidelidadeHistorico> clienteFidelidadeHistoricoList) {
-        this.clienteFidelidadeHistoricoList = clienteFidelidadeHistoricoList;
+    public void setIdCliente(Cliente idCliente) {
+        this.idCliente = idCliente;
     }
 }

@@ -76,13 +76,13 @@
                 </div>
 
                 <div class="tab-pane fade" id="localizacao">
-                    <div class="control-group">
-                        <label class="control-label" for="txtEndereco"> <fmt:message key="empresa.endereco"/> </label>
-                        <input type="text" id="txtEndereco" placeholder="" name="txtEndereco" value="${entity.endereco}" style="width: 925px"/>
-                        <div class="controls">
+                    <div class="control-group">                   
+                        <input type="text" id="txtEndereco" placeholder="Endereço Completo" name="txtEndereco" value="${entity.endereco}" style="width: 925px"/>
+                        <label class="alert alert-success" for="txtEndereco"> <fmt:message key="empresa.endereco"/> </label>
+                        <div class="controls">                           
                             <div id="gmap"></div>
                         </div>
-                        <label class="alert"><fmt:message key="empresa.marcador.gmap"/></label>
+                        <label class="alert alert-success"><fmt:message key="empresa.marcador.gmap"/></label>
                         <input type="text" id="txtLatitude" placeholder="<fmt:message key="empresa.latitude"/>" name="txtLatitude" value="${entity.latitude}" class="input-xlarge">
                         <input type="text" id="txtLongitude" placeholder="<fmt:message key="empresa.longitude"/>" name="txtLongitude" value="${entity.longitude}" class="input-xlarge">
                     </div>

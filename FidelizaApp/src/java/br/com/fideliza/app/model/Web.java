@@ -11,17 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "web")
+@Table(name = "fid_web")
 public class Web extends AbstractEntity {
 
     @Column(name = "url")
     private String url;
     @Enumerated(EnumType.STRING)
-    @Column(name = "web_endereco_tipo")
-    private WebEnderecoType webEnderecoTipo;
-    @JoinColumn(name = "empresa", referencedColumnName = "id")
+    @Column(name = "tipo")
+    private WebEnderecoType tipo;
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Empresa empresa;
+    private Empresa idEmpresa;
 
     public Web() {
     }
@@ -34,19 +34,20 @@ public class Web extends AbstractEntity {
         this.url = url;
     }
 
-    public WebEnderecoType getWebEnderecoTipo() {
-        return webEnderecoTipo;
+    public WebEnderecoType getTipo() {
+        return tipo;
     }
 
-    public void setWebEnderecoTipo(WebEnderecoType webEnderecoTipo) {
-        this.webEnderecoTipo = webEnderecoTipo;
+    public void setTipo(WebEnderecoType tipo) {
+        this.tipo = tipo;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
+    public Empresa getId_empresa() {
+        return idEmpresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setId_empresa(Empresa id_empresa) {
+        this.idEmpresa = id_empresa;
     }
+
 }

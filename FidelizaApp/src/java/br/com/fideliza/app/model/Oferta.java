@@ -1,9 +1,12 @@
 package br.com.fideliza.app.model;
 
 import br.com.fideliza.app.model.common.AbstractEntity;
+import br.com.fideliza.app.model.common.CategoriaOfertaType;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -12,13 +15,17 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "oferta")
+@Table(name = "fid_ofertas")
 public class Oferta extends AbstractEntity {
 
+    @Column(name = "categoria")
+    @Enumerated(EnumType.STRING)
+    private CategoriaOfertaType categoria;
     @Column(name = "descricao_item")
     private String descricaoItem;
-    @Column(name = "url_img")
-    private String urlImg;
+    @Lob
+    @Column(name = "img")
+    private byte[] img;
     @Lob
     @Column(name = "descricao_detalhe")
     private String descricaoDetalhe;
@@ -30,11 +37,19 @@ public class Oferta extends AbstractEntity {
     @Column(name = "data_final_oferta")
     @Temporal(TemporalType.DATE)
     private Date dataFinalOferta;
-    @JoinColumn(name = "empresa", referencedColumnName = "id")
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Empresa empresa;
+    private Empresa idEmpresa;
 
     public Oferta() {
+    }
+
+    public CategoriaOfertaType getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaOfertaType categoria) {
+        this.categoria = categoria;
     }
 
     public String getDescricaoItem() {
@@ -45,12 +60,20 @@ public class Oferta extends AbstractEntity {
         this.descricaoItem = descricaoItem;
     }
 
-    public String getUrlImg() {
-        return urlImg;
+    public byte[] getImg() {
+        return img;
     }
 
-    public void setUrlImg(String urlImg) {
-        this.urlImg = urlImg;
+    public void setImg(byte[] img) {
+        this.img = img;
+    }
+
+    public Empresa getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Empresa idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public String getDescricaoDetalhe() {
@@ -83,13 +106,5 @@ public class Oferta extends AbstractEntity {
 
     public void setDataFinalOferta(Date dataFinalOferta) {
         this.dataFinalOferta = dataFinalOferta;
-    }
-
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
     }
 }

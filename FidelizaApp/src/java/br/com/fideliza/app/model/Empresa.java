@@ -3,12 +3,11 @@ package br.com.fideliza.app.model;
 import br.com.fideliza.app.model.common.AbstractEntity;
 import br.com.fideliza.app.model.common.PerfilType;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,7 +16,7 @@ import org.hibernate.validator.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "empresa")
+@Table(name = "fid_empresas")
 public class Empresa extends AbstractEntity {
 
     @Email
@@ -45,8 +44,9 @@ public class Empresa extends AbstractEntity {
     private Double latitude;
     @Column(name = "longitude")
     private Double longitude;
-    @Column(name = "url_logo")
-    private String urlLogo;
+    @Lob
+    @Column(name = "logo")
+    private byte[] logo;
     @Column(name = "data_cadastro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCadastro;
@@ -57,16 +57,6 @@ public class Empresa extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "perfil")
     private PerfilType perfil;
-    @OneToMany(mappedBy = "empresa")
-    private List<Fidelidade> fidelidadeList;
-    @OneToMany(mappedBy = "empresa")
-    private List<Menssagem> menssagemList;
-    @OneToMany(mappedBy = "empresa")
-    private List<Telefone> telefoneList;
-    @OneToMany(mappedBy = "empresa")
-    private List<Oferta> ofertaList;
-    @OneToMany(mappedBy = "empresa")
-    private List<Web> webList;
 
     public Empresa() {
     }
@@ -143,12 +133,12 @@ public class Empresa extends AbstractEntity {
         this.longitude = longitude;
     }
 
-    public String getUrlLogo() {
-        return urlLogo;
+    public byte[] getLogo() {
+        return logo;
     }
 
-    public void setUrlLogo(String urlLogo) {
-        this.urlLogo = urlLogo;
+    public void setLogo(byte[] logo) {
+        this.logo = logo;
     }
 
     public Date getDataCadastro() {
@@ -173,45 +163,5 @@ public class Empresa extends AbstractEntity {
 
     public void setPerfil(PerfilType perfil) {
         this.perfil = perfil;
-    }
-
-    public List<Fidelidade> getFidelidadeList() {
-        return fidelidadeList;
-    }
-
-    public void setFidelidadeList(List<Fidelidade> fidelidadeList) {
-        this.fidelidadeList = fidelidadeList;
-    }
-
-    public List<Menssagem> getMenssagemList() {
-        return menssagemList;
-    }
-
-    public void setMenssagemList(List<Menssagem> menssagemList) {
-        this.menssagemList = menssagemList;
-    }
-
-    public List<Telefone> getTelefoneList() {
-        return telefoneList;
-    }
-
-    public void setTelefoneList(List<Telefone> telefoneList) {
-        this.telefoneList = telefoneList;
-    }
-
-    public List<Oferta> getOfertaList() {
-        return ofertaList;
-    }
-
-    public void setOfertaList(List<Oferta> ofertaList) {
-        this.ofertaList = ofertaList;
-    }
-
-    public List<Web> getWebList() {
-        return webList;
-    }
-
-    public void setWebList(List<Web> webList) {
-        this.webList = webList;
     }
 }
