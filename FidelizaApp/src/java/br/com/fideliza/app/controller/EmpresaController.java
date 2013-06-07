@@ -74,8 +74,4 @@ public class EmpresaController {
             result.redirectTo(IndexController.class).index();
         }
     }
-
-    @Get("/negado")
-    public void negado() {
-    }
 }

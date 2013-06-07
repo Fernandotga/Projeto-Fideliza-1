@@ -49,42 +49,42 @@
                     <div class="control-group">
                         <label class="control-label" for="fantasia"> <fmt:message key="empresa.nome.fantasia"/> </label>
                         <div class="controls">
-                            <input type="text" required="true" placeholder="<fmt:message key="empresa.nome.fantasia"/>" id="fantasia" name="entity.nomeFantasia" value="${entity.nomeFantasia}" class="input-xxlarge">
+                            <input type="text" required="true" id="fantasia" name="entity.nomeFantasia" value="${entity.nomeFantasia}" maxlength="60" class="input-xxlarge">
                         </div>
                     </div>
 
                     <div class="control-group">
                         <label class="control-label" for="razao"> <fmt:message key="empresa.razao.social"/> </label>
                         <div class="controls">
-                            <input type="text" required="true" placeholder="<fmt:message key="empresa.razao.social"/>" id="razao" name="entity.razaoSocial" value="${entity.razaoSocial}" class="input-xxlarge">
+                            <input type="text" required="true" id="razao" name="entity.razaoSocial" value="${entity.razaoSocial}" maxlength="60" class="input-xxlarge">
                         </div>
                     </div>
 
                     <div class="control-group">
                         <label class="control-label" for="cnpj"> <fmt:message key="empresa.cnpj"/> </label>
                         <div class="controls">
-                            <input type="text" placeholder="<fmt:message key="empresa.cnpj"/>" id="cnpj" data-mask="99.999.999/9999-99" name="entity.cnpj" value="${entity.cnpj}" class="input-xlarge">
+                            <input type="text" id="cnpj" data-mask="99.999.999/9999-99" name="entity.cnpj" value="${entity.cnpj}" class="input-medium">                      
                         </div>
                     </div>
 
                     <div class="control-group">
                         <label class="control-label" for="responsavel"> <fmt:message key="empresa.responsavel"/> </label>
                         <div class="controls">
-                            <input type="text" required="true" placeholder="<fmt:message key="empresa.responsavel"/>" id="responsavel" name="entity.responsavel" value="${entity.responsavel}" class="input-xxlarge">
+                            <input type="text" required="true" id="responsavel" name="entity.responsavel" value="${entity.responsavel}" maxlength="60" class="input-xxlarge">
                         </div>
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="localizacao">
-                    <div class="control-group">                   
-                        <input type="text" id="txtEndereco" placeholder="Endereço Completo" name="txtEndereco" value="${entity.endereco}" style="width: 925px"/>
-                        <label class="alert alert-success" for="txtEndereco"> <fmt:message key="empresa.endereco"/> </label>
+                    <div class="control-group">                                          
+                        <label class="control-label" for="txtEndereco"> <fmt:message key="empresa.endereco"/> </label>
+                        <input type="text" id="txtEndereco" placeholder="Endereço Completo" name="entity.endereco" value="${entity.endereco}" style="width: 925px" maxlength="200"/>
                         <div class="controls">                           
                             <div id="gmap"></div>
                         </div>
                         <label class="alert alert-success"><fmt:message key="empresa.marcador.gmap"/></label>
-                        <input type="text" id="txtLatitude" placeholder="<fmt:message key="empresa.latitude"/>" name="txtLatitude" value="${entity.latitude}" class="input-xlarge">
-                        <input type="text" id="txtLongitude" placeholder="<fmt:message key="empresa.longitude"/>" name="txtLongitude" value="${entity.longitude}" class="input-xlarge">
+                        <input type="text" id="txtLatitude" placeholder="<fmt:message key="empresa.latitude"/>" name="entity.latitude" value="${entity.latitude}" readonly="true" style="text-align: right" class="input-xlarge">
+                        <input type="text" id="txtLongitude" placeholder="<fmt:message key="empresa.longitude"/>" name="entity.longitude" value="${entity.longitude}" readonly="true" style="text-align: right;" class="input-xlarge">
                     </div>
                 </div>
 
@@ -92,15 +92,14 @@
 
                     <div class="control-group">
                         <div class="controls">
-
-                            <select name="telefone.telefoneTipo" id="tipo">
+                            <label for="telefone"> <fmt:message key="telefone.tipo"/> / <fmt:message key="telefone.telefone"/></label>
+                            <select name="telefone.telefoneTipo" id="tipo" style="margin-right: 10px;">
                                 <c:forEach items="${telefoneTypes}" var="tipo">
                                     <c:set var="sel" value="${telefone.telefoneTipo eq tipo ? 'selected':''}"></c:set>
                                     <option value="${tipo}"${sel}>${tipo.label}</option>
                                 </c:forEach>
                             </select>
-
-                            <input type="text" placeholder="<fmt:message key="telefone.telefone"/>" id="telefone" data-mask="(99)9999-9999" name="telefone.telefone" value="${telefone.telefone}" class="input-large">
+                            <input type="text" placeholder="" id="telefone" data-mask="(99) 9999-9999" name="telefone.telefone" value="${telefone.telefone}" class="input-large">
                             <div class="control-group">
                                 <div class="controls"> 
                                     <input type="submit" class="btn btn-success" value="<fmt:message key="app.gravar" />"/>
@@ -143,9 +142,25 @@
                             <fmt:message key="empresa.url.logo"/>
                         </label>
                         <div class="controls">
-                            <input type="text" id="logo" name="entity.urlLogo" value="${entity.urlLogo}" class="input-xxlarge">
+                            
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div class="input-append">
+                                    <div class="uneditable-input span3">
+                                        <i class="icon-file fileupload-exists"></i> 
+                                        <span class="fileupload-preview"></span>
+                                    </div>
+                                    <span class="btn btn-file">
+                                        <span class="fileupload-new">Select file</span>
+                                        <span class="fileupload-exists">Change</span>
+                                        <input type="file" />
+                                    </span>
+                                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
+
                 </div>
 
                 <div class="tab-pane fade" id="autenticacao">
