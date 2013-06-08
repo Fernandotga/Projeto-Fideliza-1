@@ -44,9 +44,8 @@ public class Empresa extends AbstractEntity {
     private Double latitude;
     @Column(name = "longitude")
     private Double longitude;
-    @Lob
     @Column(name = "logo")
-    private byte[] logo;
+    private String logo;
     @Column(name = "data_cadastro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCadastro;
@@ -133,11 +132,11 @@ public class Empresa extends AbstractEntity {
         this.longitude = longitude;
     }
 
-    public byte[] getLogo() {
+    public String getLogo() {
         return logo;
     }
 
-    public void setLogo(byte[] logo) {
+    public void setLogo(String logo) {
         this.logo = logo;
     }
 

@@ -35,9 +35,6 @@
                     <a href="#web" data-toggle="tab">Contato Web</a>
                 </li>
                 <li>
-                    <a href="#logo" data-toggle="tab">Logotipo</a>
-                </li>
-                <li>
                     <a href="#autenticacao" data-toggle="tab">Autenticação</a>
                 </li>
             </ul>
@@ -133,33 +130,6 @@
                 </div>
 
                 <div class="tab-pane fade" id="web">
-
-                </div>
-
-                <div class="tab-pane fade" id="logo">
-                    <div class="control-group">
-                        <label class="control-label" for="logo">
-                            <fmt:message key="empresa.url.logo"/>
-                        </label>
-                        <div class="controls">
-                            
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="input-append">
-                                    <div class="uneditable-input span3">
-                                        <i class="icon-file fileupload-exists"></i> 
-                                        <span class="fileupload-preview"></span>
-                                    </div>
-                                    <span class="btn btn-file">
-                                        <span class="fileupload-new">Select file</span>
-                                        <span class="fileupload-exists">Change</span>
-                                        <input type="file" />
-                                    </span>
-                                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
 
                 </div>
 
