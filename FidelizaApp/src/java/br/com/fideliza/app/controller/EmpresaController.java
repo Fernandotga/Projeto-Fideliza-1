@@ -50,6 +50,9 @@ public class EmpresaController {
         entity.setPerfil(PerfilType.MEMBRO);
         entity.setEmail(entity.getEmail().toLowerCase());
 
+        // telefones
+        //entity.setTelefonesList(telefones);
+
         validator.validate(entity);
         validator.onErrorRedirectTo(this).criar(entity);
         try {

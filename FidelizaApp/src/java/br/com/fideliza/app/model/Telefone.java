@@ -20,7 +20,7 @@ public class Telefone extends AbstractEntity {
     @Column(name = "tipo")
     private TelefoneType tipo;
     @JoinColumn(name = "id_empresa", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Empresa idEmpresa;
 
     public Telefone() {

@@ -3,11 +3,12 @@ package br.com.fideliza.app.model;
 import br.com.fideliza.app.model.common.AbstractEntity;
 import br.com.fideliza.app.model.common.PerfilType;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -56,6 +57,8 @@ public class Empresa extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "perfil")
     private PerfilType perfil;
+    @OneToMany(mappedBy = "idEmpresa")
+    private List<Telefone> telefonesList;
 
     public Empresa() {
     }
@@ -163,4 +166,14 @@ public class Empresa extends AbstractEntity {
     public void setPerfil(PerfilType perfil) {
         this.perfil = perfil;
     }
+
+    public List<Telefone> getTelefonesList() {
+        return telefonesList;
+    }
+
+    public void setTelefonesList(List<Telefone> telefonesList) {
+        this.telefonesList = telefonesList;
+    }
+
+
 }

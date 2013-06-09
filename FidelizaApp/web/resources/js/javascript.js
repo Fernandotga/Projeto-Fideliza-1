@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $("#cadastroEmpresa").submit(function() {
-        //alert("teste");
+        //
         if ($("#senha").val() !== $("#senhaRepetir").val()) {
             $("#error").text("Senhas diferentes. Favor conferir!");
             return false;
@@ -8,7 +8,7 @@ $(document).ready(function() {
             return true;
         }
     });
-    
+
     //Foco no primeiro campo visivel
     $("input:text:visible:first").focus();
 
@@ -16,8 +16,13 @@ $(document).ready(function() {
         //valida o CNPJ digitado
         if (!ValidarCNPJ($("#cnpj").val())) {
             $("#error").removeClass("hidden");
-            $("#cnpj").focus();    
+            $("#cnpj").focus();
         }
+    });
+
+    //
+    $('#addTelefone').click(function() {
+        $('#tab_telefone').load($(this).attr('data-action'));
     });
 });
 
@@ -25,12 +30,12 @@ function ValidarCNPJ(cnpj) {
 
     cnpj = cnpj.replace(/[^\d]+/g, '');
 
-    if (cnpj === '') {
-        $("#error").text("CNPJ Rejeitado! Campo vazio!");
-        return false;
-    }
+//    if (cnpj === '') {
+//        $("#error").text("CNPJ Rejeitado! Campo vazio!");
+//        return false;
+//    }
 
-    if (cnpj.length !== 14) {
+    if ((cnpj.length !== 14) && (cnpj !== '')) {
         $("#error").text("CNPJ Rejeitado! Campo nao tem os 14 digitos necessarios!");
         return false;
     }
@@ -63,7 +68,7 @@ function ValidarCNPJ(cnpj) {
             pos = 9;
     }
     resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-    if (resultado !== digitos.charAt(0)) {
+    if ((resultado !== digitos.charAt(0)) && (cnpj !== '')) {
         $("#error").text("CNPJ Rejeitado! Favor confira os numeros digitados");
         return false;
     }
@@ -78,7 +83,7 @@ function ValidarCNPJ(cnpj) {
             pos = 9;
     }
     resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-    if (resultado !== digitos.charAt(1)) {
+    if ((resultado !== digitos.charAt(1)) && (cnpj !== '')) {
         $("#error").text("CNPJ Rejeitado! Favor confira os numeros digitados");
         return false;
     }

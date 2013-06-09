@@ -29,7 +29,7 @@
                     <a href="#localizacao" data-toggle="tab">Localização</a>
                 </li>
                 <li>
-                    <a href="#telefone" data-toggle="tab">Telefones</a>
+                    <a href="#tab_telefone" data-toggle="tab">Telefones</a>
                 </li>
                 <li>
                     <a href="#web" data-toggle="tab">Contato Web</a>
@@ -85,21 +85,21 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="telefone">
+                <div class="tab-pane fade" id="tab_telefone">
 
                     <div class="control-group">
                         <div class="controls">
                             <label for="telefone"> <fmt:message key="telefone.tipo"/> / <fmt:message key="telefone.telefone"/></label>
                             <select name="telefone.telefoneTipo" id="tipo" style="margin-right: 10px;">
                                 <c:forEach items="${telefoneTypes}" var="tipo">
-                                    <c:set var="sel" value="${telefone.telefoneTipo eq tipo ? 'selected':''}"></c:set>
-                                    <option value="${tipo}"${sel}>${tipo.label}</option>
+                                    <c:set var="sel" value="${telefone.tipo eq tipo ? 'selected':''}"></c:set>
+                                    <option value="${telefone.tipo}"${sel}>${tipo.label}</option>
                                 </c:forEach>
                             </select>
                             <input type="text" placeholder="" id="telefone" data-mask="(99) 9999-9999" name="telefone.telefone" value="${telefone.telefone}" class="input-large">
                             <div class="control-group">
-                                <div class="controls"> 
-                                    <input type="submit" class="btn btn-success" value="<fmt:message key="app.gravar" />"/>
+                                <div class="controls">
+                                    <input type="button" class="btn btn-success"  id="addTelefone" value="<fmt:message key="app.adicionar" />" data-action="${linkTo[EmpresaController].addTelefone}" />  
                                 </div>
                             </div>
                         </div>
