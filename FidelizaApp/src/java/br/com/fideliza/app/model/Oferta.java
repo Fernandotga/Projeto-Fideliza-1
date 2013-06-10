@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "fid_ofertas")
@@ -29,6 +30,7 @@ public class Oferta extends AbstractEntity {
     @Lob
     @Column(name = "descricao_detalhe")
     private String descricaoDetalhe;
+    @Min(0)
     @Column(name = "preco")
     private double preco;
     @Column(name = "data_inicio_oferta")

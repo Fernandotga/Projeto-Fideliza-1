@@ -1,7 +1,5 @@
 package br.com.fideliza.app.model.common;
 
-import java.io.UnsupportedEncodingException;
-
 public enum TelefoneType {
 
     EMPRESARIAL("Empresarial"),
