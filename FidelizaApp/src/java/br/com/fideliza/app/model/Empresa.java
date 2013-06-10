@@ -2,8 +2,8 @@ package br.com.fideliza.app.model;
 
 import br.com.fideliza.app.model.common.AbstractEntity;
 import br.com.fideliza.app.model.common.PerfilType;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -59,7 +59,7 @@ public class Empresa extends AbstractEntity {
     @Column(name = "perfil")
     private PerfilType perfil;
     @OneToMany(mappedBy = "idEmpresa")
-    private List<Telefone> telefonesList;
+    private Collection<Telefone> telefones;
 
     public Empresa() {
     }
@@ -168,13 +168,11 @@ public class Empresa extends AbstractEntity {
         this.perfil = perfil;
     }
 
-    public List<Telefone> getTelefonesList() {
-        return telefonesList;
+    public Collection<Telefone> getTelefone() {
+        return telefones;
     }
 
-    public void setTelefonesList(List<Telefone> telefonesList) {
-        this.telefonesList = telefonesList;
+    public void setTelefone(Collection<Telefone> telefones) {
+        this.telefones = telefones;
     }
-
-
 }

@@ -42,6 +42,11 @@ public class EmpresaController {
     }
 
     @Public
+    public void addTelefone() {
+        
+    }
+
+    @Public
     @Post("/empresa")
     public void salvar(Empresa entity) {
         // dados default
@@ -49,9 +54,6 @@ public class EmpresaController {
         entity.setAtivo(Boolean.TRUE);
         entity.setPerfil(PerfilType.MEMBRO);
         entity.setEmail(entity.getEmail().toLowerCase());
-
-        // telefones
-        //entity.setTelefonesList(telefones);
 
         validator.validate(entity);
         validator.onErrorRedirectTo(this).criar(entity);

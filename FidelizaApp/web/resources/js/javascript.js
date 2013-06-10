@@ -20,11 +20,13 @@ $(document).ready(function() {
         }
     });
 
-    //
-    $('#addTelefone').click(function() {
-        $('#tab_telefone').load($(this).attr('data-action'));
-    });
+//    Executar metodo no V|Raptor
+//    data-action="${linkTo[EmpresaController].addTelefone}"
+//    $('#addTelefone').click(function() {
+//        $('#tab_telefone').load($(this).attr('data-action'));
+//    });
 });
+
 
 function ValidarCNPJ(cnpj) {
 

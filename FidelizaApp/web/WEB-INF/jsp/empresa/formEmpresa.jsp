@@ -86,51 +86,37 @@
                 </div>
 
                 <div class="tab-pane fade" id="tab_telefone">
-
                     <div class="control-group">
                         <div class="controls">
-                            <label for="telefone"> <fmt:message key="telefone.tipo"/> / <fmt:message key="telefone.telefone"/></label>
-                            <select name="telefone.telefoneTipo" id="tipo" style="margin-right: 10px;">
-                                <c:forEach items="${telefoneTypes}" var="tipo">
-                                    <c:set var="sel" value="${telefone.tipo eq tipo ? 'selected':''}"></c:set>
-                                    <option value="${telefone.tipo}"${sel}>${tipo.label}</option>
-                                </c:forEach>
-                            </select>
-                            <input type="text" placeholder="" id="telefone" data-mask="(99) 9999-9999" name="telefone.telefone" value="${telefone.telefone}" class="input-large">
-                            <div class="control-group">
-                                <div class="controls">
-                                    <input type="button" class="btn btn-success"  id="addTelefone" value="<fmt:message key="app.adicionar" />" data-action="${linkTo[EmpresaController].addTelefone}" />  
-                                </div>
-                            </div>
+                            <a href="#" class="btn btn-success" onclick="adicionar();"> <fmt:message key="app.adicionar"/> </a>
+                            <hr />
                         </div>
-                    </div>
 
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th><fmt:message key="telefone.tipo"/></th>
-                                <th><fmt:message key="telefone.telefone"/></th>
-                                <th><fmt:message key="app.excluir"/></th>
-                            </tr>
-                        </thead>
-                        <c:forEach items="${telefoneList}" var="listaTelefone">
-                            <tr>
-                                <td>${listaTelefone.telefoneTipo}</td>
-                                <td>${listaTelefone.telefone}</td>
-                                <td>
-                                    <form action="/telefone/${listaTelefone.id}" method="post">
-                                        <input type="hidden" name="_method" value="delete"/>
-                                        <i class="icon-remove"></i>
-                                        <input type="submit" class="btn btn-link" value="Remover"/>
-                                    </form>
-                                </td>
-                            </tr>
+                        <c:forEach items="${entity.telefones}" var="telefone" varStatus="status">
+                            <div class="telefone">
+                                <label for="telefone"> <fmt:message key="telefone.tipo"/> / <fmt:message key="telefone.telefone"/></label>
+
+                                <select name="entity.telefones[${status.index}].tipo" id="tipo" style="margin-right: 10px;">
+                                    <c:forEach items="${telefoneTypes}" var="tipo">
+                                        <c:set var="sel" value="${telefone.tipo eq tipo ? 'selected':''}"></c:set>
+                                        <option value="${telefone.tipo}"${sel}>${tipo.label}</option>
+                                    </c:forEach>
+                                </select>
+
+                                <input type="text" placeholder="" id="telefone" data-mask="(99) 9999-9999" name="entity.telefones[${status.index}].telefone" value="${telefone.telefone}" class="input-large">
+
+                                <input type="hidden" name="entity.telefones[${status.index}].id" value="${telefone.id}" />
+
+                                <a id="remover" class="btn btn-link" onclick="remover(this);"> <fmt:message key="app.excluir"/> </a>
+                            </div>
                         </c:forEach>
-                    </table>
+                    </div>
                 </div>
 
                 <div class="tab-pane fade" id="web">
+                    <div class="control-group">
 
+                    </div>
                 </div>
 
                 <div class="tab-pane fade" id="autenticacao">
@@ -173,9 +159,52 @@
                     </div>
                 </div>
             </div>
-
         </form>
-
     </fieldset>
+    <script>
+                                var model =
+                                        '<div class="telefone">' +
+                                        '<label for="telefone"> <fmt:message key="telefone.tipo"/> / <fmt:message key="telefone.telefone"/></label>' +
+                                        '<select name = "entity.telefones[0].tipo" id="tipo" style = "margin-right: 10px;" >' +
+                                        '<c:forEach items="${telefoneTypes}" var="tipo">' +
+                                        '<c:set var="sel" value="${telefone.tipo eq tipo ? 'selected':''}"></c:set>' +
+                                        '<option value = "${telefone.tipo}"${sel} >${tipo.label} </option>' +
+                                        '</c:forEach>' +
+                                        '</select>' +
+                                        '<input type="text" id="telefone" data-mask="(99) 9999-9999" name="entity.telefones[0].telefone" class="input-large">' +
+                                        '<a id="remover" class="btn btn-link" onclick="remover(this);"> <fmt:message key="app.excluir"/> </a>' +
+                                        '</div>';
+
+
+                                function remover(element) {
+                                    $(element).parent().remove();
+                                    reorderIndexes();
+                                }
+                                ;
+
+                                function adicionar() {
+                                    $('#tab_telefone').append(model);
+                                    reorderIndexes();
+                                }
+                                ;
+
+                                function reorderIndexes() {
+                                    var regex = /\[[0-9]\]/g;
+
+                                    $('.telefone').each(function(index) {
+                                        var $campos = $(this).find('input'),
+                                                $input,
+                                                name;
+
+                                        $campos.each(function() {
+                                            $input = $(this),
+                                                    name = $input.attr('name');
+
+                                            $input.attr('name', name.replace(regex, '[' + index + ']'));
+                                        });
+                                    });
+                                }
+                                ;
+    </script>
 
 </body>
