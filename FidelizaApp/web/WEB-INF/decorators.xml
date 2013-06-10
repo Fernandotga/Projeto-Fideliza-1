@@ -2,14 +2,14 @@
 
 <decorators defaultdir="/WEB-INF/decorator">
 
-    <decorator name="main" page="main.jsp">
-        <pattern>/*</pattern>
-    </decorator>
+	<decorator name="main" page="main.jsp">
+		<pattern>/*</pattern>
+	</decorator>
 
-    <excludes>
-        <pattern>/*?exclude*</pattern>
-        <pattern>/404*</pattern>
-        <pattern>/500*</pattern>
-    </excludes>
+	<excludes>
+		<pattern>/*?exclude*</pattern>
+		<pattern>/404*</pattern>
+		<pattern>/500*</pattern>
+	</excludes>
 
 </decorators>
