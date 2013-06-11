@@ -5,7 +5,7 @@
 }
 
 body, label, input[type="submit"], input[type="button"], input[type="text"], input[type="email"], select, textarea {
-    font-family: "Open Sans", Helvetica, Verdana, Arial, sans-serif;
+    font-family: "Open Sans", Verdana, Helvetica, Arial, sans-serif;
     font-size: 13px;
     font-weight: bold;
 }
@@ -68,8 +68,17 @@ div#wrapper {
 }
 
 a {
-    color: blue;
+    color:  darkblue;
 }
+
+div.inline { 
+    float:left; 
+}
+
+.clearBoth { 
+    clear:both; 
+}
+
 
 /* Google Maps */
 #gmap { 

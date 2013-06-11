@@ -152,6 +152,7 @@
                             <!-- Button -->
                             <div class="controls">
                                 <button type="submit" class="btn btn-success">
+                                    <i class="icon-ok icon-white"></i>
                                     <fmt:message key="app.gravar" />
                                 </button>
                             </div>

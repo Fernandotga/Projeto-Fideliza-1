@@ -6,9 +6,10 @@ public enum CategoriaOfertaType {
     SAUDE("Saude"),
     BELEZA("Beleza"),
     CURSOS("Cursos"),
-    DIVERSOS("Diversos"),
+    LIVRARIA("Livraria"),
     VESTUARIO("Vestuario"),
-    LAZER("Lazer");
+    LAZER("Lazer"),
+    DIVERSOS("Diversos");
     public String label;
 
     private CategoriaOfertaType(String label) {

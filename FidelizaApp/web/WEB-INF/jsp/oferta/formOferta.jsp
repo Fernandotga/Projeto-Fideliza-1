@@ -6,7 +6,7 @@
         <div id="legend">
             <legend class=""> 
                 <fmt:message key="oferta.oferta"/> 
-                <small> <fmt:message key="app.fideliza"/> </small>
+                <small> <fmt:message key="app.formulario"/> </small>
             </legend>  
         </div>  
 
@@ -25,15 +25,15 @@
             </c:if>
 
             <div class="control-group">
-                <label for="categoria"> <fmt:message key="oferta.categoria"/>
-                    <div class="controls">
-                        <select name="entity.categoria" id="tipo" style="margin-right: 10px;">
-                            <c:forEach items="${categoriaTypes}" var="tipo">
-                                <c:set var="sel" value="${entity.categoria eq tipo ? 'selected':''}"></c:set>
-                                <option value="${entity.categoria}"${sel}>${tipo.label}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
+                <label for="categoria" class="control-label"> <fmt:message key="oferta.categoria"/> </label>
+                <div class="controls">
+                    <select name="entity.categoria" id="tipo" style="margin-right: 10px;">
+                        <c:forEach items="${categoriaTypes}" var="tipo">
+                            <c:set var="sel" value="${entity.categoria eq tipo ? 'selected':''}"></c:set>
+                            <option value="${tipo}"${sel}>${tipo.label}</option>
+                        </c:forEach>
+                    </select>
+                </div>
             </div>
 
             <div class="control-group">
@@ -46,21 +46,24 @@
             <div class="control-group">
                 <label class="control-label" for="detalhe"> <fmt:message key="oferta.descricao.detalhe"/> </label>
                 <div class="controls">
-                    <textarea id="detalhe" name="entity.descricaoDetalhe" class="span8" rows="3" maxlength="400"> ${entity.descricaoDetalhe} </textarea>
+                    <textarea id="detalhe" name="entity.descricaoDetalhe" class="span7" rows="3" maxlength="400">${entity.descricaoDetalhe}</textarea>
                 </div>
             </div>
 
             <div class="control-group">
                 <label class="control-label" for="preco"> <fmt:message key="oferta.preco"/> </label>
                 <div class="controls">
-                    <input type="text" required="true" id="preco" name="entity.preco" value="<fmt:formatNumber value="${produto.valor}" minFractionDigits="2"/>" maxlength="8" class="input-small">
+                    <input type="text" required="true" placeholder="Ex: 100,00" id="preco" name="entity.preco" value="<fmt:formatNumber value="${produto.valor}" minFractionDigits="2"/>" maxlength="8" class="input-small">
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="inicio"> <fmt:message key="oferta.data.inicio"/> & <fmt:message key="oferta.data.final"/> </label>
+                <label class="control-label" for="inicio"> <fmt:message key="oferta.data.inicio"/> </label>
                 <div class="controls">
-                    <caelum:campoData id="inicio" name="entity.dataInicioOferta" value="${entity.dataInicioOferta}" required="true"/>
+                    <caelum:campoData id="inicio" name="entity.dataInicioOferta" value="${entity.dataInicioOferta}" required="true"/>  
+                </div>
+                <div class="controls">
+                    <label class="control-label" for="final"><fmt:message key="oferta.data.final"/> </label>
                     <caelum:campoData id="final" name="entity.dataFinalOferta" value="${entity.dataFinalOferta}" required="true"/>
                 </div>
             </div>
@@ -68,8 +71,12 @@
             <div class="control-group">
                 <div class="controls">
                     <button type="submit" class="btn btn-success">
+                        <i class="icon-white icon-ok"></i>
                         <fmt:message key="app.gravar" />
                     </button>
+                    <a class="btn btn-danger" href="<c:url value="/oferta"/>">
+                        <fmt:message key="app.cancelar" /> 
+                    </a>
                 </div>
             </div>
 

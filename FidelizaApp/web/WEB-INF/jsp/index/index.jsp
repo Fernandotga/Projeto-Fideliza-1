@@ -36,7 +36,8 @@
                 <div class="control-group">
                     <!-- Button -->
                     <div class="controls">
-                        <button class="btn btn-success">
+                        <button class="btn btn-success">                        
+                            <i class="icon-lock icon-white"></i>
                             <fmt:message key="login.autenticar" />
                         </button>
                     </div>

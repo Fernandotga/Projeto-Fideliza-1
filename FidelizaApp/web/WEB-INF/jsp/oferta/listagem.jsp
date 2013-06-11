@@ -1,24 +1,56 @@
 <head>
-	<title>Movy | Usu&aacute;rio [listagem]</title>
+    <title><fmt:message key="app.title"/> | <fmt:message key="app.listar" /> </title>
 </head>
 <body>
-	<c:forEach items="${usuarioList}" var="usuario">
-		<h2>${usuario.nome}</h2>
+    <fieldset>
+        <div id="legend">
+            <legend class=""> 
+                <fmt:message key="oferta.oferta"/> 
+                <small> <fmt:message key="app.listar"/> </small>
+            </legend>  
+        </div>  
 
-		(${usuario.email} - ${usuario.senha})<br/>
+        <a class="btn btn-success" href="<c:url value="/oferta/criar"/>"><fmt:message key="app.novo" /></a>
 
-		<form action="${pageContext.request.contextPath}/usuario/${usuario.id}" method="get">
-			<input type="submit" value="exibir"/>
-		</form>
+        <c:forEach items="${ofertaList}" var="oferta">
+            <div style="border-bottom: 1px solid #E5E5E5; padding-bottom: 0px">
+                <h4>${oferta.descricaoItem}</h4>
+            </div>
+            <fmt:formatNumber value="${oferta.preco}" minFractionDigits="2"/> <br />
+            <fmt:message key="app.expira.em" /> <fmt:formatDate value="${oferta.dataFinalOferta}" pattern="dd/MM/yyyy" /> <br />
 
-		<form action="${pageContext.request.contextPath}/usuario/${usuario.id}/editar" method="get">
-			<input type="submit" value="editar"/>
-		</form>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="inline">
+                        <form action="<c:url value="/oferta/${oferta.id}" />" method="GET">
+                            <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                                <i class="icon-white icon-check"></i>
+                                <fmt:message key="app.exibir" />
+                            </button>
+                        </form>
+                    </div>
+                    <div class="inline">
+                        <form action="<c:url value="/oferta/${oferta.id}/editar"/>" method="GET">
+                            <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                                <i class="icon-white icon-edit"></i>
+                                <fmt:message key="app.editar" />
+                            </button>
+                        </form>
+                    </div>
 
-		<form action="${pageContext.request.contextPath}/usuario/${usuario.id}" method="post">
-			<input type="hidden" name="_method" value="delete"/>
+                    <div class="inline">
+                        <form action="<c:url value="/oferta/${oferta.id}" />" method="POST">
+                            <input type="hidden" name="_method" value="delete"/>
+                            <button class="btn btn-danger" type="submit">
+                                <i class="icon-white icon-remove"></i>
+                                <fmt:message key="app.excluir" />
+                            </button>
+                        </form>
+                    </div>
+                    <br class="clearBoth" />
+                </div>
+            </div>
 
-			<input type="submit" value="remover"/>
-		</form>
-	</c:forEach>
+        </c:forEach>
+    </fieldset>
 </body>
