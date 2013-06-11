@@ -20,9 +20,7 @@ import br.com.fideliza.app.model.common.PerfilType;
 import br.com.fideliza.app.repository.OfertaRepository;
 import java.io.File;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.Date;
 
 @Resource
 @Permission({PerfilType.MEMBRO, PerfilType.MODERADOR, PerfilType.ADMINISTRADOR})
@@ -54,6 +52,7 @@ public class OfertaController {
     public void salvar(Oferta entity) {
         // dados default
         entity.setIdEmpresa(session.getEmpresa());
+        entity.setImg("default.jpg");
 
         validator.validate(entity);
         validator.onErrorRedirectTo(this).criar(entity);
@@ -86,6 +85,7 @@ public class OfertaController {
     @Get("/oferta/{entity.id}/editar")
     public void editar(Oferta entity) throws ParseException {
         result.include("categoriaTypes", CategoriaOfertaType.values());
+        entity = repository.find(entity.getId());
         result.include("entity", entity);
     }
 

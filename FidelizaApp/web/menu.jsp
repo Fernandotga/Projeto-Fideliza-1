@@ -8,7 +8,7 @@
         <li class="active"><a href="<c:url value="/painel/principal"/>">Painel</a></li>
         <li><a href="<c:url value="/oferta"/>">Ofertas</a></li> 
         <li><a href="#">Fidelidade</a></li> 
-        <li><a href="#">Clientes</a></li> 
+        <li><a href="#">Fidelizados</a></li> 
         <li><a href="#">Mensagens</a></li> 
         <li><a href="#">Relatórios</a></li> 
         <li><a href="#">Empresa</a></li> 

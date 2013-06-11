@@ -12,32 +12,43 @@
 
         <div class="control-group">
             <div class="controls">
-                <form action="<c:url value="/oferta/${entity.id}/imagem" />" enctype="multipart/form-data" method="POST">
-                    <input type="file" name="file"/>
-                    <button class="btn btn-primary" type="submit">
-                        <i class="icon-white icon-upload"></i>
-                        <fmt:message key="oferta.upload"/>
-                    </button>
-                </form>
+                <div class="inline">
+                    <form action="<c:url value="/oferta/${entity.id}/imagem" />" enctype="multipart/form-data" method="POST">
+                        <input type="file" name="file" size="85px"/>
+                        <button class="btn btn-primary" type="submit" style="margin-right: 5px;">
+                            <i class="icon-white icon-upload"></i>
+                            <fmt:message key="oferta.upload"/>
+                        </button>
+                    </form>
+                </div>
+                <div class="inline">
+                    <form action="<c:url value="/oferta/${entity.id}/imagem" />" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button class="btn btn-danger" type="submit">
+                            <i class="icon-white icon-remove-circle"></i>
+                            <fmt:message key="oferta.remove.imagem" />
+                        </button>
+                    </form>
+                </div>              
             </div>
         </div>
+
         <div class="control-group">
             <div class="controls">
-                <form action="<c:url value="/oferta/${entity.id}/imagem" />" method="post">
-                    <input type="hidden" name="_method" value="delete"/>
-                    <button class="btn btn-danger" type="submit">
-                        <i class="icon-white icon-remove-circle"></i>
-                        <fmt:message key="oferta.remove.imagem" />
-                    </button>
-                </form>
-                <img class="img-polaroid" src="<c:url value="/oferta/${entity.id}/imagem" />" width="150" height="150"/>
+                <div> 
+                    <img class="img-polaroid" src="<c:url value="/oferta/${entity.id}/imagem" />" width="150" height="150"/>
+                </div>
             </div>
         </div>
-            
-        <div style="border-bottom: 1px solid #E5E5E5; padding-bottom: 0px">
-            <h2>${entity.descricaoItem}</h2>
+
+        <div class="control-group">
+            <div class="controls">
+                <div style="border-bottom: 1px solid #E5E5E5; padding-bottom: 0px">
+                    <h3>${entity.descricaoItem}</h3>
+                </div>
+            </div>
         </div>
-        
+
         <h5><fmt:formatNumber value="${entity.preco}" minFractionDigits="2"/></h5>
         <h5><fmt:message key="app.expira.em" /> <fmt:formatDate value="${entity.dataFinalOferta}" pattern="dd/MM/yyyy" /></h5>
 
