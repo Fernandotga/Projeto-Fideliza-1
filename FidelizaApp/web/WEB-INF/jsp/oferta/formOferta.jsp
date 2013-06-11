@@ -15,7 +15,7 @@
                 <c:set var="uri" value="/oferta" />
             </c:when>
             <c:otherwise>
-                <c:set var="uri" value="/oferta/${entity.id}" />
+                <c:set var="uri" value="/oferta/${entity.id}/atualizar" />
             </c:otherwise>
         </c:choose>
 
@@ -53,7 +53,7 @@
             <div class="control-group">
                 <label class="control-label" for="preco"> <fmt:message key="oferta.preco"/> </label>
                 <div class="controls">
-                    <input type="text" required="true" placeholder="Ex: 100,00" id="preco" name="entity.preco" value="<fmt:formatNumber value="${produto.valor}" minFractionDigits="2"/>" maxlength="8" class="input-small">
+                    <input type="text" required="true" placeholder="Ex: 100,00" id="preco" name="entity.preco" value="<fmt:formatNumber value="${entity.preco}" minFractionDigits="2"/>" maxlength="8" class="input-small">
                 </div>
             </div>
 

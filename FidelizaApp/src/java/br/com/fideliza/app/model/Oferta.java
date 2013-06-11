@@ -19,14 +19,14 @@ import javax.validation.constraints.Min;
 @Table(name = "fid_ofertas")
 public class Oferta extends AbstractEntity {
 
+    public static final String IMAGE_PATH = System.getProperty("user.dir") + "/sistemas/movy/uploads/img/oferta";
     @Column(name = "categoria")
     @Enumerated(EnumType.STRING)
     private CategoriaOfertaType categoria;
     @Column(name = "descricao_item")
     private String descricaoItem;
-    @Lob
     @Column(name = "img")
-    private byte[] img;
+    private String img;
     @Lob
     @Column(name = "descricao_detalhe")
     private String descricaoDetalhe;
@@ -62,11 +62,11 @@ public class Oferta extends AbstractEntity {
         this.descricaoItem = descricaoItem;
     }
 
-    public byte[] getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(byte[] img) {
+    public void setImg(String img) {
         this.img = img;
     }
 

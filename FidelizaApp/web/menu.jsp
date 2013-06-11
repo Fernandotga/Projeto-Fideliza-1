@@ -6,7 +6,7 @@
         </c:if>
         <c:if test="${empresaSession.logged}">
         <li class="active"><a href="<c:url value="/painel/principal"/>">Painel</a></li>
-        <li><a href="<c:url value="/oferta"/>">Oferta</a></li> 
+        <li><a href="<c:url value="/oferta"/>">Ofertas</a></li> 
         <li><a href="#">Fidelidade</a></li> 
         <li><a href="#">Clientes</a></li> 
         <li><a href="#">Mensagens</a></li> 
