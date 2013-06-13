@@ -14,7 +14,7 @@
             <div class="controls">
                 <div class="inline">
                     <form action="<c:url value="/oferta/${entity.id}/imagem" />" enctype="multipart/form-data" method="POST">
-                        <input type="file" name="file" size="85px"/>
+                        <input type="file" name="file"/>
                         <button class="btn btn-primary" type="submit" style="margin-right: 5px;">
                             <i class="icon-white icon-upload"></i>
                             <fmt:message key="oferta.upload"/>
@@ -33,6 +33,7 @@
             </div>
         </div>
 
+        <br class="clearBoth" />
         <div class="control-group">
             <div class="controls">
                 <div> 
@@ -43,14 +44,26 @@
 
         <div class="control-group">
             <div class="controls">
-                <div style="border-bottom: 1px solid #E5E5E5; padding-bottom: 0px">
+                <div style="border-bottom: 2px solid #E5E5E5; padding-bottom: 0px">
                     <h3>${entity.descricaoItem}</h3>
                 </div>
             </div>
         </div>
 
-        <h5><fmt:formatNumber value="${entity.preco}" minFractionDigits="2"/></h5>
-        <h5><fmt:message key="app.expira.em" /> <fmt:formatDate value="${entity.dataFinalOferta}" pattern="dd/MM/yyyy" /></h5>
+        <div class="control-group">
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-tags"></i></span>                   
+                </div>
+                <fmt:formatNumber value="${entity.preco}" minFractionDigits="2"/>
+            </div>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-calendar"></i></span>                   
+                </div>
+                <fmt:message key="app.expira.em" /> <fmt:formatDate value="${entity.dataFinalOferta}" pattern="dd/MM/yyyy" />
+            </div>
+        </div>
 
         <div class="control-group">
             <div class="controls">

@@ -19,8 +19,12 @@
                         <fmt:message key="login.email"/>
                     </label>
                     <div class="controls">
-                        <input type="email" required="true" id="email" name="email" style="text-transform: lowercase;" placeholder="empresa@dominio.com.br" class="input-xlarge">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-envelope"></i></span>
+                            <input type="email" required="true" id="email" name="email" style="text-transform: lowercase;" placeholder="empresa@dominio.com.br" class="input-xlarge">
+                        </div>
                     </div>
+
                 </div>
 
                 <div class="control-group">
@@ -29,7 +33,10 @@
                         <fmt:message key="login.senha" />
                     </label>
                     <div class="controls">
-                        <input type="password" required="true" id="password" name="password" placeholder="******" class="input-xlarge">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-lock"></i></span>
+                            <input type="password" required="true" id="password" name="password" placeholder="******" class="input-xlarge">
+                        </div>
                     </div>
                 </div>
 
@@ -37,7 +44,7 @@
                     <!-- Button -->
                     <div class="controls">
                         <button class="btn btn-success">                        
-                            <i class="icon-lock icon-white"></i>
+                            <i class="icon-ok icon-white"></i>
                             <fmt:message key="login.autenticar" />
                         </button>
                     </div>

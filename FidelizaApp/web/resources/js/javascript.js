@@ -143,3 +143,11 @@ function mensagem(title, msg, largura, altura) {
 }
 ;
 
+function DoPrinting() {
+    if (!window.print) {
+        alert("Use um navegador mais moderno!");
+        return;
+    }
+    window.print();
+}
+

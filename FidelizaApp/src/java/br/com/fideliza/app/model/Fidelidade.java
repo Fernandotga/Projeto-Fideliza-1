@@ -1,12 +1,13 @@
 package br.com.fideliza.app.model;
 
 import br.com.fideliza.app.model.common.AbstractEntity;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,14 +23,14 @@ public class Fidelidade extends AbstractEntity {
     @Lob
     @Column(name = "termos_recompensa")
     private String termosRecompensa;
-    @Column(name = "usa_quantidade_limitada_checkin")
-    private Boolean usaQuantidadeLimitadaCheckin;
-    @Column(name = "quantidade_permitida")
+    @Column(name = "quantidade_limitada_checkin")
     private Integer quantidadePermitida;
     @Column(name = "ativo")
     private Boolean ativo;
+    @OneToMany(mappedBy = "idFidelidade")
+    private Collection<ClienteFidelidade> clientesFidelidades;
     @JoinColumn(name = "id_empresa", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Empresa idEmpresa;
 
     public Fidelidade() {
@@ -67,14 +68,6 @@ public class Fidelidade extends AbstractEntity {
         this.termosRecompensa = termosRecompensa;
     }
 
-    public Boolean getUsaQuantidadeLimitadaCheckin() {
-        return usaQuantidadeLimitadaCheckin;
-    }
-
-    public void setUsaQuantidadeLimitadaCheckin(Boolean usaQuantidadeLimitadaCheckin) {
-        this.usaQuantidadeLimitadaCheckin = usaQuantidadeLimitadaCheckin;
-    }
-
     public Integer getQuantidadePermitida() {
         return quantidadePermitida;
     }
@@ -97,5 +90,13 @@ public class Fidelidade extends AbstractEntity {
 
     public void setIdEmpresa(Empresa idEmpresa) {
         this.idEmpresa = idEmpresa;
+    }
+
+    public Collection<ClienteFidelidade> getClientesFidelidades() {
+        return clientesFidelidades;
+    }
+
+    public void setClientesFidelidades(Collection<ClienteFidelidade> clientesFidelidades) {
+        this.clientesFidelidades = clientesFidelidades;
     }
 }

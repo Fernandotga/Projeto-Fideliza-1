@@ -7,7 +7,6 @@
 body, label, input[type="submit"], input[type="button"], input[type="text"], input[type="email"], select, textarea {
     font-family: "Open Sans", Verdana, Helvetica, Arial, sans-serif;
     font-size: 13px;
-    font-weight: bold;
 }
 
 .header {
@@ -33,6 +32,8 @@ div#identification{
     padding-top: 80px;
     float: right;
     padding-right: 50px;
+    font-weight: bold;
+    font-size: 12px;
 }
 
 div#content {
@@ -46,6 +47,7 @@ div#copy {
     margin: 0 auto;
     padding-top: 3px;
     width: 1024px;
+
 }
 
 div#rodape {
@@ -53,6 +55,7 @@ div#rodape {
     clear: both;
     height: 25px;
     width: 1024px;
+    font-weight: bold;
 }
 
 div#topo {

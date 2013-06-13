@@ -5,38 +5,38 @@
     <fieldset>
         <div id="legend">
             <legend class=""> 
-                <fmt:message key="oferta.oferta"/> 
+                <fmt:message key="fidelidade.fidelidade"/> 
                 <small> <fmt:message key="app.listar"/> </small>
             </legend>  
         </div>  
 
-        <a class="btn btn-primary" href="<c:url value="/oferta/criar"/>"><fmt:message key="app.novo" /></a>
+        <a class="btn btn-primary" href="<c:url value="/fidelidade/criar"/>"><fmt:message key="app.novo" /></a>
 
-        <c:forEach items="${ofertaList}" var="oferta">
+        <c:forEach items="${fidelidadeList}" var="fidelidade">
 
             <div class="control-group">
                 <div class="controls">
-                    <h4>${oferta.descricaoItem}</h4>
+                    <h4>${fidelidade.recompensa}</h4>
                 </div>
 
                 <div class="controls">
                     <div class="input-prepend">
-                        <span class="add-on"><i class="icon-tags"></i></span>                   
+                        <span class="add-on"><i class="icon-chevron-up"></i></span>                   
                     </div>
-                    <fmt:formatNumber value="${oferta.preco}" minFractionDigits="2"/>
+                    <fmt:message key="fidelidade.maximo.pontos" /> <fmt:formatNumber value="${fidelidade.maximoPontos}" minFractionDigits="0"/>
                 </div>
                 <div class="controls">
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-calendar"></i></span>                   
                     </div>
-                    <fmt:message key="app.expira.em" /> <fmt:formatDate value="${oferta.dataFinalOferta}" pattern="dd/MM/yyyy" /> 
+                    <fmt:message key="app.valido.por" /> <fmt:formatNumber value="${fidelidade.validadeDias}" minFractionDigits="0"/> Dias.
                 </div>
             </div>
 
             <div class="control-group">
                 <div class="controls">
                     <div class="inline">
-                        <form action="<c:url value="/oferta/${oferta.id}" />" method="GET">
+                        <form action="<c:url value="/fidelidade/${fidelidade.id}" />" method="GET">
                             <button class="btn btn-success" style="margin-right: 5px;" type="submit">
                                 <i class="icon-white icon-check"></i>
                                 <fmt:message key="app.exibir" />
@@ -44,7 +44,7 @@
                         </form>
                     </div>
                     <div class="inline">
-                        <form action="<c:url value="/oferta/${oferta.id}/editar"/>" method="GET">
+                        <form action="<c:url value="/fidelidade/${fidelidade.id}/editar"/>" method="GET">
                             <button class="btn btn-success" style="margin-right: 5px;" type="submit">
                                 <i class="icon-white icon-edit"></i>
                                 <fmt:message key="app.editar" />

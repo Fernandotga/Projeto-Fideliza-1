@@ -58,7 +58,7 @@
                     <div id="notice" class="${empty message ? "hidden" : ""} alert alert-success">
                         ${message}
                     </div>
-                    
+
                     <c:if test="${not empty errors}">
                         <div id="errors" class="error">
                             <c:forEach var="error" items="${errors}">

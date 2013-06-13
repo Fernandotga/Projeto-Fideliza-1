@@ -46,14 +46,20 @@
                     <div class="control-group">
                         <label class="control-label" for="fantasia"> <fmt:message key="empresa.nome.fantasia"/> </label>
                         <div class="controls">
-                            <input type="text" required="true" id="fantasia" name="entity.nomeFantasia" value="${entity.nomeFantasia}" maxlength="60" class="input-xxlarge">
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="icon-home"></i></span>
+                                <input type="text" required="true" id="fantasia" name="entity.nomeFantasia" value="${entity.nomeFantasia}" maxlength="60" class="input-xxlarge">
+                            </div>
                         </div>
                     </div>
 
                     <div class="control-group">
                         <label class="control-label" for="razao"> <fmt:message key="empresa.razao.social"/> </label>
                         <div class="controls">
-                            <input type="text" required="true" id="razao" name="entity.razaoSocial" value="${entity.razaoSocial}" maxlength="60" class="input-xxlarge">
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="icon-file"></i></span>
+                                <input type="text" required="true" id="razao" name="entity.razaoSocial" value="${entity.razaoSocial}" maxlength="60" class="input-xxlarge">
+                            </div>
                         </div>
                     </div>
 
@@ -67,7 +73,10 @@
                     <div class="control-group">
                         <label class="control-label" for="responsavel"> <fmt:message key="empresa.responsavel"/> </label>
                         <div class="controls">
-                            <input type="text" required="true" id="responsavel" name="entity.responsavel" value="${entity.responsavel}" maxlength="60" class="input-xxlarge">
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="icon-user"></i></span>
+                                <input type="text" required="true" id="responsavel" name="entity.responsavel" value="${entity.responsavel}" maxlength="60" class="input-xxlarge">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,13 +84,22 @@
                 <div class="tab-pane fade" id="localizacao">
                     <div class="control-group">                                          
                         <label class="control-label" for="txtEndereco"> <fmt:message key="empresa.endereco"/> </label>
-                        <input type="text" id="txtEndereco" placeholder="Endereço Completo" name="entity.endereco" value="${entity.endereco}" style="width: 925px" maxlength="200"/>
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-map-marker"></i></span>
+                            <input type="text" id="txtEndereco" placeholder="Endereço Completo" name="entity.endereco" value="${entity.endereco}" style="width: 900px" maxlength="200"/>
+                        </div>
                         <div class="controls">                           
                             <div id="gmap"></div>
                         </div>
                         <label class="alert alert-success"><fmt:message key="empresa.marcador.gmap"/></label>
-                        <input type="text" id="txtLatitude" placeholder="<fmt:message key="empresa.latitude"/>" name="entity.latitude" value="${entity.latitude}" readonly="true" style="text-align: right" class="input-xlarge">
-                        <input type="text" id="txtLongitude" placeholder="<fmt:message key="empresa.longitude"/>" name="entity.longitude" value="${entity.longitude}" readonly="true" style="text-align: right;" class="input-xlarge">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-globe"></i></span>
+                            <input type="text" id="txtLatitude" placeholder="<fmt:message key="empresa.latitude"/>" name="entity.latitude" value="${entity.latitude}" readonly="true" style="text-align: right" class="input-xlarge">
+                        </div>
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-globe"></i></span>
+                            <input type="text" id="txtLongitude" placeholder="<fmt:message key="empresa.longitude"/>" name="entity.longitude" value="${entity.longitude}" readonly="true" style="text-align: right;" class="input-xlarge">
+                        </div>
                     </div>
                 </div>
 
@@ -126,7 +144,10 @@
                                 <fmt:message key="empresa.email"/>
                             </label>
                             <div class="controls">
-                                <input type="email" required="true" id="email" style="text-transform: lowercase;" name="entity.email" value="${entity.email}" placeholder="empresa@dominio.com.br" class="input-xlarge">
+                                <div class="input-prepend">
+                                    <span class="add-on"><i class="icon-envelope"></i></span>
+                                    <input type="email" required="true" id="email" style="text-transform: lowercase;" name="entity.email" value="${entity.email}" placeholder="empresa@dominio.com.br" class="input-xlarge">
+                                </div>
                             </div>
                         </div>
 
@@ -135,7 +156,10 @@
                                 <fmt:message key="empresa.password"/>
                             </label>
                             <div class="controls">
-                                <input type="password" required="true" id="senha" name="entity.password" value="${entity.password}" class="input-xlarge">
+                                <div class="input-prepend">
+                                    <span class="add-on"><i class="icon-lock"></i></span>
+                                    <input type="password" placeholder="******" required="true" id="senha" name="entity.password" value="${entity.password}" class="input-xlarge">
+                                </div>
                             </div>
                         </div>
 
@@ -144,7 +168,10 @@
                                 <fmt:message key="empresa.password.repetir"/>
                             </label>
                             <div class="controls">
-                                <input type="password" required="true" id="senhaRepetir" class="input-xlarge">
+                                <div class="input-prepend">
+                                    <span class="add-on"><i class="icon-lock"></i></span>
+                                    <input type="password" placeholder="******" required="true" id="senhaRepetir" class="input-xlarge">
+                                </div>
                             </div>
                         </div>
 

@@ -60,6 +60,8 @@ public class Empresa extends AbstractEntity {
     private PerfilType perfil;
     @OneToMany(mappedBy = "idEmpresa")
     private Collection<Telefone> telefones;
+    @OneToMany(mappedBy = "idEmpresa")
+    private Collection<Fidelidade> fidelidades;
 
     public Empresa() {
     }
@@ -175,4 +177,21 @@ public class Empresa extends AbstractEntity {
     public void setTelefone(Collection<Telefone> telefones) {
         this.telefones = telefones;
     }
+
+    public Collection<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(Collection<Telefone> telefones) {
+        this.telefones = telefones;
+    }
+
+    public Collection<Fidelidade> getFidelidades() {
+        return fidelidades;
+    }
+
+    public void setFidelidades(Collection<Fidelidade> fidelidades) {
+        this.fidelidades = fidelidades;
+    }
+    
 }

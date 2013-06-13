@@ -20,10 +20,10 @@ public class ClienteFidelidade extends AbstractEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataFidelidade;
     @JoinColumn(name = "id_fidelidade", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Fidelidade idFidelidade;
     @JoinColumn(name = "id_cliente", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Cliente idCliente;
 
     public ClienteFidelidade() {

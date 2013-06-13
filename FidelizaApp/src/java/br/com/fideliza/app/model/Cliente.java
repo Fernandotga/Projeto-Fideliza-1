@@ -1,9 +1,11 @@
 package br.com.fideliza.app.model;
 
 import br.com.fideliza.app.model.common.AbstractEntity;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,6 +28,8 @@ public class Cliente extends AbstractEntity {
     @Column(name = "data_nascimento")
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
+    @OneToMany(mappedBy = "idCliente")
+    private Collection<ClienteFidelidade> clientesFidelidades;
 
     public Cliente() {
     }
@@ -78,4 +82,13 @@ public class Cliente extends AbstractEntity {
         this.dataNascimento = dataNascimento;
     }
 
+    public Collection<ClienteFidelidade> getClientesFidelidades() {
+        return clientesFidelidades;
+    }
+
+    public void setClientesFidelidades(Collection<ClienteFidelidade> clientesFidelidades) {
+        this.clientesFidelidades = clientesFidelidades;
+    }
+    
+    
 }
