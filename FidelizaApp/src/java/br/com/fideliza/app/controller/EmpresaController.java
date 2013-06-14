@@ -1,10 +1,14 @@
 package br.com.fideliza.app.controller;
 
+import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.interceptor.download.Download;
+import br.com.caelum.vraptor.interceptor.download.FileDownload;
+import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.com.fideliza.app.annotation.Permission;
 import br.com.fideliza.app.annotation.Public;
 import br.com.fideliza.app.component.EmpresaSession;
@@ -17,6 +21,7 @@ import br.com.fideliza.app.model.common.TelefoneType;
 import java.util.Date;
 import java.util.Locale;
 import static br.com.caelum.vraptor.view.Results.referer;
+import java.io.File;
 
 @Resource
 @Permission({PerfilType.MEMBRO, PerfilType.MODERADOR, PerfilType.ADMINISTRADOR})
@@ -41,9 +46,10 @@ public class EmpresaController {
                 .include("telefoneTypes", TelefoneType.values());
     }
 
-    @Public
-    public void addTelefone() {
-        
+    @Get("/empresa/{entity.id}")
+    public void exibir(Empresa entity) {
+        entity = repository.find(entity.getId());
+        result.include("entity", entity);
     }
 
     @Public
@@ -78,5 +84,39 @@ public class EmpresaController {
         } catch (IllegalStateException ex) {
             result.redirectTo(IndexController.class).index();
         }
+    }
+    
+    @Post("/empresa/{entity.id}/imagem")
+    public void uploadImage(UploadedFile file, Empresa entity) {
+        try {
+            repository.uploadImage(file, entity);
+        } catch (Exception e) {
+            result.include("error", e.getMessage());
+        }
+        result.redirectTo(this).exibir(entity);
+    }
+
+    @Delete("/empresa/{entity.id}/imagem")
+    public void removeImage(Empresa entity) {
+        try {
+            entity = repository.find(entity.getId());
+
+            repository.removeImage(entity);
+        } catch (Exception e) {
+            result.include("error", e.getMessage());
+        }
+        result.redirectTo(this).exibir(entity);
+    }
+
+    @Get("/empresa/{entity.id}/imagem")
+    public Download downloadImage(Empresa entity) {
+        entity = repository.find(entity.getId());
+        File file = new File(Empresa.IMAGE_PATH, entity.getLogo());
+
+        if (!file.exists()) {
+            return new FileDownload(new File(Empresa.IMAGE_PATH, "default.jpg"), "image/jpg", "default.jpg");
+        }
+        String fileName = entity.getNomeFantasia().replaceAll(" ", "-") + ".jpg";
+        return new FileDownload(file, "image/jpg", fileName);
     }
 }

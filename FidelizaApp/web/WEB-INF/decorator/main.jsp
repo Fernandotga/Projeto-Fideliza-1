@@ -14,6 +14,7 @@
         <link type="text/css" rel="stylesheet" href="/FidelizaApp/resources/css/stylesheet.css"/>
         <link type="text/css" rel="stylesheet" href="/FidelizaApp/resources/css/jquery-ui-1.10.3.custom.min.css"/>
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:600" type="text/css" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" href="/FidelizaApp/resources/css/footable.paginate.css"/>
 
         <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/jquery.min.js"></script>
         <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/bootstrap.js"></script>
@@ -24,6 +25,9 @@
         <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/jquery-ui-1.10.3.custom.min.js"></script>
         <script type="text/javascript" charset="ISO-8859-1" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
         <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/bootstrap-fileupload.min.js"></script>
+        <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/jquery.autocomplete.min.js"></script>
+        <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/footable.js"></script>
+        <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/footable.paginate.js"></script>
 
         <title><decorator:title default="Main | Projeto Fideliza"/></title>
     </head>

@@ -1,0 +1,32 @@
+tfoot.footable-pagination tr td {
+    text-align: center;
+}
+
+.footable-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.footable-nav li {
+    display: inline-block;
+}
+
+.footable-nav li a {
+    display: inline-block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+}
+
+.footable-nav .footable-page-current {
+    background: gray;
+    border-radius: 0%;
+}
+
+.footable-nav .footable-page-current a{
+    color: #fff;
+    font-weight: bold;
+}

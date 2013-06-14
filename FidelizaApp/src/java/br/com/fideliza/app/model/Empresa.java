@@ -62,6 +62,8 @@ public class Empresa extends AbstractEntity {
     private Collection<Telefone> telefones;
     @OneToMany(mappedBy = "idEmpresa")
     private Collection<Fidelidade> fidelidades;
+    
+    public static final String IMAGE_PATH = System.getProperty("user.dir") + "/sistemas/movy/uploads/img/empresa";
 
     public Empresa() {
     }

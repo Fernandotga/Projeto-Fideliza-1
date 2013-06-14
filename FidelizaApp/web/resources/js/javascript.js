@@ -17,6 +17,8 @@ $(document).ready(function() {
         if (!ValidarCNPJ($("#cnpj").val())) {
             $("#error").removeClass("hidden");
             $("#cnpj").focus();
+        } else {
+            $("#error").addClass("hidden");
         }
     });
 
@@ -150,4 +152,8 @@ function DoPrinting() {
     }
     window.print();
 }
+
+$(function() {
+    $('table').footable();
+});
 
