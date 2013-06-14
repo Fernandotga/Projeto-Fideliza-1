@@ -30,9 +30,13 @@ $(document).ready(function() {
 });
 
 
-function ValidarCNPJ(cnpj) {
+function ValidarCNPJ(ObjCnpj) {
 
-    cnpj = cnpj.replace(/[^\d]+/g, '');
+    var valida = new Array(6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2);
+    var dig1 = new Number;
+    var dig2 = new Number;
+
+    cnpj = ObjCnpj.replace(/[^\d]+/g, '');
 
 //    if (cnpj === '') {
 //        $("#error").text("CNPJ Rejeitado! Campo vazio!");
@@ -60,35 +64,19 @@ function ValidarCNPJ(cnpj) {
         return false;
     }
 
-    // Valida DVs
-    tamanho = cnpj.length - 2;
-    numeros = cnpj.substring(0, tamanho);
-    digitos = cnpj.substring(tamanho);
-    soma = 0;
-    pos = tamanho - 7;
-    for (i = tamanho; i >= 1; i--) {
-        soma += numeros.charAt(tamanho - i) * pos--;
-        if (pos < 2)
-            pos = 9;
-    }
-    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-    if ((resultado !== digitos.charAt(0)) && (cnpj !== '')) {
-        $("#error").text("CNPJ Rejeitado! Favor confira os numeros digitados");
-        return false;
-    }
+    var digito = new Number(eval(cnpj.charAt(12) + cnpj.charAt(13)));
 
-    tamanho = tamanho + 1;
-    numeros = cnpj.substring(0, tamanho);
-    soma = 0;
-    pos = tamanho - 7;
-    for (i = tamanho; i >= 1; i--) {
-        soma += numeros.charAt(tamanho - i) * pos--;
-        if (pos < 2)
-            pos = 9;
+    for (i = 0; i < valida.length; i++) {
+        dig1 += (i > 0 ? (cnpj.charAt(i - 1) * valida[i]) : 0);
+        dig2 += cnpj.charAt(i) * valida[i];
     }
-    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-    if ((resultado !== digitos.charAt(1)) && (cnpj !== '')) {
-        $("#error").text("CNPJ Rejeitado! Favor confira os numeros digitados");
+    dig1 = (((dig1 % 11) < 2) ? 0 : (11 - (dig1 % 11)));
+    dig2 = (((dig2 % 11) < 2) ? 0 : (11 - (dig2 % 11)));
+    
+    var result = (dig1 * 10) + dig2;
+
+    if ((result != digito) && (cnpj != '')) {
+        $("#error").text("CNPJ Rejeitado! Calculo invalido!");
         return false;
     }
     return true;
@@ -112,8 +100,8 @@ function confirmar(title, sim, nao, msg, funcao, largura, altura) {
                 }
             }
         ],
-        width: (largura !== undefined) ? largura : 320,
-        height: (altura !== undefined) ? altura : 150
+        width: (largura != undefined) ? largura : 320,
+        height: (altura != undefined) ? altura : 150
     })
             .html(msg)
             .dialog('open');
@@ -137,8 +125,8 @@ function mensagem(title, msg, largura, altura) {
                 $(this).dialog('close');
             }
         },
-        width: (largura !== undefined) ? largura : 320,
-        height: (altura !== undefined) ? altura : 150
+        width: (largura != undefined) ? largura : 320,
+        height: (altura != undefined) ? altura : 150
     })
             .html(msg)
             .dialog('open');

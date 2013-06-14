@@ -12,11 +12,7 @@
 
         <a class="btn btn-primary" href="<c:url value="/oferta/criar"/>"><fmt:message key="app.novo" /></a>
 
-        <table cellpadding="1" cellspacing="1" class="footable" data-page-navigation="#pagination" data-page-size="3">
-            <tr>
-                <th></th>
-            </tr>
-
+        <table cellpadding="1" cellspacing="1" class="footable" data-page-navigation="#pagination" data-page-size="2">
             <c:forEach items="${ofertaList}" var="oferta">
                 <tr>
                     <td>

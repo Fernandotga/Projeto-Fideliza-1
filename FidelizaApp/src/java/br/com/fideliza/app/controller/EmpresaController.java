@@ -22,7 +22,9 @@ import br.com.fideliza.app.model.common.TelefoneType;
 import java.util.Date;
 import java.util.Locale;
 import static br.com.caelum.vraptor.view.Results.referer;
+import br.com.fideliza.app.helper.Seguranca;
 import java.io.File;
+import java.security.NoSuchAlgorithmException;
 
 @Resource
 @Permission({PerfilType.MEMBRO, PerfilType.MODERADOR, PerfilType.ADMINISTRADOR})
@@ -62,13 +64,14 @@ public class EmpresaController {
 
     @Public
     @Post("/empresa")
-    public void salvar(Empresa entity) {
+    public void salvar(Empresa entity) throws NoSuchAlgorithmException {
         // dados default
         entity.setDataCadastro(new Date());
         entity.setAtivo(Boolean.TRUE);
         entity.setPerfil(PerfilType.MEMBRO);
         entity.setEmail(entity.getEmail().toLowerCase());
         entity.setLogo("default.jpg");
+        entity.setPassword(Seguranca.criptografaSenha(entity.getPassword())); 
 
         validator.validate(entity);
         validator.onErrorRedirectTo(this).criar(entity);
@@ -82,10 +85,11 @@ public class EmpresaController {
     }
 
     @Put("/empresa/{entity.id}/atualizar")
-    public void atualizar(Empresa entity) {
+    public void atualizar(Empresa entity) throws NoSuchAlgorithmException {
         entity.setAtivo(Boolean.TRUE);
         entity.setPerfil(PerfilType.MEMBRO);
         entity.setEmail(entity.getEmail().toLowerCase());
+        entity.setPassword(Seguranca.criptografaSenha(entity.getPassword())); 
         
         validator.validate(entity);
         validator.onErrorRedirectTo(this).editar(entity);

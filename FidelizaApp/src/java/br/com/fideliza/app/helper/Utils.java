@@ -32,8 +32,7 @@ public class Utils {
             }
 
             return hexBuild.toString();
-        } catch (NoSuchAlgorithmException e) {
-        } catch (UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
         }
 
         return text;

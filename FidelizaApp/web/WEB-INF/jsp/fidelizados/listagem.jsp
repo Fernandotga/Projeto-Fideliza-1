@@ -21,10 +21,7 @@
             </div>
         </div>
 
-        <table cellpadding="1" cellspacing="1" class="footable" data-page-navigation="#pagination" data-page-size="3">
-            <tr>
-                <th></th>
-            </tr>
+        <table cellpadding="1" cellspacing="1" class="footable" data-page-navigation="#pagination" data-page-size="2">
             <c:forEach items="${fidelizadosList}" var="fidelizados">
                 <tr>
                     <td>

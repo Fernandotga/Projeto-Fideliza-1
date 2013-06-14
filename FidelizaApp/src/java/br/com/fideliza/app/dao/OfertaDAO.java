@@ -25,8 +25,8 @@ public class OfertaDAO extends GenericDAO<Oferta> implements OfertaRepository {
 
     @Override
     public Boolean limitInserts(Long id) {
-        // Regra de 4 ofertas por empresa
-        long limit = 4;
+        // Regra de 8 ofertas por empresa
+        long limit = 8;
         try {
             Query query = manager.createQuery("select count(n) from " + Oferta.class.getName() + " n where id_empresa = :id");
             query.setParameter("id", id);
