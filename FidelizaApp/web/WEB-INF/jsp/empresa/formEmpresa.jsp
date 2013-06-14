@@ -3,7 +3,7 @@
         <div id="legend">
             <legend class="">
                 <fmt:message key="empresa.empresa"/>
-                <small> <fmt:message key="app.novo"/> </small>
+                <small> <fmt:message key="app.formulario"/> </small>
             </legend>
         </div>
 
@@ -12,13 +12,13 @@
                 <c:set var="uri" value="/empresa" />
             </c:when>
             <c:otherwise>
-                <c:set var="uri" value="/empresa/${entity.id}" />
+                <c:set var="uri" value="/empresa/${entity.id}/atualizar" />
             </c:otherwise>
         </c:choose>
 
         <form id="cadastroEmpresa" action="<c:url value="${uri}" />" method="POST">
             <c:if test="${entity.id != null}">
-                <input type="hidden" name="_method" value="put"/>
+                <input type="hidden" name="_method" value="PUT"/>
             </c:if>
 
             <ul class="nav nav-tabs">
@@ -66,7 +66,10 @@
                     <div class="control-group">
                         <label class="control-label" for="cnpj"> <fmt:message key="empresa.cnpj"/> </label>
                         <div class="controls">
-                            <input type="text" id="cnpj" data-mask="99.999.999/9999-99" name="entity.cnpj" value="${entity.cnpj}" class="input-medium">                      
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="icon-folder-close"></i></span>
+                                <input type="text" id="cnpj" data-mask="99.999.999/9999-99" name="entity.cnpj" value="${entity.cnpj}" class="input-medium">  
+                            </div>
                         </div>
                     </div>
 

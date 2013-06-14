@@ -25,7 +25,7 @@ public class FidelizadosDAO extends GenericDAO<Cliente> implements FidelizadosRe
                 + "join c.clientesFidelidades cf "
                 + "join cf.idFidelidade f "
                 + "join f.idEmpresa e "
-                + "where e.id = :id";
+                + "where e.id = :id order by c.nome asc";
         try {
             Query query = manager.createQuery(sql);
             query.setParameter("id", id);

@@ -3,6 +3,7 @@ package br.com.fideliza.app.controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
@@ -52,6 +53,13 @@ public class EmpresaController {
         result.include("entity", entity);
     }
 
+    @Get("/empresa/{entity.id}/editar")
+    public void editar(Empresa entity) {
+        result.include("telefoneTypes", TelefoneType.values());
+        entity = repository.find(entity.getId());
+        result.include("entity", entity);
+    }
+
     @Public
     @Post("/empresa")
     public void salvar(Empresa entity) {
@@ -60,6 +68,7 @@ public class EmpresaController {
         entity.setAtivo(Boolean.TRUE);
         entity.setPerfil(PerfilType.MEMBRO);
         entity.setEmail(entity.getEmail().toLowerCase());
+        entity.setLogo("default.jpg");
 
         validator.validate(entity);
         validator.onErrorRedirectTo(this).criar(entity);
@@ -69,6 +78,23 @@ public class EmpresaController {
             result.include("notice", Utils.i18n("empresa.salvo.sucesso")).redirectTo(IndexController.class).index();
         } catch (CommonException e) {
             result.include("error", Utils.i18n(e.getMessage())).redirectTo(this).criar(entity);
+        }
+    }
+
+    @Put("/empresa/{entity.id}/atualizar")
+    public void atualizar(Empresa entity) {
+        entity.setAtivo(Boolean.TRUE);
+        entity.setPerfil(PerfilType.MEMBRO);
+        entity.setEmail(entity.getEmail().toLowerCase());
+        
+        validator.validate(entity);
+        validator.onErrorRedirectTo(this).editar(entity);
+
+        try {
+            entity = repository.save(entity);
+            result.include("notice", Utils.i18n("empresa.atualizado.sucesso")).redirectTo(this).exibir(entity);
+        } catch (CommonException e) {
+            result.include("error", Utils.i18n(e.getMessage())).redirectTo(this).editar(entity);
         }
     }
 
@@ -85,7 +111,7 @@ public class EmpresaController {
             result.redirectTo(IndexController.class).index();
         }
     }
-    
+
     @Post("/empresa/{entity.id}/imagem")
     public void uploadImage(UploadedFile file, Empresa entity) {
         try {

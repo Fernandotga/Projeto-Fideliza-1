@@ -40,7 +40,7 @@ public class FidelidadeDAO extends GenericDAO<Fidelidade> implements FidelidadeR
     @Override
     public List<Fidelidade> minhasFidelidades(Long id) {
         try {
-            Query query = manager.createQuery("from " + Fidelidade.class.getName() + " where id_empresa = :id order by ativo asc");
+            Query query = manager.createQuery("from " + Fidelidade.class.getName() + " where id_empresa = :id order by ativo desc");
             query.setParameter("id", id);
 
             return query.getResultList();
