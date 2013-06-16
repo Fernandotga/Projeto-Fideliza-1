@@ -14,12 +14,9 @@ import javax.persistence.TemporalType;
 @Table(name = "fid_clientes_fidelidades_historicos")
 public class ClienteFidelidadeHistorico extends AbstractEntity {
 
-    @Column(name = "data_inicio_checkin")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataInicioCheckin;
     @Column(name = "status_fidelidade")
-    private char statusFidelidade;
-    @Column(name = "data_troca")
+    private String statusFidelidade;
+    @Column(name = "data_troca_vencimento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataTroca;
     @Column(name = "pontos_acumulados")
@@ -31,19 +28,11 @@ public class ClienteFidelidadeHistorico extends AbstractEntity {
     public ClienteFidelidadeHistorico() {
     }
 
-    public Date getDataInicioCheckin() {
-        return dataInicioCheckin;
-    }
-
-    public void setDataInicioCheckin(Date dataInicioCheckin) {
-        this.dataInicioCheckin = dataInicioCheckin;
-    }
-
-    public char getStatusFidelidade() {
+    public String getStatusFidelidade() {
         return statusFidelidade;
     }
 
-    public void setStatusFidelidade(char statusFidelidade) {
+    public void setStatusFidelidade(String statusFidelidade) {
         this.statusFidelidade = statusFidelidade;
     }
 

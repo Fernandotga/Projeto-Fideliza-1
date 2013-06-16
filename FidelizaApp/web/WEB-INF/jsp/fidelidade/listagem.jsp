@@ -12,7 +12,7 @@
 
         <a class="btn btn-primary" href="<c:url value="/fidelidade/criar"/>"><fmt:message key="app.novo" /></a>
 
-        <table cellpadding="1" cellspacing="1" class="footable" data-page-navigation="#pagination" data-page-size="2">
+        <table cellpadding="1" cellspacing="1" class="footable" data-page-navigation="#pagination" data-page-size="1">
             <c:forEach items="${fidelidadeList}" var="fidelidade">
                 <tr>
                     <td>
@@ -33,12 +33,19 @@
                                 </div>
                                 <fmt:message key="app.valido.por" /> <fmt:formatNumber value="${fidelidade.validadeDias}" minFractionDigits="0"/> Dias.
                             </div>
-                        </div>
-
-                        <div class="control-group">
                             <div class="controls">
-                                <div class="inline">
-                                    <form action="<c:url value="/fidelidade/${fidelidade.id}" />" method="GET">
+                                <div class="input-prepend">
+                                    <span class="add-on"><i class="icon-off"></i></span>                   
+                                </div>
+                                <c:if test="${fidelidade.ativo}">Fidelidade Ativa</c:if>
+                                <c:if test="${!fidelidade.ativo}">Fidelidade Inativa</c:if>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="controls">
+                                    <div class="inline">
+                                        <form action="<c:url value="/fidelidade/${fidelidade.id}" />" method="GET">
                                         <button class="btn btn-success" style="margin-right: 5px;" type="submit">
                                             <i class="icon-white icon-check"></i>
                                             <fmt:message key="app.exibir" />

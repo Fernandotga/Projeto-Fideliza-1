@@ -31,7 +31,7 @@
                     <span class="add-on"><i class="icon-calendar"></i></span>                   
                 </div>
                 <fmt:message key="app.valido.por" /> <fmt:formatNumber value="${entity.validadeDias}" minFractionDigits="0"/> Dias.
-            </div>
+            </div>       
 
             <div class="control-group">
                 <div class="controls">

@@ -4,6 +4,7 @@ import br.com.caelum.vraptor.ioc.Component;
 import br.com.fideliza.app.model.Cliente;
 import br.com.fideliza.app.model.ClienteFidelidade;
 import br.com.fideliza.app.repository.FidelizadosRepository;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -38,12 +39,23 @@ public class FidelizadosDAO extends GenericDAO<Cliente> implements FidelizadosRe
     }
 
     @Override
-    public void zeraPontos(Long id) {
+    public void trocarPontos(Long id) {
         int zero = 0;
-        Query query = manager.createQuery("update " + ClienteFidelidade.class.getName() + " set pontos = :pontos where id = :id");
+        Query query = null;
+        // historico
+        query = manager.createNativeQuery("insert into fid_clientes_fidelidades_historicos(status_fidelidade, data_troca_vencimento, pontos_acumulados, id_cliente_fidelidade) values (:status, :data, :pontos, :id)");
+        query.setParameter("pontos", null);
+        query.setParameter("id", id);
+        query.setParameter("status", "T");
+        query.setParameter("data", new Date());
+        query.executeUpdate();
+        query = null;
+        // zerando ...
+        query = manager.createQuery("update " + ClienteFidelidade.class.getName() + " set pontos = :pontos where id = :id");
         query.setParameter("pontos", zero);
         query.setParameter("id", id);
         query.executeUpdate();
+
     }
 
     @Override

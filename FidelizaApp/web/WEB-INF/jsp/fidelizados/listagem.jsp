@@ -12,10 +12,42 @@
 
         <div class="control-group">
             <div class="controls">
+                <div class="inline">
+                    <form action="<c:url value="/fidelizados/imprimir/fidelizados" />" method="GET">
+                        <button class="btn btn-primary" style="margin-right: 5px;" type="submit">
+                            <i class="icon-white icon-print"></i>
+                            <fmt:message key="fidelizados.imprimir" />
+                        </button>
+                    </form>
+                </div>
+                <div class="inline">
+                    <form action="<c:url value="/fidelizados/imprimir/trocas"/>" method="GET">
+                        <button class="btn btn-primary" style="margin-right: 5px;" type="submit">
+                            <i class="icon-white icon-print"></i>
+                            <fmt:message key="fidelizados.imprimir.trocas" />
+                        </button>
+                    </form>
+                </div>
+
+                <div class="inline">
+                    <form action="<c:url value="/fidelizados/imprimir/vencidos" />" method="GET">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button class="btn btn-primary" type="submit">
+                            <i class="icon-white icon-print"></i>
+                            <fmt:message key="fidelizados.imprimir.vencidos" />
+                        </button>
+                    </form>
+                </div>
+                <br class="clearBoth" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
                 <form action="<c:url value="/fidelizados/busca"/>">
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-search"></i></span>
-                        <input type="text" class="input-xxlarge" name="busca" placeholder="Buscar Fidelizados"/>
+                        <input type="text" class="input-xxlarge" name="busca" placeholder="Buscar Fidelizados"/>                       
                     </div>
                 </form>
             </div>

@@ -10,7 +10,6 @@
             <li><a href="<c:url value="/oferta"/>">Minhas Ofertas</a></li> 
             <li><a href="<c:url value="/fidelidade"/>">Cartão Fidelidade</a></li> 
             <li><a href="<c:url value="/fidelizados"/>">Fidelizados</a></li> 
-            <li><a href="#">Relatórios</a></li>
             <li class="divider-vertical"></li> 
             <li><a href="<c:url value="/empresa/${empresaSession.empresa.id}"/>">Minha Empresa</a></li> 
             </c:if>
