@@ -13,31 +13,19 @@
         <div class="control-group">
             <div class="controls">
                 <div class="inline">
-                    <form action="<c:url value="/fidelizados/imprimir/fidelizados" />" method="GET">
-                        <button class="btn btn-primary" style="margin-right: 5px;" type="submit">
-                            <i class="icon-white icon-print"></i>
-                            <fmt:message key="fidelizados.imprimir" />
-                        </button>
-                    </form>
-                </div>
-                <div class="inline">
-                    <form action="<c:url value="/fidelizados/imprimir/trocas"/>" method="GET">
-                        <button class="btn btn-primary" style="margin-right: 5px;" type="submit">
-                            <i class="icon-white icon-print"></i>
-                            <fmt:message key="fidelizados.imprimir.trocas" />
-                        </button>
-                    </form>
+                    <a href="<c:url value="/fidelizados/pdf"/>" target="_blank" class="btn btn-primary">                            
+                        <i class="icon-white icon-print"></i>
+                        <fmt:message key="fidelizados.imprimir" />
+                    </a>
                 </div>
 
                 <div class="inline">
-                    <form action="<c:url value="/fidelizados/imprimir/vencidos" />" method="GET">
-                        <input type="hidden" name="_method" value="delete"/>
-                        <button class="btn btn-primary" type="submit">
-                            <i class="icon-white icon-print"></i>
-                            <fmt:message key="fidelizados.imprimir.vencidos" />
-                        </button>
-                    </form>
+                    <a href="<c:url value="/fidelizados/pdf"/>" target="_blank" class="btn btn-primary">                            
+                        <i class="icon-white icon-print"></i>
+                        <fmt:message key="fidelizados.imprimir.trocas" />
+                    </a>
                 </div>
+                        
                 <br class="clearBoth" />
             </div>
         </div>
@@ -96,7 +84,7 @@
                 </td>
             </tr>
         </table>
-    </fieldset>
+    </fieldset>           
     <div style="border-top: 1px solid gray; padding-bottom: 0px">
         <ul id="pagination" class="footable-nav"><span>Paginas:</span></ul>
     </div>
