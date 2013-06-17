@@ -115,7 +115,7 @@ public class FidelizadosController {
 //    }
 
     private Report generateReport() {
-        List<Cliente> data = repository.meusClientes(session.getEmpresa().getId());
-        return new FidelizadosReport(data);
+        Collection<Cliente> data = repository.all();
+        return new FidelizadosReport((List<Cliente>) data);
     }
 }
