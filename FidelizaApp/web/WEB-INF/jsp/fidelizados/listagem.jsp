@@ -12,26 +12,6 @@
 
         <div class="control-group">
             <div class="controls">
-                <div class="inline">
-                    <a href="<c:url value="/fidelizados/pdf"/>" target="_blank" class="btn btn-primary">                            
-                        <i class="icon-white icon-print"></i>
-                        <fmt:message key="fidelizados.imprimir" />
-                    </a>
-                </div>
-
-                <div class="inline">
-                    <a href="<c:url value="/fidelizados/pdf"/>" target="_blank" class="btn btn-primary">                            
-                        <i class="icon-white icon-print"></i>
-                        <fmt:message key="fidelizados.imprimir.trocas" />
-                    </a>
-                </div>
-                        
-                <br class="clearBoth" />
-            </div>
-        </div>
-
-        <div class="control-group">
-            <div class="controls">
                 <form action="<c:url value="/fidelizados/busca"/>">
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-search"></i></span>
@@ -84,7 +64,26 @@
                 </td>
             </tr>
         </table>
-    </fieldset>           
+    </fieldset> 
+    <div class="control-group" style="border-top: 1px solid gray;">
+        <div class="controls">
+            <div class="inline">
+                <a href="<c:url value="/fidelizados/pdf"/>" target="_blank" class="btn btn-primary" style="margin-right: 5px; margin-top: 8px">                            
+                    <i class="icon-white icon-print"></i>
+                    <fmt:message key="fidelizados.imprimir" />
+                </a>
+            </div>
+
+            <div class="inline">
+                <a href="<c:url value="/fidelizados/pdf"/>" target="_blank" class="btn btn-primary" style=" margin-top: 8px">                            
+                    <i class="icon-white icon-print"></i>
+                    <fmt:message key="fidelizados.imprimir.trocas" />
+                </a>
+            </div>
+
+            <br class="clearBoth" />
+        </div>
+    </div>
     <div style="border-top: 1px solid gray; padding-bottom: 0px">
         <ul id="pagination" class="footable-nav"><span>Paginas:</span></ul>
     </div>

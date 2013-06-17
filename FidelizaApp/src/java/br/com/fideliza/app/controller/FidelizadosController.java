@@ -101,7 +101,6 @@ public class FidelizadosController {
 //        Report report = generateReport();
 //        return new ReportDownload(report, rtf());
 //    }
-
 //    @Path("/fidelizados/report/preview")
 //    public Download previewReport() {
 //        Report report = generateReport();
@@ -113,9 +112,8 @@ public class FidelizadosController {
 //        Report report = generateReport();
 //        return new ReportDownload(report, formats.byExtension(format));
 //    }
-
     private Report generateReport() {
-        Collection<Cliente> data = repository.all();
-        return new FidelizadosReport((List<Cliente>) data);
+        List<Cliente> data = (List<Cliente>) repository.all();
+        return new FidelizadosReport(data);
     }
 }
