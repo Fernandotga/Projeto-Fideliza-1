@@ -10,7 +10,9 @@
             </legend>  
         </div>  
 
-        <a class="btn btn-primary" href="<c:url value="/fidelidade/criar"/>"><fmt:message key="app.novo" /></a>
+        <div style="border-bottom: 1px solid gray; padding-bottom: 5px">
+             <a class="btn btn-primary" href="<c:url value="/fidelidade/criar"/>"><fmt:message key="app.novo" /></a>
+        </div>
 
         <table cellpadding="1" cellspacing="1" class="footable" data-page-navigation="#pagination" data-page-size="1">
             <c:forEach items="${fidelidadeList}" var="fidelidade">

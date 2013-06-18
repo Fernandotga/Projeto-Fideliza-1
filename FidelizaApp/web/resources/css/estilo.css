@@ -5,8 +5,8 @@
 }
 
 body, label, input[type="submit"], input[type="button"], input[type="text"], input[type="email"], select, textarea {
-    font-family: "Open Sans", Verdana, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 12px;
 }
 
 .header {
@@ -33,13 +33,13 @@ div#identification{
     float: right;
     padding-right: 50px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 div#content {
     background-color: #FFF;
     float: left;
-    min-height: 400px;
+    min-height: 450px;
     width: 1024px;
 }
 

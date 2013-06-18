@@ -9,6 +9,26 @@
                 <small> <fmt:message key="app.listar"/> </small>
             </legend>  
         </div>
+            
+        <div class="control-group" style="border-bottom: 1px solid gray; padding-bottom: 5px">
+            <div class="controls">
+                <div class="inline">
+                    <a href="<c:url value="/fidelizados/pdf"/>" class="btn btn-primary" target="_blank" style="margin-right: 5px;">                            
+                        <i class="icon-white icon-print"></i>
+                        <fmt:message key="fidelizados.imprimir" />
+                    </a>
+                </div>
+
+                <div class="inline">
+                    <a href="<c:url value="/fidelizados/pdf"/>" class="btn btn-primary">                            
+                        <i class="icon-white icon-print"></i>
+                        <fmt:message key="fidelizados.imprimir.trocas" />
+                    </a>
+                </div>
+
+                <br class="clearBoth" />
+            </div>
+        </div>
 
         <div class="control-group">
             <div class="controls">
@@ -65,26 +85,7 @@
             </tr>
         </table>
     </fieldset> 
-    <div class="control-group" style="border-top: 1px solid gray;">
-        <div class="controls">
-            <div class="inline">
-                <a href="<c:url value="/fidelizados/pdf"/>" target="_blank" class="btn btn-primary" style="margin-right: 5px; margin-top: 8px">                            
-                    <i class="icon-white icon-print"></i>
-                    <fmt:message key="fidelizados.imprimir" />
-                </a>
-            </div>
-
-            <div class="inline">
-                <a href="<c:url value="/fidelizados/pdf"/>" target="_blank" class="btn btn-primary" style=" margin-top: 8px">                            
-                    <i class="icon-white icon-print"></i>
-                    <fmt:message key="fidelizados.imprimir.trocas" />
-                </a>
-            </div>
-
-            <br class="clearBoth" />
-        </div>
-    </div>
     <div style="border-top: 1px solid gray; padding-bottom: 0px">
-        <ul id="pagination" class="footable-nav"><span>Paginas:</span></ul>
+        <ul id="pagination" class="footable-nav"><span>Páginas: </span></ul>
     </div>
 </body>

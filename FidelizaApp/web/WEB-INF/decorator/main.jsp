@@ -24,6 +24,7 @@
         <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/mapa.js"></script>
         <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/jquery-ui-1.10.3.custom.min.js"></script>
         <script type="text/javascript" charset="ISO-8859-1" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+        <script type="text/javascript" charset="ISO-8859-1" src="http://www.google.com/jsapi"></script>
         <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/bootstrap-fileupload.min.js"></script>
         <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/jquery.autocomplete.min.js"></script>
         <script type="text/javascript" charset="ISO-8859-1" src="/FidelizaApp/resources/js/footable.js"></script>
