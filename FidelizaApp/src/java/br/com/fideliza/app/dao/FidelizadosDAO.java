@@ -4,6 +4,7 @@ import br.com.caelum.vraptor.ioc.Component;
 import br.com.fideliza.app.model.Cliente;
 import br.com.fideliza.app.model.ClienteFidelidade;
 import br.com.fideliza.app.repository.FidelizadosRepository;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -55,7 +56,6 @@ public class FidelizadosDAO extends GenericDAO<Cliente> implements FidelizadosRe
         query.setParameter("pontos", zero);
         query.setParameter("id", id);
         query.executeUpdate();
-
     }
 
     @Override
@@ -69,6 +69,23 @@ public class FidelizadosDAO extends GenericDAO<Cliente> implements FidelizadosRe
             Query query = manager.createQuery(sql);
             query.setParameter("id", id);
             query.setParameter("nome", "%" + nome + "%");
+
+            return query.getResultList();
+        } catch (NoResultException ex) {
+            log.error(ex);
+            return null;
+        }
+    }
+
+    @Override
+    public Collection<Cliente> relatorio(Long id) {
+        String sql = "select c.nome, c.endereco, c.email, c.data_nascimento as dataNascimento, cf.pontos from fid_clientes c "
+                + "left join fid_clientes_fidelidades cf on cf.id_cliente=c.id "
+                + "left join fid_fidelidades f on f.id = cf.id_fidelidade "
+                + "left join fid_empresas e on e.id = f.id_empresa where e.id = :id order by c.nome asc ";
+        try {
+            Query query = manager.createNativeQuery(sql);
+            query.setParameter("id", id);
 
             return query.getResultList();
         } catch (NoResultException ex) {

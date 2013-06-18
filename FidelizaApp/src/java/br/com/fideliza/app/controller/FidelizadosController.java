@@ -18,7 +18,6 @@ import br.com.fideliza.app.model.common.PerfilType;
 import br.com.fideliza.app.report.FidelizadosReport;
 import br.com.fideliza.app.repository.FidelizadosRepository;
 import java.util.Collection;
-import java.util.List;
 
 @Resource
 @Permission({PerfilType.MEMBRO, PerfilType.ADMINISTRADOR, PerfilType.MODERADOR})
@@ -66,54 +65,57 @@ public class FidelizadosController {
         return new ReportDownload(report, pdf());
     }
 
-//    @Path("/fidelizados/csv")
-//    public Download csvReport() {
-//        Report report = generateReport();
-//        return new ReportDownload(report, csv());
-//    }
-//
-//    @Path("/fidelizados/xls")
-//    public Download xlsReport() {
-//        Report report = generateReport();
-//        return new ReportDownload(report, xls());
-//    }
-//
-//    @Path("/fidelizados/docx")
-//    public Download docxReport() {
-//        Report report = generateReport();
-//        return new ReportDownload(report, docx());
-//    }
-//
-//    @Path("/fidelizados/txt")
-//    public Download txtReport() {
-//        Report report = generateReport();
-//        return new ReportDownload(report, txt());
-//    }
-//
-//    @Path("/fidelizados/odt")
-//    public Download odtReport() {
-//        Report report = generateReport();
-//        return new ReportDownload(report, odt());
-//    }
-//
-//    @Path("/fidelizados/rtf")
-//    public Download rtfReport() {
-//        Report report = generateReport();
-//        return new ReportDownload(report, rtf());
-//    }
-//    @Path("/fidelizados/report/preview")
-//    public Download previewReport() {
-//        Report report = generateReport();
-//        return new ReportDownload(report, png(), false);
-//    }
-//
-//    @Path("/fidelizados/report/{format}")
-//    public Download report(String format) {
-//        Report report = generateReport();
-//        return new ReportDownload(report, formats.byExtension(format));
-//    }
+    @Path("/fidelizados/csv")
+    public Download csvReport() {
+        Report report = generateReport();
+        return new ReportDownload(report, csv());
+    }
+
+    @Path("/fidelizados/xls")
+    public Download xlsReport() {
+        Report report = generateReport();
+        return new ReportDownload(report, xls());
+    }
+
+    @Path("/fidelizados/docx")
+    public Download docxReport() {
+        Report report = generateReport();
+        return new ReportDownload(report, docx());
+    }
+
+    @Path("/fidelizados/txt")
+    public Download txtReport() {
+        Report report = generateReport();
+        return new ReportDownload(report, txt());
+    }
+
+    @Path("/fidelizados/odt")
+    public Download odtReport() {
+        Report report = generateReport();
+        return new ReportDownload(report, odt());
+    }
+
+    @Path("/fidelizados/rtf")
+    public Download rtfReport() {
+        Report report = generateReport();
+        return new ReportDownload(report, rtf());
+    }
+
+    @Path("/fidelizados/report/preview")
+    public Download previewReport() {
+        Report report = generateReport();
+        return new ReportDownload(report, png(), false);
+    }
+
+    @Path("/fidelizados/report/{format}")
+    public Download report(String format) {
+        Report report = generateReport();
+        return new ReportDownload(report, formats.byExtension(format));
+    }
+
     private Report generateReport() {
-        List<Cliente> data = (List<Cliente>) repository.all();
+        Collection<Cliente> data = repository.relatorio(session.getEmpresa().getId());
+        //Collection<Cliente> data = repository.all();
         return new FidelizadosReport(data);
     }
 }

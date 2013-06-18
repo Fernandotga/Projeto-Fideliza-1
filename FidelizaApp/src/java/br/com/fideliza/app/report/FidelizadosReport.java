@@ -4,15 +4,14 @@ import br.com.caelum.vraptor.jasperreports.Report;
 import br.com.fideliza.app.model.Cliente;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class FidelizadosReport implements Report {
 
-    private final List<Cliente> data;
+    private final Collection<Cliente> data;
     private Map<String, Object> parameters;
 
-    public FidelizadosReport(List<Cliente> data) {
+    public FidelizadosReport(Collection<Cliente> data) {
         this.data = data;
         this.parameters = new HashMap<>();
     }

@@ -13,9 +13,7 @@
 			<style backcolor="#CCCCCC"/>
 		</conditionalStyle>
 	</style>
-	<queryString>
-		<![CDATA[select c.nome, c.endereco, c.email, c.data_nascimento as dataNascimento from fid_clientes c]]>
-	</queryString>
+	<parameter name="id" class="java.lang.String"/>
 	<field name="nome" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
