@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="inline">
-                    <a href="<c:url value="/fidelizados/pdf"/>" class="btn btn-primary">                            
+                    <a href="<c:url value="/fidelizados/pdf/trocas"/>" class="btn btn-primary" target="_blank">                            
                         <i class="icon-white icon-print"></i>
                         <fmt:message key="fidelizados.imprimir.trocas" />
                     </a>
@@ -52,10 +52,10 @@
                             </div>
 
                             <div class="controls">
-                                <span class="badge badge-success">
-                                    <b>${fidelizados[1].pontos}</b>
+                                <h5><span class="badge badge-warning">
+                                    <h4>${fidelizados[1].pontos}</h4>
                                 </span>
-                                <fmt:message key="fidelizados.pontos" />
+                                    <fmt:message key="fidelizados.pontos" /></h5>
                             </div>
                         </div>
 

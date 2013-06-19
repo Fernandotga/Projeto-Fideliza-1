@@ -8,9 +8,9 @@
 	</queryString>
 	<field name="[0]" class="java.lang.String"/>
 	<field name="[1]" class="java.lang.String"/>
-	<field name="[2]" class="java.lang.String"/>
-	<field name="[3]" class="java.sql.Date"/>
-	<field name="[4]" class="java.lang.String"/>
+	<field name="[2]" class="java.sql.Timestamp"/>
+	<field name="[3]" class="java.lang.String"/>
+	<field name="[4]" class="java.sql.Timestamp"/>
 	<title>
 		<band height="79" splitType="Stretch">
 			<image>
@@ -32,42 +32,42 @@
 				<textElement>
 					<font fontName="Verdana" size="24" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Lista de Fidelizados/Clientes]]></text>
+				<text><![CDATA[Ultimas Trocas]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="093f7a71-933d-4c4b-88ae-973c579c9aa2" x="12" y="9" width="282" height="15"/>
+				<reportElement uuid="117f2398-b268-47e3-ade6-e85088a3b0a8" x="12" y="20" width="185" height="15"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Endereço]]></text>
+				<text><![CDATA[Nome Completo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="cc1c60be-747e-49d4-8c71-3fea5ffedb11" x="294" y="10" width="177" height="15"/>
+				<reportElement uuid="cc1c60be-747e-49d4-8c71-3fea5ffedb11" x="197" y="20" width="181" height="15"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Email]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="40eb8154-cd06-4cbe-bcbb-492f9d5b0e49" x="471" y="10" width="129" height="15"/>
+				<reportElement uuid="40eb8154-cd06-4cbe-bcbb-492f9d5b0e49" x="378" y="20" width="129" height="15"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nascimento]]></text>
+				<text><![CDATA[Data da Troca]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="6b9a31ae-d285-40b4-be15-1df4dd1a9972" x="704" y="10" width="80" height="15"/>
+				<reportElement uuid="6b9a31ae-d285-40b4-be15-1df4dd1a9972" x="667" y="20" width="117" height="15"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Pontos]]></text>
+				<text><![CDATA[Data da Fidelizade]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="7c29be4b-47e4-4742-9fbd-3fef64c830c2" x="0" y="24" width="802" height="1"/>
+				<reportElement uuid="7c29be4b-47e4-4742-9fbd-3fef64c830c2" x="0" y="34" width="802" height="1"/>
 				<graphicElement>
 					<pen lineStyle="Dashed"/>
 				</graphicElement>
@@ -75,46 +75,46 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="47" splitType="Stretch">
+		<band height="62" splitType="Stretch">
 			<textField>
-				<reportElement uuid="5794d4cf-b231-4732-b036-53c1e00d3f58" x="12" y="0" width="772" height="20"/>
+				<reportElement uuid="5794d4cf-b231-4732-b036-53c1e00d3f58" x="12" y="30" width="185" height="20"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{[0]}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="8056bb4c-ef60-4d95-a6d5-f99d91840b03" x="12" y="20" width="282" height="20"/>
+				<reportElement uuid="8056bb4c-ef60-4d95-a6d5-f99d91840b03" x="197" y="30" width="181" height="20"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{[1]}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="5b7277f1-9669-482e-9028-99480b1a536b" x="294" y="20" width="177" height="20"/>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement uuid="5b7277f1-9669-482e-9028-99480b1a536b" x="378" y="30" width="129" height="20"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{[2]}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement uuid="7dca8f5c-5c74-41ba-9d41-7b5a596ddca4" x="471" y="20" width="129" height="20"/>
+				<reportElement uuid="7dca8f5c-5c74-41ba-9d41-7b5a596ddca4" x="12" y="10" width="772" height="20"/>
 				<textElement>
-					<font isBold="false"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{[3]}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="35cf55b3-763a-402b-9727-f7475f81ba4d" x="704" y="20" width="80" height="20"/>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement uuid="35cf55b3-763a-402b-9727-f7475f81ba4d" x="667" y="30" width="117" height="20"/>
 				<textElement textAlignment="Right">
 					<font isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{[4]}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement uuid="194eaa6d-06d4-4754-92b9-f37ccfa720d4" x="12" y="41" width="772" height="1"/>
+				<reportElement uuid="45435b63-70de-4f87-ba19-8f7302143b17" x="12" y="52" width="772" height="1"/>
 				<graphicElement>
-					<pen lineStyle="Double" lineColor="#999999"/>
+					<pen lineStyle="Double" lineColor="#CCCCCC"/>
 				</graphicElement>
 			</line>
 		</band>

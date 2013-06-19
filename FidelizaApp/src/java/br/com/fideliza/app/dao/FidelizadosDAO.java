@@ -79,13 +79,52 @@ public class FidelizadosDAO extends GenericDAO<Cliente> implements FidelizadosRe
 
     @Override
     public Collection<Cliente> relatorio(Long id) {
-        String sql = "select c.nome, c.endereco, c.email, c.data_nascimento as dataNascimento, cf.pontos from fid_clientes c "
-                + "left join fid_clientes_fidelidades cf on cf.id_cliente=c.id "
+        String sql = "select c.nome, c.endereco, c.email, c.dataNascimento, cf.pontos from Cliente c "
+                + "join c.clientesFidelidades cf "
+                + "join cf.idFidelidade f "
+                + "join f.idEmpresa e "
+                + "where e.id = :id order by c.nome asc";
+        try {
+            Query query = manager.createQuery(sql);
+            query.setParameter("id", id);
+
+            return query.getResultList();
+        } catch (NoResultException ex) {
+            log.error(ex);
+            return null;
+        }
+    }
+
+    @Override
+    public int countCustomer(Long id) {
+        String sql = "select count(c) from Cliente c "
+                + "join c.clientesFidelidades cf "
+                + "join cf.idFidelidade f "
+                + "join f.idEmpresa e "
+                + "where e.id = :id order by c.nome asc";
+        try {
+            Query query = manager.createQuery(sql);
+            query.setParameter("id", id);
+            long result = (Long) query.getSingleResult();
+            return (int) result;
+        } catch (NoResultException ex) {
+            log.error(ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public Collection<Cliente> trocas(Long id) {
+        String sql = "select c.nome, c.email, h.data_troca_vencimento, f.recompensa, cf.data_fidelidade from fid_clientes_fidelidades_historicos h "
+                + "left join fid_clientes_fidelidades cf on cf.id = h.id_cliente_fidelidade "
+                + "left join fid_clientes c on c.id = cf.id_cliente "
                 + "left join fid_fidelidades f on f.id = cf.id_fidelidade "
-                + "left join fid_empresas e on e.id = f.id_empresa where e.id = :id order by c.nome asc ";
+                + "left join fid_empresas e on e.id = f.id_empresa "
+                + "where h.status_fidelidade = :troca and e.id = :id order by h.data_troca_vencimento desc";
         try {
             Query query = manager.createNativeQuery(sql);
             query.setParameter("id", id);
+            query.setParameter("troca", "T");
 
             return query.getResultList();
         } catch (NoResultException ex) {

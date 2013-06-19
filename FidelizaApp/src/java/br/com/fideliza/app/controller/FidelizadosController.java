@@ -13,9 +13,7 @@ import br.com.fideliza.app.model.Cliente;
 import br.com.fideliza.app.model.ClienteFidelidade;
 import br.com.fideliza.app.model.common.PerfilType;
 import br.com.fideliza.app.repository.FidelizadosRepository;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 
 @Resource
 @Permission({PerfilType.MEMBRO, PerfilType.ADMINISTRADOR, PerfilType.MODERADOR})
@@ -62,5 +60,12 @@ public class FidelizadosController {
         Collection<Cliente> rel = repository.relatorio(session.getEmpresa().getId());
         return jasperMaker.makePdf("Fidelizados.jasper",
                 rel, "Fidelizados.pdf", false);
+    }
+    
+    @Path("/fidelizados/pdf/trocas")
+    public Download pdfTrocas() {
+        Collection<Cliente> rel = repository.trocas(session.getEmpresa().getId());
+        return jasperMaker.makePdf("Troca.jasper",
+                rel, "Troca.pdf", false);
     }
 }

@@ -13,7 +13,7 @@
         <h4>
             <div class="controls">
                 <span class="badge badge-warning">
-                    <label class="control-label"> <h3>150</h3> </label>
+                    <label class="control-label"> <h4> ${qnt} </h4> </label>
                 </span>
                 Clientes/Fidelizados
             </div>

@@ -10,4 +10,6 @@ public interface FidelizadosRepository extends GenericRepository<Cliente> {
     Collection<Cliente> relatorio(Long id);
     void trocarPontos(Long id);
     List<Cliente> buscar(String nome, Long id);
+    int countCustomer(Long id);
+    Collection<Cliente> trocas(Long id);
 }

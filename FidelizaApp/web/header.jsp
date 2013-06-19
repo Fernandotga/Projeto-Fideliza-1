@@ -9,7 +9,7 @@
         <c:when test="${!empresaSession.logged}"></i> Visitante  </c:when>
         <c:otherwise>
             ${empresaSession.empresa.razaoSocial}
-        <a style="margin-left: 15px;" href="<c:url value="/logout"/>"> <fmt:message key="app.sair"/> </a>
+        <a style="margin-left: 15px;" href="<c:url value="/logout"/>"> <i class="icon-off"></i> <fmt:message key="app.sair"/></a>
     </c:otherwise>
 </c:choose>
 </div>
