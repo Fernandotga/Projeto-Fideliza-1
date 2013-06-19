@@ -14,6 +14,7 @@ import br.com.fideliza.app.model.ClienteFidelidade;
 import br.com.fideliza.app.model.common.PerfilType;
 import br.com.fideliza.app.repository.FidelizadosRepository;
 import java.util.Collection;
+import java.util.List;
 
 @Resource
 @Permission({PerfilType.MEMBRO, PerfilType.ADMINISTRADOR, PerfilType.MODERADOR})
@@ -37,10 +38,11 @@ public class FidelizadosController {
         result.include("fidelizadosList", lista);
     }
 
-    @Get("/fidelizados/busca")
-    public void busca(String busca) {
-        Collection<Cliente> lista = repository.buscar(busca, session.getEmpresa().getId());
+    public List<Cliente> busca(String busca) {
+        result.include("busca", busca);
+        List<Cliente> lista = repository.buscar(busca, session.getEmpresa().getId());
         result.include("fidelizadosList", lista);
+        return lista;
     }
 
     @Get("/fidelizados/{entity.id}")
@@ -61,7 +63,7 @@ public class FidelizadosController {
         return jasperMaker.makePdf("Fidelizados.jasper",
                 rel, "Fidelizados.pdf", false);
     }
-    
+
     @Path("/fidelizados/pdf/trocas")
     public Download pdfTrocas() {
         Collection<Cliente> rel = repository.trocas(session.getEmpresa().getId());
