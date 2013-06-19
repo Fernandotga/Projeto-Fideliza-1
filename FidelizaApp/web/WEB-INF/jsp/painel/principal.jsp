@@ -33,16 +33,27 @@
     <script type="text/javascript">
         function drawVisualization() {
             // Create and populate the data table.
-            var data = google.visualization.arrayToDataTable([
-                ['x', 'QTD'],
-                ['0', 1],
-                ['1', 2],
-                ['2', 4],
-                ['3', 8],
-                ['4', 7],
-                ['5', 7],
-                ['6', 8]
-            ]);
+//            var data = google.visualization.arrayToDataTable([
+//                ['x', 'QTD'],
+//                ['0', 1],
+//                ['1', 2],
+//                ['2', 4],
+//                ['3', 8],
+//                ['4', 7],
+//                ['5', 7],
+//                ['6', 8]
+//            ]);
+            var data = google.visualization.arrayToDataTable();
+            data.addColumn('string', 'x');
+            data.addColumn('number', 'Quantidade');
+
+            var rows = [];
+
+            <c:forEach items="${dadosGrafico}" var="i">
+                rows.push(['${i[0]}', ${i[1]}]);
+            </c:forEach> 
+
+            data.addRows(rows);
 
             // Create and draw the visualization.
             new google.visualization.LineChart(document.getElementById('visualization')).
