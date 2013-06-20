@@ -17,12 +17,13 @@ import br.com.fideliza.app.exception.CommonException;
 import br.com.fideliza.app.model.Empresa;
 import br.com.fideliza.app.model.common.PerfilType;
 import br.com.fideliza.app.repository.EmpresaRepository;
-import br.com.fideliza.app.helper.Utils;
+import static br.com.fideliza.app.helper.Utils.*;
 import br.com.fideliza.app.model.common.TelefoneType;
 import java.util.Date;
 import java.util.Locale;
 import static br.com.caelum.vraptor.view.Results.referer;
 import br.com.fideliza.app.helper.Seguranca;
+import br.com.fideliza.app.model.common.WebEnderecoType;
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 
@@ -46,7 +47,8 @@ public class EmpresaController {
     @Get("/empresa/criar")
     public void criar(Empresa entity) {
         result.include("entity", entity)
-                .include("telefoneTypes", TelefoneType.values());
+                .include("telefoneTypes", TelefoneType.values())
+                .include("webTypes", WebEnderecoType.values());
     }
 
     @Get("/empresa/{entity.id}")
@@ -78,9 +80,9 @@ public class EmpresaController {
         try {
             entity = repository.save(entity);
             // retorna tela de login, pois so salvar é apenas deslogado !
-            result.include("notice", Utils.i18n("empresa.salvo.sucesso")).redirectTo(IndexController.class).index();
+            result.include("notice", i18n("empresa.salvo.sucesso")).redirectTo(IndexController.class).index();
         } catch (CommonException e) {
-            result.include("error", Utils.i18n(e.getMessage())).redirectTo(this).criar(entity);
+            result.include("error", i18n(e.getMessage())).redirectTo(this).criar(entity);
         }
     }
 
@@ -96,9 +98,9 @@ public class EmpresaController {
 
         try {
             entity = repository.save(entity);
-            result.include("notice", Utils.i18n("empresa.atualizado.sucesso")).redirectTo(this).exibir(entity);
+            result.include("notice", i18n("empresa.atualizado.sucesso")).redirectTo(this).exibir(entity);
         } catch (CommonException e) {
-            result.include("error", Utils.i18n(e.getMessage())).redirectTo(this).editar(entity);
+            result.include("error", i18n(e.getMessage())).redirectTo(this).editar(entity);
         }
     }
 

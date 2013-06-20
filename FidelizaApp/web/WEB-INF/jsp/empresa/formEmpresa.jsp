@@ -32,7 +32,7 @@
                     <a href="#tab_telefone" data-toggle="tab">Telefones</a>
                 </li>
                 <li>
-                    <a href="#web" data-toggle="tab">Contato Web</a>
+                    <a href="#tab_web" data-toggle="tab">Contato Web</a>
                 </li>
                 <li>
                     <a href="#autenticacao" data-toggle="tab">Autenticação</a>
@@ -118,10 +118,12 @@
                                 <label for="telefone"> <fmt:message key="telefone.tipo"/> / <fmt:message key="telefone.telefone"/></label>
 
                                 <select name="entity.telefones[${status.index}].tipo" id="tipo" style="margin-right: 10px;">
+                                    
                                     <c:forEach items="${telefoneTypes}" var="tipo">
                                         <c:set var="sel" value="${telefone.tipo eq tipo ? 'selected':''}"></c:set>
-                                        <option value="${telefone.tipo}"${sel}>${tipo.label}</option>
+                                        <option value="${tipo}"${sel}>${tipo.label}</option>
                                     </c:forEach>
+                                        
                                 </select>
 
                                 <input type="text" placeholder="" id="telefone" data-mask="(99) 9999-9999" name="entity.telefones[${status.index}].telefone" value="${telefone.telefone}" class="input-large">
@@ -134,9 +136,32 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="web">
+                <div class="tab-pane fade" id="tab_web">
                     <div class="control-group">
+                        <div class="controls">
+                            <a href="#" class="btn btn-success" onclick="adicionarweb();"> <fmt:message key="app.adicionar"/> </a>
+                            <hr />
+                        </div>
 
+                        <c:forEach items="${entity.webs}" var="web" varStatus="status">
+                            <div class="web">
+                                <label for="web"> <fmt:message key="web.tipo"/> / <fmt:message key="web.web"/></label>
+                                <select name="entity.webs[${status.index}].tipo" id="tipo" style="margin-right: 10px;">
+                                    
+                                    <c:forEach items="${webTypes}" var="tipo">
+                                        <c:set var="sel" value="${web.tipo eq tipo ? 'selected':''}"></c:set>
+                                        <option value="${tipo}"${sel}>${tipo.label}</option>
+                                    </c:forEach>
+                                        
+                                </select>
+
+                                <input type="text" placeholder="" id="web" name="entity.webs[${status.index}].url" value="${web.web}" class="input-xxlarge">
+
+                                <input type="hidden" name="entity.telefones[${status.index}].id" value="${web.id}" />
+
+                                <a id="remover" class="btn btn-link" onclick="removerweb(this);"> <fmt:message key="app.excluir"/> </a>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
 
@@ -199,15 +224,36 @@
                                         '<select name = "entity.telefones[0].tipo" id="tipo" style = "margin-right: 10px;" >' +
                                         '<c:forEach items="${telefoneTypes}" var="tipo">' +
                                         '<c:set var="sel" value="${telefone.tipo eq tipo ? 'selected':''}"></c:set>' +
-                                        '<option value = "${telefone.tipo}"${sel} >${tipo.label} </option>' +
+                                        '<option value = "${tipo}"${sel} >${tipo.label} </option>' +
                                         '</c:forEach>' +
                                         '</select>' +
                                         '<input type="text" id="telefone" data-mask="(99) 9999-9999" name="entity.telefones[0].telefone" class="input-large">' +
                                         '<a id="remover" class="btn btn-link" onclick="remover(this);"> <fmt:message key="app.excluir"/> </a>' +
                                         '</div>';
 
+                                var modelweb =
+                                        '<div class="web">' +
+                                        '<label for="web"> <fmt:message key="web.tipo"/> / <fmt:message key="web.web"/></label>' +
+                                        '<select name="entity.webs[0].tipo" id="tipo" style="margin-right: 10px;">' +
+                                        '<c:forEach items="${webTypes}" var="tipo"> ' +
+                                        '<c:set var="sel" value="${web.tipo eq tipo ? 'selected':''}"></c:set>' +
+                                        '<option value="${tipo}"${sel}>${tipo.label}</option>' +
+                                        '</c:forEach>' +
+                                        '</select>' +
+                                        '<input type="text" placeholder="" id="web" name="entity.webs[${status.index}].url" value="${web.web}" class="input-xxlarge">' +
+                                        '<input type="hidden" name="entity.telefones[${status.index}].id" value="${web.id}" />' +
+                                        '<a id="remover" class="btn btn-link" onclick="removerweb(this);"> <fmt:message key="app.excluir"/> </a>' +
+                                        '</div>';
+
+
 
                                 function remover(element) {
+                                    $(element).parent().remove();
+                                    reorderIndexesWeb();
+                                }
+                                ;
+
+                                function removerweb(element) {
                                     $(element).parent().remove();
                                     reorderIndexes();
                                 }
@@ -219,10 +265,34 @@
                                 }
                                 ;
 
+                                function adicionarweb() {
+                                    $('#tab_web').append(modelweb);
+                                    reorderIndexes();
+                                }
+                                ;
+
                                 function reorderIndexes() {
                                     var regex = /\[[0-9]\]/g;
 
                                     $('.telefone').each(function(index) {
+                                        var $campos = $(this).find('input'),
+                                                $input,
+                                                name;
+
+                                        $campos.each(function() {
+                                            $input = $(this),
+                                                    name = $input.attr('name');
+
+                                            $input.attr('name', name.replace(regex, '[' + index + ']'));
+                                        });
+                                    });
+                                }
+                                ;
+
+                                function reorderIndexesWeb() {
+                                    var regex = /\[[0-9]\]/g;
+
+                                    $('.web').each(function(index) {
                                         var $campos = $(this).find('input'),
                                                 $input,
                                                 name;

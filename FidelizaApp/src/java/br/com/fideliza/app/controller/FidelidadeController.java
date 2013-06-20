@@ -12,7 +12,7 @@ import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.fideliza.app.annotation.Permission;
 import br.com.fideliza.app.component.EmpresaSession;
 import br.com.fideliza.app.exception.CommonException;
-import br.com.fideliza.app.helper.Utils;
+import static br.com.fideliza.app.helper.Utils.*;
 import br.com.fideliza.app.model.Fidelidade;
 import br.com.fideliza.app.model.common.PerfilType;
 import br.com.fideliza.app.repository.FidelidadeRepository;
@@ -40,7 +40,7 @@ public class FidelidadeController {
     @Get("/fidelidade/criar")
     public void criar(Fidelidade entity) {
         if (!repository.limitInserts(session.getEmpresa().getId())) {
-            result.include("mensagem", Utils.i18n("fidelidade.limite")).redirectTo(this).listagem();
+            result.include("mensagem", i18n("fidelidade.limite")).redirectTo(this).listagem();
         } else {
             result.include("entity", entity);
         }
@@ -55,9 +55,9 @@ public class FidelidadeController {
         validator.onErrorRedirectTo(this).criar(entity);
         try {
             entity = repository.save(entity);
-            result.include("notice", Utils.i18n("fidelidade.salvo.sucesso")).redirectTo(this).exibir(entity);
+            result.include("notice", i18n("fidelidade.salvo.sucesso")).redirectTo(this).exibir(entity);
         } catch (CommonException e) {
-            result.include("error", Utils.i18n(e.getMessage())).redirectTo(this).criar(entity);
+            result.include("error", i18n(e.getMessage())).redirectTo(this).criar(entity);
         }
     }
 
@@ -76,7 +76,7 @@ public class FidelidadeController {
     @Delete("/fidelidade/{entity.id}")
     public void remover(Fidelidade entity) {
         repository.remove(entity);
-        result.include("notice", Utils.i18n("fidelidade.removido.sucesso")).redirectTo(this).listagem();
+        result.include("notice", i18n("fidelidade.removido.sucesso")).redirectTo(this).listagem();
     }
 
     @Get("/fidelidade/{entity.id}/editar")
@@ -95,9 +95,9 @@ public class FidelidadeController {
 
         try {
             entity = repository.save(entity);
-            result.include("notice", Utils.i18n("fidelidade.atualizado.sucesso")).redirectTo(this).exibir(entity);
+            result.include("notice", i18n("fidelidade.atualizado.sucesso")).redirectTo(this).exibir(entity);
         } catch (CommonException e) {
-            result.include("error", Utils.i18n(e.getMessage())).redirectTo(this).editar(entity);
+            result.include("error", i18n(e.getMessage())).redirectTo(this).editar(entity);
         }
     }
 

@@ -13,7 +13,7 @@ import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.com.fideliza.app.annotation.Permission;
 import br.com.fideliza.app.component.EmpresaSession;
 import br.com.fideliza.app.exception.CommonException;
-import br.com.fideliza.app.helper.Utils;
+import static br.com.fideliza.app.helper.Utils.*;
 import br.com.fideliza.app.model.Oferta;
 import br.com.fideliza.app.model.common.CategoriaOfertaType;
 import br.com.fideliza.app.model.common.PerfilType;
@@ -41,7 +41,7 @@ public class OfertaController {
     @Get("/oferta/criar")
     public void criar(Oferta entity) {
         if (!repository.limitInserts(session.getEmpresa().getId())) {
-            result.include("mensagem", Utils.i18n("oferta.limite")).redirectTo(this).listagem();
+            result.include("mensagem", i18n("oferta.limite")).redirectTo(this).listagem();
         } else {
             result.include("entity", entity)
                     .include("categoriaTypes", CategoriaOfertaType.values());
@@ -58,9 +58,9 @@ public class OfertaController {
         validator.onErrorRedirectTo(this).criar(entity);
         try {
             entity = repository.save(entity);
-            result.include("notice", Utils.i18n("oferta.salvo.sucesso")).redirectTo(this).exibir(entity);
+            result.include("notice", i18n("oferta.salvo.sucesso")).redirectTo(this).exibir(entity);
         } catch (CommonException e) {
-            result.include("error", Utils.i18n(e.getMessage())).redirectTo(this).criar(entity);
+            result.include("error", i18n(e.getMessage())).redirectTo(this).criar(entity);
         }
     }
 
@@ -79,7 +79,7 @@ public class OfertaController {
     @Delete("/oferta/{entity.id}")
     public void remover(Oferta entity) {
         repository.remove(entity);
-        result.include("notice", Utils.i18n("oferta.removido.sucesso")).redirectTo(this).listagem();
+        result.include("notice", i18n("oferta.removido.sucesso")).redirectTo(this).listagem();
     }
 
     @Get("/oferta/{entity.id}/editar")
@@ -99,9 +99,9 @@ public class OfertaController {
 
         try {
             entity = repository.save(entity);
-            result.include("notice", Utils.i18n("oferta.atualizado.sucesso")).redirectTo(this).exibir(entity);
+            result.include("notice", i18n("oferta.atualizado.sucesso")).redirectTo(this).exibir(entity);
         } catch (CommonException e) {
-            result.include("error", Utils.i18n(e.getMessage())).redirectTo(this).editar(entity);
+            result.include("error", i18n(e.getMessage())).redirectTo(this).editar(entity);
         }
     }
 

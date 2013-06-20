@@ -15,7 +15,7 @@
                 <span class="badge badge-warning">
                     <label class="control-label"> <h4> ${qnt} </h4> </label>
                 </span>
-                Clientes/Fidelizados
+                <fmt:message key="painel.quantidade.total"/>
             </div>
         </h4>
 
@@ -33,27 +33,12 @@
     <script type="text/javascript">
         function drawVisualization() {
             // Create and populate the data table.
-//            var data = google.visualization.arrayToDataTable([
-//                ['x', 'QTD'],
-//                ['0', 1],
-//                ['1', 2],
-//                ['2', 4],
-//                ['3', 8],
-//                ['4', 7],
-//                ['5', 7],
-//                ['6', 8]
-//            ]);
-            var data = google.visualization.arrayToDataTable();
-            data.addColumn('string', 'x');
-            data.addColumn('number', 'Quantidade');
-
-            var rows = [];
-
-            <c:forEach items="${dadosGrafico}" var="i">
-                rows.push(['${i[0]}', ${i[1]}]);
-            </c:forEach> 
-
-            data.addRows(rows);
+            var data = google.visualization.arrayToDataTable([
+                ['x', 'Quantidade'],
+                <c:forEach items="${dadosGrafico}" var="i">
+                    ['${i[0]}', ${i[1]}],
+                </c:forEach>
+            ]);
 
             // Create and draw the visualization.
             new google.visualization.LineChart(document.getElementById('visualization')).

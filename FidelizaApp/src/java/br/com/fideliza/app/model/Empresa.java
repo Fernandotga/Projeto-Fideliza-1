@@ -61,6 +61,8 @@ public class Empresa extends AbstractEntity {
     @OneToMany(mappedBy = "idEmpresa")
     private Collection<Telefone> telefones;
     @OneToMany(mappedBy = "idEmpresa")
+    private Collection<Web> webs;
+    @OneToMany(mappedBy = "idEmpresa")
     private Collection<Fidelidade> fidelidades;
     @OneToMany(mappedBy = "idEmpresa")
     private Collection<RegistrosCheckins> checkins;

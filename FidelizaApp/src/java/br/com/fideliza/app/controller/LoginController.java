@@ -6,7 +6,7 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.fideliza.app.annotation.Public;
 import br.com.fideliza.app.component.EmpresaSession;
-import br.com.fideliza.app.helper.Utils;
+import static br.com.fideliza.app.helper.Utils.*;
 import br.com.fideliza.app.model.Empresa;
 import br.com.fideliza.app.repository.LoginRepository;
 import java.security.NoSuchAlgorithmException;
@@ -41,7 +41,7 @@ public class LoginController {
                 result.redirectTo(IndexController.class).index();
             }
         } else {
-            result.include("error", Utils.i18n("email.senha.incorreta")).redirectTo(IndexController.class).index();
+            result.include("error", i18n("email.senha.incorreta")).redirectTo(IndexController.class).index();
         }
     }
 
