@@ -36,7 +36,7 @@
             <div class="control-group">
                 <div class="controls">
                     <div class="inline">
-                        <button onClick="DoPrinting();" class="btn btn-primary" style="margin-right: 5px;" type="submit">
+                        <button onClick="DoPrinting();" class="btn btn-primary btn-small" style="margin-right: 5px;" type="submit">
                             <i class="icon-white icon-qrcode"></i>
                             <fmt:message key="app.qrcode" />
                         </button>
@@ -44,7 +44,7 @@
 
                     <div class="inline">
                         <form action="<c:url value="/fidelidade" />" method="GET">
-                            <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                            <button class="btn btn-success btn-small" style="margin-right: 5px;" type="submit">
                                 <i class="icon-white icon-list"></i>
                                 <fmt:message key="app.listar" />
                             </button>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="inline">
                         <form action="<c:url value="/fidelidade/${entity.id}/editar"/>" method="GET">
-                            <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                            <button class="btn btn-success btn-small" style="margin-right: 5px;" type="submit">
                                 <i class="icon-white icon-edit"></i>
                                 <fmt:message key="app.editar" />
                             </button>
@@ -62,7 +62,7 @@
                     <div class="inline">
                         <form action="<c:url value="/fidelidade/${entity.id}" />" method="POST">
                             <input type="hidden" name="_method" value="delete"/>
-                            <button class="btn btn-danger" type="submit">
+                            <button class="btn btn-danger btn-small" type="submit">
                                 <i class="icon-white icon-remove"></i>
                                 <fmt:message key="app.excluir" />
                             </button>

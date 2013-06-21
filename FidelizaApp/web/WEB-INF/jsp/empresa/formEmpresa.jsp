@@ -206,7 +206,7 @@
                         <div class="control-group">
                             <!-- Button -->
                             <div class="controls">
-                                <button type="submit" class="btn btn-success">
+                                <button type="submit" class="btn btn-success btn-small">
                                     <i class="icon-ok icon-white"></i>
                                     <fmt:message key="app.gravar" />
                                 </button>

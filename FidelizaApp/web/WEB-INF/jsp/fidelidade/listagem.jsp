@@ -10,8 +10,8 @@
             </legend>  
         </div>  
 
-        <div style="border-bottom: 1px solid gray; padding-bottom: 5px">
-             <a class="btn btn-primary" href="<c:url value="/fidelidade/criar"/>"><fmt:message key="app.novo" /></a>
+        <div style="border-bottom: 1px solid gray; padding-bottom: 5px;">
+             <a class="btn btn-success btn-small" href="<c:url value="/fidelidade/criar"/>"><fmt:message key="app.novo" /></a>
         </div>
 
         <table cellpadding="1" cellspacing="1" class="footable" data-page-navigation="#pagination" data-page-size="1">
@@ -48,7 +48,7 @@
                                 <div class="controls">
                                     <div class="inline">
                                         <form action="<c:url value="/fidelidade/${fidelidade.id}" />" method="GET">
-                                        <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                                        <button class="btn btn-success btn-small" style="margin-right: 5px;" type="submit">
                                             <i class="icon-white icon-check"></i>
                                             <fmt:message key="app.exibir" />
                                         </button>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="inline">
                                     <form action="<c:url value="/fidelidade/${fidelidade.id}/editar"/>" method="GET">
-                                        <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                                        <button class="btn btn-success btn-small" style="margin-right: 5px;" type="submit">
                                             <i class="icon-white icon-edit"></i>
                                             <fmt:message key="app.editar" />
                                         </button>

@@ -10,8 +10,8 @@
             </legend>  
         </div>  
 
-        <div style="border-bottom: 1px solid gray; padding-bottom: 5px">
-            <a class="btn btn-primary" href="<c:url value="/oferta/criar"/>"><fmt:message key="app.novo" /></a>
+        <div style="border-bottom: 1px solid gray; padding-bottom: 5px; margin-bottom: 5px;">
+            <a class="btn btn-success btn-small" href="<c:url value="/oferta/criar"/>"><fmt:message key="app.novo" /></a>
         </div>
 
         <table cellpadding="1" cellspacing="1" class="footable" data-page-navigation="#pagination" data-page-size="2">
@@ -20,20 +20,17 @@
                     <td>
                         <div class="control-group">
                             <div class="controls">
-                                <h4>${oferta.descricaoItem}</h4>
+                                <div class="input-prepend">
+                                    <span class="add-on"><i class="icon-bullhorn"></i></span>                   
+                                </div>
+                                <b>${oferta.descricaoItem}</b>
                             </div>
 
                             <div class="controls">
                                 <div class="input-prepend">
                                     <span class="add-on"><i class="icon-tags"></i></span>                   
                                 </div>
-                                <fmt:formatNumber value="${oferta.preco}" minFractionDigits="2"/>
-                            </div>
-                            <div class="controls">
-                                <div class="input-prepend">
-                                    <span class="add-on"><i class="icon-calendar"></i></span>                   
-                                </div>
-                                <fmt:message key="app.expira.em" /> <fmt:formatDate value="${oferta.dataFinalOferta}" pattern="dd/MM/yyyy" /> 
+                                <fmt:formatNumber type="currency" value="${oferta.preco}" minFractionDigits="2"/>
                             </div>
                         </div>
 
@@ -41,7 +38,7 @@
                             <div class="controls">
                                 <div class="inline">
                                     <form action="<c:url value="/oferta/${oferta.id}" />" method="GET">
-                                        <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                                        <button class="btn btn-success btn-small" style="margin-right: 5px;" type="submit">
                                             <i class="icon-white icon-check"></i>
                                             <fmt:message key="app.exibir" />
                                         </button>
@@ -49,7 +46,7 @@
                                 </div>
                                 <div class="inline">
                                     <form action="<c:url value="/oferta/${oferta.id}/editar"/>" method="GET">
-                                        <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                                        <button class="btn btn-success btn-small" style="margin-right: 5px;" type="submit">
                                             <i class="icon-white icon-edit"></i>
                                             <fmt:message key="app.editar" />
                                         </button>

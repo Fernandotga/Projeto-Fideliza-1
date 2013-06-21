@@ -46,7 +46,7 @@
             <div class="controls">
                 <div class="inline">
                     <form action="<c:url value="/fidelizados" />" method="GET">
-                        <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                        <button class="btn btn-success btn-small" style="margin-right: 5px;" type="submit">
                             <i class="icon-white icon-list"></i>
                             <fmt:message key="app.listar" />
                         </button>

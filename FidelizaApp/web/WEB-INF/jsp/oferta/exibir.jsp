@@ -15,21 +15,12 @@
                 <div class="inline">
                     <form action="<c:url value="/oferta/${entity.id}/imagem" />" enctype="multipart/form-data" method="POST">
                         <input type="file" name="file"/>
-                        <button class="btn btn-primary" type="submit" style="margin-right: 5px;">
+                        <button class="btn btn-success btn-small" type="submit" style="margin-right: 5px;">
                             <i class="icon-white icon-upload"></i>
                             <fmt:message key="oferta.upload"/>
                         </button>
                     </form>
-                </div>
-                <div class="inline">
-                    <form action="<c:url value="/oferta/${entity.id}/imagem" />" method="post">
-                        <input type="hidden" name="_method" value="delete"/>
-                        <button class="btn btn-danger" type="submit">
-                            <i class="icon-white icon-remove-circle"></i>
-                            <fmt:message key="oferta.remove.imagem" />
-                        </button>
-                    </form>
-                </div>              
+                </div>           
             </div>
         </div>
 
@@ -69,7 +60,7 @@
             <div class="controls">
                 <div class="inline">
                     <form action="<c:url value="/oferta" />" method="GET">
-                        <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                        <button class="btn btn-success btn-small" style="margin-right: 5px;" type="submit">
                             <i class="icon-white icon-list"></i>
                             <fmt:message key="app.listar" />
                         </button>
@@ -77,7 +68,7 @@
                 </div>
                 <div class="inline">
                     <form action="<c:url value="/oferta/${entity.id}/editar"/>" method="GET">
-                        <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                        <button class="btn btn-success btn-small" style="margin-right: 5px;" type="submit">
                             <i class="icon-white icon-edit"></i>
                             <fmt:message key="app.editar" />
                         </button>
@@ -87,12 +78,22 @@
                 <div class="inline">
                     <form action="<c:url value="/oferta/${entity.id}" />" method="POST">
                         <input type="hidden" name="_method" value="delete"/>
-                        <button class="btn btn-danger" type="submit">
+                        <button class="btn btn-danger btn-small" style="margin-right: 5px;" type="submit">
                             <i class="icon-white icon-remove"></i>
                             <fmt:message key="app.excluir" />
                         </button>
                     </form>
                 </div>
+
+                <div class="inline">
+                    <form action="<c:url value="/oferta/${entity.id}/imagem" />" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button class="btn btn-danger btn-small" type="submit" >
+                            <i class="icon-white icon-picture"></i>
+                            <fmt:message key="oferta.remove.imagem" />
+                        </button>
+                    </form>
+                </div>   
                 <br class="clearBoth" />
             </div>
         </div>

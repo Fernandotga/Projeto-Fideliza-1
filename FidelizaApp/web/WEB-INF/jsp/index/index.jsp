@@ -43,7 +43,7 @@
                 <div class="control-group">
                     <!-- Button -->
                     <div class="controls">
-                        <button class="btn btn-success">                        
+                        <button class="btn btn-success btn-small">                        
                             <i class="icon-ok icon-white"></i>
                             <fmt:message key="login.autenticar" />
                         </button>

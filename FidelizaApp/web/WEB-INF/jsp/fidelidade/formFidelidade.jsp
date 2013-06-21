@@ -77,18 +77,17 @@
                     <label class="checkbox inline"> 
                         <input type="checkbox" name="entity.ativo" <c:if test="${entity.ativo}">checked</c:if>/>
                         <fmt:message key="fidelidade.ativo"/> 
-                        <label class="alert alert-success"><fmt:message key="fidelidade.inativo"/></label>
                     </label>
                 </div>
             </div>
 
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-success btn-small">
                         <i class="icon-white icon-ok"></i>
                         <fmt:message key="app.gravar" />
                     </button>
-                    <a class="btn btn-danger" href="<c:url value="/fidelidade"/>">
+                    <a class="btn btn-danger btn-small" href="<c:url value="/fidelidade"/>">
                         <fmt:message key="app.cancelar" /> 
                     </a>
                 </div>

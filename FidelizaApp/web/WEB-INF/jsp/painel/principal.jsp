@@ -12,7 +12,7 @@
 
         <h4>
             <div class="controls">
-                <span class="badge badge-warning">
+                <span class="badge badge-success" style="padding-left: 15px; padding-right: 15px;">
                     <label class="control-label"> <h4> ${qnt} </h4> </label>
                 </span>
                 <fmt:message key="painel.quantidade.total"/>
@@ -21,8 +21,7 @@
 
         <div class="control-group">
             <div class="controls">
-                <label class="control-label"><b> Leitura x Dias </b></label>
-                <div id="visualization" style="width: 940px; height: 300px; border: 1px solid #ccc; float: right;"></div>
+                <div id="visualization" style="width: 940px; height: 300px; border: 1px solid gray; float: right;"></div>
             </div>
         </div>
     </fieldset>
@@ -41,10 +40,10 @@
             ]);
 
             // Create and draw the visualization.
-            new google.visualization.LineChart(document.getElementById('visualization')).
-                    draw(data, {curveType: "function",
+            new google.visualization.AreaChart(document.getElementById('visualization')).
+                    draw(data, {title: 'Leitura x Dias',
                 width: 940, height: 300,
-                vAxis: {maxValue: 75}}
+                vAxis: {maxValue: 50}}
             );
         }
         google.setOnLoadCallback(drawVisualization);

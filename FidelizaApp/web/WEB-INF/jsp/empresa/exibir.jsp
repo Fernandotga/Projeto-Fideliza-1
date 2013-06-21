@@ -15,21 +15,12 @@
                 <div class="inline">
                     <form action="<c:url value="/empresa/${entity.id}/imagem" />" enctype="multipart/form-data" method="POST">
                         <input type="file" name="file"/>
-                        <button class="btn btn-primary" type="submit" style="margin-right: 5px;">
+                        <button class="btn btn-success btn-small" type="submit" style="margin-right: 5px;">
                             <i class="icon-white icon-upload"></i>
                             <fmt:message key="empresa.upload"/>
                         </button>
                     </form>
-                </div>
-                <div class="inline">
-                    <form action="<c:url value="/empresa/${entity.id}/imagem" />" method="post">
-                        <input type="hidden" name="_method" value="delete"/>
-                        <button class="btn btn-danger" type="submit">
-                            <i class="icon-white icon-remove-circle"></i>
-                            <fmt:message key="empresa.remove.imagem" />
-                        </button>
-                    </form>
-                </div>              
+                </div>            
             </div>
         </div>
 
@@ -82,12 +73,21 @@
             <div class="controls">
                 <div class="inline">
                     <form action="<c:url value="/empresa/${entity.id}/editar"/>" method="GET">
-                        <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                        <button class="btn btn-success btn-small" style="margin-right: 5px;" type="submit">
                             <i class="icon-white icon-edit"></i>
                             <fmt:message key="app.editar" />
                         </button>
                     </form>
                 </div>
+                <div class="inline">
+                    <form action="<c:url value="/empresa/${entity.id}/imagem" />" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button class="btn btn-danger btn-small" type="submit">
+                            <i class="icon-white icon-picture"></i>
+                            <fmt:message key="empresa.remove.imagem" />
+                        </button>
+                    </form>
+                </div>  
                 <br class="clearBoth" />
             </div>
         </div>

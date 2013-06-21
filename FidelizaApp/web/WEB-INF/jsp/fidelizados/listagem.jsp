@@ -9,18 +9,18 @@
                 <small> <fmt:message key="app.listar"/> </small>
             </legend>  
         </div>
-            
+
         <div class="control-group" style="border-bottom: 1px solid gray; padding-bottom: 5px">
             <div class="controls">
                 <div class="inline">
-                    <a href="<c:url value="/fidelizados/pdf"/>" class="btn btn-primary" target="_blank" style="margin-right: 5px;">                            
+                    <a href="<c:url value="/fidelizados/pdf"/>" class="btn btn-success btn-small" target="_blank" style="margin-right: 5px;">                            
                         <i class="icon-white icon-print"></i>
                         <fmt:message key="fidelizados.imprimir" />
                     </a>
                 </div>
 
                 <div class="inline">
-                    <a href="<c:url value="/fidelizados/pdf/trocas"/>" class="btn btn-primary" target="_blank">                            
+                    <a href="<c:url value="/fidelizados/pdf/trocas"/>" class="btn btn-success btn-small" target="_blank">                            
                         <i class="icon-white icon-print"></i>
                         <fmt:message key="fidelizados.imprimir.trocas" />
                     </a>
@@ -47,23 +47,18 @@
                     <td>
                         <div class="control-group">
                             <div class="controls">
-                                <h4>#${fidelizados[0].id} - ${fidelizados[0].nome}</h4>
-                                <fmt:message key="app.fidelizado.em"/> <fmt:formatDate value="${fidelizados[1].dataFidelidade}" pattern="dd/MM/yyyy" /> 
-                            </div>
-
-                            <div class="controls">
-                                <h5><span class="badge badge-warning">
-                                    <h4>${fidelizados[1].pontos}</h4>
-                                </span>
-                                    <fmt:message key="fidelizados.pontos" /></h5>
+                                <h4>
+                                    #${fidelizados[0].id} - ${fidelizados[0].nome}
+                                </h4>
+                                <fmt:message key="app.fidelizado.em"/> <fmt:formatDate value="${fidelizados[1].dataFidelidade}" pattern="dd/MM/yyyy" /> <br />  
+                                <span class="badge badge-success">${fidelizados[1].pontos}</span> <fmt:message key="fidelizados.pontos" />                            
                             </div>
                         </div>
-
                         <div class="control-group">
                             <div class="controls">
                                 <div class="inline">
                                     <form action="<c:url value="/fidelizados/${fidelizados[0].id}" />" method="GET">
-                                        <button class="btn btn-success" style="margin-right: 5px;" type="submit">
+                                        <button class="btn btn-success btn-small" style="margin-right: 5px;" type="submit">
                                             <i class="icon-white icon-check"></i>
                                             <fmt:message key="app.exibir" />
                                         </button>
@@ -71,7 +66,7 @@
                                 </div>
                                 <div class="inline">
                                     <form action="<c:url value="/fidelizados/${fidelizados[1].id}/baixa" />" method="GET">
-                                        <button class="btn btn-danger" type="submit">
+                                        <button class="btn btn-danger btn-small" type="submit">
                                             <i class="icon-white icon-repeat"></i>
                                             <fmt:message key="app.troca" />
                                         </button>

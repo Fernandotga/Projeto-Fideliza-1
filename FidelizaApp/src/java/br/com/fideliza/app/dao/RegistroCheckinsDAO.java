@@ -20,7 +20,7 @@ public class RegistroCheckinsDAO extends GenericDAO<RegistrosCheckins> implement
     @Override
     public List<RegistrosCheckins> grafico(Long id) {
         String sql = "SELECT "
-                + "    c.data_registro, "
+                + "    DATE_FORMAT(c.data_registro, '%d %b'), "
                 + "    count(c.data_registro) "
                 + "FROM "
                 + "    fid_checkins c "
@@ -29,7 +29,7 @@ public class RegistroCheckinsDAO extends GenericDAO<RegistrosCheckins> implement
                 + "    AND c.data_registro "
                 + "        BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 15 DAY) "
                 + "        AND DATE_ADD(CURRENT_DATE(), INTERVAL 0 DAY)"
-                + "        GROUP BY c.data_registro order by c.data_registro desc limit 30;";
+                + "        GROUP BY c.data_registro order by c.data_registro asc limit 15;";
         
         try {
             Query query = manager.createNativeQuery(sql);
