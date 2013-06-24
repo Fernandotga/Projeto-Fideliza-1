@@ -6,6 +6,7 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.fideliza.app.annotation.Permission;
+import br.com.fideliza.app.annotation.Public;
 import br.com.fideliza.app.component.EmpresaSession;
 import br.com.fideliza.app.component.JasperMaker;
 import br.com.fideliza.app.exception.CommonException;
@@ -69,5 +70,15 @@ public class FidelizadosController {
         Collection<Cliente> rel = repository.trocas(session.getEmpresa().getId());
         return jasperMaker.makePdf("Troca.jasper",
                 rel, "Troca.pdf", false);
+    }
+    
+    @Public
+    @Path("/fidelizados/salvar")
+    public void salvar(Cliente cliente) {
+        try {
+            cliente = repository.save(cliente);
+        } catch (CommonException e) {
+            
+        }
     }
 }

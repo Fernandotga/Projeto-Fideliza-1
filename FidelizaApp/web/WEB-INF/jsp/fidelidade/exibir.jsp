@@ -11,7 +11,6 @@
         </div>  
 
         <div id="imprimir">
-
             <div class="control-group">
                 <div class="controls">
                     <div style="border-bottom: 2px solid #E5E5E5; padding-bottom: 0px">
@@ -69,10 +68,10 @@
                         </form>
                     </div>
                     <br class="clearBoth" />
-                    <div id="qrcode">
-                        <img class="img-polaroid" id="qrcode" src="${linkTo[FidelidadeController].qrcode}?qrText=${entity.id}"/>
-                    </div>
                 </div>
+            </div>
+            <div id="qrcode">
+                <img class="img-polaroid" id="qrcode" src="${linkTo[FidelidadeController].qrcode}?qrText=${entity.id}"/>
             </div>
         </div>
     </fieldset>

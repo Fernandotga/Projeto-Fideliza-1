@@ -198,4 +198,20 @@ public class Empresa extends AbstractEntity {
     public void setFidelidades(Collection<Fidelidade> fidelidades) {
         this.fidelidades = fidelidades;
     }
+
+    public Collection<Web> getWebs() {
+        return webs;
+    }
+
+    public void setWebs(Collection<Web> webs) {
+        this.webs = webs;
+    }
+
+    public Collection<RegistrosCheckins> getCheckins() {
+        return checkins;
+    }
+
+    public void setCheckins(Collection<RegistrosCheckins> checkins) {
+        this.checkins = checkins;
+    }
 }

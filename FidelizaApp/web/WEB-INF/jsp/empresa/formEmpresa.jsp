@@ -109,7 +109,7 @@
                 <div class="tab-pane fade" id="tab_telefone">
                     <div class="control-group">
                         <div class="controls">
-                            <a href="#" class="btn btn-success" onclick="adicionar();"> <fmt:message key="app.adicionar"/> </a>
+                            <a href="#" class="btn btn-success btn-small" onclick="adicionar();"> <fmt:message key="app.adicionar"/> </a>
                             <hr />
                         </div>
 
@@ -139,7 +139,7 @@
                 <div class="tab-pane fade" id="tab_web">
                     <div class="control-group">
                         <div class="controls">
-                            <a href="#" class="btn btn-success" onclick="adicionarweb();"> <fmt:message key="app.adicionar"/> </a>
+                            <a href="#" class="btn btn-success btn-small" onclick="adicionarweb();"> <fmt:message key="app.adicionar"/> </a>
                             <hr />
                         </div>
 
