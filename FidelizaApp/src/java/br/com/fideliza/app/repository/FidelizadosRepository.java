@@ -12,4 +12,5 @@ public interface FidelizadosRepository extends GenericRepository<Cliente> {
     List<Cliente> buscar(String nome, Long id);
     int countCustomer(Long id);
     Collection<Cliente> trocas(Long id);
+    Cliente autenticar(String email, String password);
 }

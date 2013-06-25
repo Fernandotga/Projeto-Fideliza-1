@@ -1,12 +1,15 @@
 package br.com.fideliza.app.dao;
 
 import br.com.caelum.vraptor.ioc.Component;
+import br.com.fideliza.app.helper.Seguranca;
 import br.com.fideliza.app.model.Cliente;
 import br.com.fideliza.app.model.ClienteFidelidade;
 import br.com.fideliza.app.repository.FidelizadosRepository;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -127,6 +130,19 @@ public class FidelizadosDAO extends GenericDAO<Cliente> implements FidelizadosRe
             query.setParameter("troca", "T");
 
             return query.getResultList();
+        } catch (NoResultException ex) {
+            log.error(ex);
+            return null;
+        }
+    }
+
+    @Override
+    public Cliente autenticar(String email, String password) {
+        try {
+            Query query = manager.createQuery("from " + Cliente.class.getName() + " where email = :email and password = :senha");
+            query.setParameter("email", email);
+            query.setParameter("senha", password);
+            return (Cliente) query.getSingleResult();
         } catch (NoResultException ex) {
             log.error(ex);
             return null;

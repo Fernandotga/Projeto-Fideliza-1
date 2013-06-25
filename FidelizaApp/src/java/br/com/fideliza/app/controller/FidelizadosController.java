@@ -72,6 +72,7 @@ public class FidelizadosController {
                 rel, "Troca.pdf", false);
     }
     
+    //REST Android
     @Public
     @Path("/fidelizados/salvar")
     public void salvar(Cliente cliente) {
@@ -80,5 +81,11 @@ public class FidelizadosController {
         } catch (CommonException e) {
             
         }
+    }
+    
+    @Public
+    @Path("/fidelizados/login")
+    public Cliente login(String email, String password) {
+        return repository.autenticar(email, password);
     }
 }
