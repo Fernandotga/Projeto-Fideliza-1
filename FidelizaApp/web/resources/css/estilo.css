@@ -5,8 +5,8 @@
 }
 
 body, label, input[type="submit"], input[type="button"], input[type="text"], input[type="email"], select, textarea, button {
-    font-family: "Open Sans", Verdana, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 12px;
 }
 
 .header {

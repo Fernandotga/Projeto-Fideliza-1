@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    
     $("#cadastroEmpresa").submit(function() {
         //
         if ($("#senha").val() !== $("#senhaRepetir").val()) {
