@@ -16,6 +16,7 @@ import br.com.fideliza.app.model.common.PerfilType;
 import br.com.fideliza.app.repository.FidelizadosRepository;
 import java.util.Collection;
 import java.util.List;
+import static br.com.caelum.vraptor.view.Results.json; 
 
 @Resource
 @Permission({PerfilType.MEMBRO, PerfilType.ADMINISTRADOR, PerfilType.MODERADOR})
@@ -71,7 +72,7 @@ public class FidelizadosController {
         return jasperMaker.makePdf("Troca.jasper",
                 rel, "Troca.pdf", false);
     }
-    
+
     //REST Android
     @Public
     @Path("/fidelizados/salvar")
@@ -79,13 +80,14 @@ public class FidelizadosController {
         try {
             cliente = repository.save(cliente);
         } catch (CommonException e) {
-            
+            System.out.println(e);
         }
     }
-    
+
     @Public
     @Path("/fidelizados/login")
-    public Cliente login(String email, String password) {
-        return repository.autenticar(email, password);
+    public void login(String email, String password) {
+        Cliente cliente = repository.autenticar(email, password);
+        result.use(json()).withoutRoot().from(cliente).serialize();
     }
 }
