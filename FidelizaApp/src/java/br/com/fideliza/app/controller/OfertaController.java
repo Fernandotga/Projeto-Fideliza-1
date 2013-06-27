@@ -41,7 +41,7 @@ public class OfertaController {
     @Get("/oferta/criar")
     public void criar(Oferta entity) {
         if (!repository.limitInserts(session.getEmpresa().getId())) {
-            result.include("mensagem", i18n("oferta.limite")).redirectTo(this).listagem();
+            result.include("message", i18n("oferta.limite")).redirectTo(this).listagem();
         } else {
             result.include("entity", entity)
                     .include("categoriaTypes", CategoriaOfertaType.values());
@@ -58,7 +58,7 @@ public class OfertaController {
         validator.onErrorRedirectTo(this).criar(entity);
         try {
             entity = repository.save(entity);
-            result.include("notice", i18n("oferta.salvo.sucesso")).redirectTo(this).exibir(entity);
+            result.include("message", i18n("oferta.salvo.sucesso")).redirectTo(this).exibir(entity);
         } catch (CommonException e) {
             result.include("error", i18n(e.getMessage())).redirectTo(this).criar(entity);
         }
@@ -79,7 +79,7 @@ public class OfertaController {
     @Delete("/oferta/{entity.id}")
     public void remover(Oferta entity) {
         repository.remove(entity);
-        result.include("notice", i18n("oferta.removido.sucesso")).redirectTo(this).listagem();
+        result.include("message", i18n("oferta.removido.sucesso")).redirectTo(this).listagem();
     }
 
     @Get("/oferta/{entity.id}/editar")
@@ -99,7 +99,7 @@ public class OfertaController {
 
         try {
             entity = repository.save(entity);
-            result.include("notice", i18n("oferta.atualizado.sucesso")).redirectTo(this).exibir(entity);
+            result.include("message", i18n("oferta.atualizado.sucesso")).redirectTo(this).exibir(entity);
         } catch (CommonException e) {
             result.include("error", i18n(e.getMessage())).redirectTo(this).editar(entity);
         }

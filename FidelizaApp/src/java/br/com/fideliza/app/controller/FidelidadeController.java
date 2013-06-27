@@ -55,7 +55,7 @@ public class FidelidadeController {
         validator.onErrorRedirectTo(this).criar(entity);
         try {
             entity = repository.save(entity);
-            result.include("notice", i18n("fidelidade.salvo.sucesso")).redirectTo(this).exibir(entity);
+            result.include("message", i18n("fidelidade.salvo.sucesso")).redirectTo(this).exibir(entity);
         } catch (CommonException e) {
             result.include("error", i18n(e.getMessage())).redirectTo(this).criar(entity);
         }
@@ -76,7 +76,7 @@ public class FidelidadeController {
     @Delete("/fidelidade/{entity.id}")
     public void remover(Fidelidade entity) {
         repository.remove(entity);
-        result.include("notice", i18n("fidelidade.removido.sucesso")).redirectTo(this).listagem();
+        result.include("message", i18n("fidelidade.removido.sucesso")).redirectTo(this).listagem();
     }
 
     @Get("/fidelidade/{entity.id}/editar")
@@ -95,7 +95,7 @@ public class FidelidadeController {
 
         try {
             entity = repository.save(entity);
-            result.include("notice", i18n("fidelidade.atualizado.sucesso")).redirectTo(this).exibir(entity);
+            result.include("message", i18n("fidelidade.atualizado.sucesso")).redirectTo(this).exibir(entity);
         } catch (CommonException e) {
             result.include("error", i18n(e.getMessage())).redirectTo(this).editar(entity);
         }

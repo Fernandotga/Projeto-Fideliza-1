@@ -80,7 +80,7 @@ public class EmpresaController {
         try {
             entity = repository.save(entity);
             // retorna tela de login, pois so salvar é apenas deslogado !
-            result.include("notice", i18n("empresa.salvo.sucesso")).redirectTo(IndexController.class).index();
+            result.include("message", i18n("empresa.salvo.sucesso")).redirectTo(IndexController.class).index();
         } catch (CommonException e) {
             result.include("error", i18n(e.getMessage())).redirectTo(this).criar(entity);
         }
@@ -98,7 +98,7 @@ public class EmpresaController {
 
         try {
             entity = repository.save(entity);
-            result.include("notice", i18n("empresa.atualizado.sucesso")).redirectTo(this).exibir(entity);
+            result.include("message", i18n("empresa.atualizado.sucesso")).redirectTo(this).exibir(entity);
         } catch (CommonException e) {
             result.include("error", i18n(e.getMessage())).redirectTo(this).editar(entity);
         }
