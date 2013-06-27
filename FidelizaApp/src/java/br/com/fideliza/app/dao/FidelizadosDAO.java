@@ -1,15 +1,12 @@
 package br.com.fideliza.app.dao;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.fideliza.app.helper.Seguranca;
 import br.com.fideliza.app.model.Cliente;
 import br.com.fideliza.app.model.ClienteFidelidade;
 import br.com.fideliza.app.repository.FidelizadosRepository;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -147,5 +144,56 @@ public class FidelizadosDAO extends GenericDAO<Cliente> implements FidelizadosRe
             log.error(ex);
             return null;
         }
+    }
+
+    @Override
+    public void checkin(Long id) {
+        Query query = null;
+        query = manager.createNativeQuery("insert into fid_checkins (data_registro, hora, id_empresa) values (:data, :hora, :empresa)");
+        query.setParameter("data", new Date());
+        query.setParameter("hora", new Date());
+        query.setParameter("empresa", id);
+        query.executeUpdate();
+    }
+
+    @Override
+    public boolean primeiroCheckin(Long cliente, Long fidelidade) {
+        Query query = null;
+        query = manager.createNativeQuery("select f.id as FIDELIZADO from fid_clientes_fidelidades f where f.id_fidelidade = :fidelidade and f.id_cliente = :cliente");
+        query.setParameter("fidelidade", fidelidade);
+        query.setParameter("cliente", cliente);
+
+        if (query.getResultList().isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void vincular(Long cliente, Long fidelidade) {
+        Query query = null;
+        query = manager.createNativeQuery("insert into fid_clientes_fidelidades (pontos, data_fidelidade, id_fidelidade, id_cliente) values (1, :data, :fidelidade, :cliente);");
+        query.setParameter("data", new Date());
+        query.setParameter("fidelidade", fidelidade);
+        query.setParameter("cliente", cliente);
+        query.executeUpdate();
+    }
+
+    @Override
+    public void plus(Long cliente, Long fidelidade) {
+        Query query = null;
+        query = manager.createNativeQuery("select f.pontos from fid_clientes_fidelidades f where f.id_fidelidade = :fidelidade and f.id_cliente = :cliente");
+        query.setParameter("fidelidade", fidelidade);
+        query.setParameter("cliente", cliente);
+        int pontos = (int) query.getSingleResult();
+        pontos += 1;
+        query = null;
+        query = manager.createQuery("update " + ClienteFidelidade.class.getName() + " set pontos = :pontos where where id_fidelidade = :fidelidade and id_cliente = :cliente");
+        query.setParameter("pontos", pontos);
+        query.setParameter("fidelidade", fidelidade);
+        query.setParameter("cliente", cliente);
+
+        query.executeUpdate();
     }
 }

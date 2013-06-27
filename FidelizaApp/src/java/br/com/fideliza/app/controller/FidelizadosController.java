@@ -16,7 +16,7 @@ import br.com.fideliza.app.model.common.PerfilType;
 import br.com.fideliza.app.repository.FidelizadosRepository;
 import java.util.Collection;
 import java.util.List;
-import static br.com.caelum.vraptor.view.Results.json; 
+import static br.com.caelum.vraptor.view.Results.json;
 
 @Resource
 @Permission({PerfilType.MEMBRO, PerfilType.ADMINISTRADOR, PerfilType.MODERADOR})
@@ -89,5 +89,21 @@ public class FidelizadosController {
     public void login(String email, String password) {
         Cliente cliente = repository.autenticar(email, password);
         result.use(json()).withoutRoot().from(cliente).serialize();
+    }
+
+    @Public
+    @Path("/fidelizados/registrar")
+    public void registrar(String cliente, String fidelidade) {
+        Long _fidelidade = Long.parseLong(fidelidade);
+        Long _cliente = Long.parseLong(cliente);
+
+        repository.checkin(session.getEmpresa().getId());
+        boolean firstTime = repository.primeiroCheckin(_cliente, _fidelidade);
+
+        if (firstTime) {
+            repository.vincular(_cliente, _fidelidade);
+        } else {
+            repository.plus(_cliente, _fidelidade);
+        }
     }
 }
