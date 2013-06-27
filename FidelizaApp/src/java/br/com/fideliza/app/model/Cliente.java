@@ -24,7 +24,7 @@ public class Cliente extends AbstractEntity {
     @Column(name = "password")
     private String password;
     @Column(name = "genero")
-    private Character genero;
+    private String genero;
     @Column(name = "data_nascimento")
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
@@ -66,11 +66,11 @@ public class Cliente extends AbstractEntity {
         this.password = password;
     }
 
-    public Character getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(Character genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 

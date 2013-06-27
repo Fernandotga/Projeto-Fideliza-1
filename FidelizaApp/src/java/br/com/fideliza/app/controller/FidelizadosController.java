@@ -97,7 +97,7 @@ public class FidelizadosController {
         Long _fidelidade = Long.parseLong(fidelidade);
         Long _cliente = Long.parseLong(cliente);
 
-        repository.checkin(session.getEmpresa().getId());
+        repository.checkin(17L);
         boolean firstTime = repository.primeiroCheckin(_cliente, _fidelidade);
 
         if (firstTime) {

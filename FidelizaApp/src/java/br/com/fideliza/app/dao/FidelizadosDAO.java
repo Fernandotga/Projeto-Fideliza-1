@@ -174,7 +174,7 @@ public class FidelizadosDAO extends GenericDAO<Cliente> implements FidelizadosRe
     public void vincular(Long cliente, Long fidelidade) {
         Query query = null;
         query = manager.createNativeQuery("insert into fid_clientes_fidelidades (pontos, data_fidelidade, id_fidelidade, id_cliente) values (1, :data, :fidelidade, :cliente);");
-        query.setParameter("data", new Date());
+        query.setParameter("data", new Date());//
         query.setParameter("fidelidade", fidelidade);
         query.setParameter("cliente", cliente);
         query.executeUpdate();
@@ -189,7 +189,7 @@ public class FidelizadosDAO extends GenericDAO<Cliente> implements FidelizadosRe
         int pontos = (int) query.getSingleResult();
         pontos += 1;
         query = null;
-        query = manager.createQuery("update " + ClienteFidelidade.class.getName() + " set pontos = :pontos where where id_fidelidade = :fidelidade and id_cliente = :cliente");
+        query = manager.createNativeQuery("update fid_clientes_fidelidades set pontos = :pontos where id_fidelidade = :fidelidade and id_cliente = :cliente");
         query.setParameter("pontos", pontos);
         query.setParameter("fidelidade", fidelidade);
         query.setParameter("cliente", cliente);
