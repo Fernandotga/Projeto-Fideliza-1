@@ -13,14 +13,14 @@
         <div class="control-group" style="border-bottom: 1px solid gray; padding-bottom: 5px">
             <div class="controls">
                 <div class="inline">
-                    <a href="<c:url value="/fidelizados/pdf"/>" class="btn btn-success btn-small" target="_blank" style="margin-right: 5px;">                            
+                    <a href="<c:url value="/fidelizados/pdf"/>" class="btn btn-success btn-small" style="margin-right: 5px;">                            
                         <i class="icon-white icon-print"></i>
                         <fmt:message key="fidelizados.imprimir" />
                     </a>
                 </div>
 
                 <div class="inline">
-                    <a href="<c:url value="/fidelizados/pdf/trocas"/>" class="btn btn-success btn-small" target="_blank">                            
+                    <a href="<c:url value="/fidelizados/pdf/trocas"/>" class="btn btn-success btn-small">                            
                         <i class="icon-white icon-print"></i>
                         <fmt:message key="fidelizados.imprimir.trocas" />
                     </a>
